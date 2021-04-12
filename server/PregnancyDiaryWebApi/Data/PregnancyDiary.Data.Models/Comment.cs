@@ -24,7 +24,7 @@
         public virtual ApplicationUser User { get; set; }
 
         [Required]
-        [MaxLength(DataValidation.Comment.CommentContentMaxLenght)]
+        [MaxLength(DataValidation.Comment.ContentMaxLenght)]
         public string Content { get; set; }
     }
 }

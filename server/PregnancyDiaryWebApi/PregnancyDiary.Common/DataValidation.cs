@@ -4,27 +4,34 @@
     {
         public static class Article
         {
-            public const int ArticleTitleMinLenght = 5;
+            public const int TitleMinLenght = 5;
 
-            public const int ArticleTitleMaxLenght = 100;
+            public const int TitleMaxLenght = 100;
 
-            public const int ArticleContentMinLenght = 10;
+            public const int ContentMinLenght = 10;
 
-            public const int ArticleContentMaxLenght = 6000;
+            public const int ContentMaxLenght = 6000;
 
-            public const int ArticleAuthorNameMaxLenght = 10;
+            public const int AuthorNameMaxLenght = 10;
+        }
+
+        public static class Baby
+        {
+            public const int NameMinLenght = 2;
+
+            public const int NameMaxLenght = 50;
         }
 
         public static class Category
         {
-            public const int CategoryNameMaxLenght = 50;
+            public const int NameMaxLenght = 50;
         }
 
         public static class Comment
         {
-            public const int CommentContentMinLenght = 3;
+            public const int ContentMinLenght = 3;
 
-            public const int CommentContentMaxLenght = 1000;
+            public const int ContentMaxLenght = 1000;
         }
     }
 }

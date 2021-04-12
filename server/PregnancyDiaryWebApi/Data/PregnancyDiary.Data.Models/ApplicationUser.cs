@@ -10,8 +10,11 @@
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Diaries = new HashSet<Diary>();
             this.Roles = new HashSet<IdentityUserRole<string>>();
         }
+
+        public virtual ICollection<Diary> Diaries { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
     }

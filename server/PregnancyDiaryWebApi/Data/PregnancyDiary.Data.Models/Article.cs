@@ -17,18 +17,18 @@
         }
 
         [Required]
-        [MaxLength(DataValidation.Article.ArticleTitleMaxLenght)]
+        [MaxLength(DataValidation.Article.TitleMaxLenght)]
         public string Title { get; set; }
 
         [Required]
-        [MaxLength(DataValidation.Article.ArticleContentMaxLenght)]
+        [MaxLength(DataValidation.Article.ContentMaxLenght)]
         public string Content { get; set; }
 
         [Required]
         public string Picture { get; set; }
 
         [Required]
-        [MaxLength(DataValidation.Article.ArticleAuthorNameMaxLenght)]
+        [MaxLength(DataValidation.Article.AuthorNameMaxLenght)]
         public string Author { get; set; }
 
         [Required]
