@@ -5,25 +5,25 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8BD9EEAC-C863-4D56-9A08-01FB353941AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Data", "Data\PregnancyDiary.Data\PregnancyDiary.Data.csproj", "{A1D7F4DD-ADFE-4FF6-A40C-82AF90DD2227}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Data", "Data\PregnancyDiary.Data\PregnancyDiary.Data.csproj", "{A1D7F4DD-ADFE-4FF6-A40C-82AF90DD2227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Data.Common", "Data\PregnancyDiary.Data.Common\PregnancyDiary.Data.Common.csproj", "{7E58872B-9370-4244-8966-0864507C1E59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Data.Common", "Data\PregnancyDiary.Data.Common\PregnancyDiary.Data.Common.csproj", "{7E58872B-9370-4244-8966-0864507C1E59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Data.Models", "Data\PregnancyDiary.Data.Models\PregnancyDiary.Data.Models.csproj", "{27D6C751-C5FB-4F48-9C65-B02692B31421}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Data.Models", "Data\PregnancyDiary.Data.Models\PregnancyDiary.Data.Models.csproj", "{27D6C751-C5FB-4F48-9C65-B02692B31421}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{500A4B07-4071-4D48-89CD-2208C05C240A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Services.Mapping", "Services\PregnancyDiary.Services.Mapping\PregnancyDiary.Services.Mapping.csproj", "{A520AE72-2691-43C3-939E-426D17EE5880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Services.Mapping", "Services\PregnancyDiary.Services.Mapping\PregnancyDiary.Services.Mapping.csproj", "{A520AE72-2691-43C3-939E-426D17EE5880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Services.Data", "Services\PregnancyDiary.Services.Data\PregnancyDiary.Services.Data.csproj", "{215D0F77-47FC-4134-83C0-FD3FED87A537}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Services.Data", "Services\PregnancyDiary.Services.Data\PregnancyDiary.Services.Data.csproj", "{215D0F77-47FC-4134-83C0-FD3FED87A537}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{FEAC0140-F3DE-4D6A-904C-551DC01CC292}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Web.Models", "Web\PregnancyDiary.Web.Models\PregnancyDiary.Web.Models.csproj", "{9FC30123-8E75-4925-A421-FB1E8E6AC777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Web.Models", "Web\PregnancyDiary.Web.Models\PregnancyDiary.Web.Models.csproj", "{9FC30123-8E75-4925-A421-FB1E8E6AC777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.WebApi", "Web\PregnancyDiary.WebApi\PregnancyDiary.WebApi.csproj", "{5EB4EECA-1FC8-4490-B7FC-E077FA87A957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.WebApi", "Web\PregnancyDiary.WebApi\PregnancyDiary.WebApi.csproj", "{5EB4EECA-1FC8-4490-B7FC-E077FA87A957}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PregnancyDiary.Common", "PregnancyDiary.Common\PregnancyDiary.Common.csproj", "{54497F25-5E72-4A96-B1A2-AF906757B253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PregnancyDiary.Common", "PregnancyDiary.Common\PregnancyDiary.Common.csproj", "{54497F25-5E72-4A96-B1A2-AF906757B253}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
