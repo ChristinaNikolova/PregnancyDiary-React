@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PregnancyDiary.Data.Common\PregnancyDiary.Data.Common.csproj" />
+    <ProjectReference Include="..\PregnancyDiary.Data.Models\PregnancyDiary.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>
