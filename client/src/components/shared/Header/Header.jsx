@@ -3,6 +3,8 @@ import toastr from 'toastr';
 
 import * as authService from '../../../services/authService.js';
 
+import './Header.css';
+
 function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
     const logout = () => {
         authService.logout();
@@ -14,7 +16,7 @@ function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
     return (
         <div className="header-wrapper">
             <nav className="navbar navbar-expand-lg">
-                <Link to="/home" className="navbar-brand">Recipes</Link>
+                <Link to="/home" className="navbar-brand">Pregnancy-Diary</Link>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav">
                         <li className="nav-item active"><Link to="/" className="nav-link">Home </Link>

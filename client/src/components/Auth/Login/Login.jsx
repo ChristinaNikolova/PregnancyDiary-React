@@ -6,6 +6,8 @@ import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
 
+import './Login.css';
+
 function Login({ history, clickHandler }) {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
