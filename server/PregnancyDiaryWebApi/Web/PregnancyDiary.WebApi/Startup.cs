@@ -18,6 +18,8 @@
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Data.Repositories;
+    using PregnancyDiary.Services.Mapping;
+    using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.WebApi.Helpers;
 
     public class Startup
@@ -97,7 +99,7 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             app.UseCors(x => x
                 .AllowAnyMethod()
