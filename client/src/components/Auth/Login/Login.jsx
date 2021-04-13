@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
 
-function Login({ history }) {
+function Login({ history, clickHandler }) {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
 
@@ -30,6 +31,7 @@ function Login({ history }) {
                     localStorage.setItem('token', data['token']);
                     localStorage.setItem('username', data['username']);
                     localStorage.setItem('isAdmin', data['isAdmin']);
+                    clickHandler();
                     history.push('/');
                     toastr.success(data['message'], 'Success');
                 });
@@ -64,4 +66,4 @@ function Login({ history }) {
     );
 }
 
-export default Login;
+export default withRouter(Login);
