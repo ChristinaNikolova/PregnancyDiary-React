@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import '../node_modules/toastr/build/toastr.min.css';
 
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

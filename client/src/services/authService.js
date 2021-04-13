@@ -23,9 +23,7 @@ export const login = (email, password) => {
         email,
         password
     };
-
-    console.log(api.login);
-
+    
     return fetch(api.login, {
         method: 'POST',
         headers: {

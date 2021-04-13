@@ -31,7 +31,6 @@ function Login({ history }) {
                     localStorage.setItem('isAdmin', data['isAdmin']);
                     history.push('/');
                     toastr.success(data['message'], 'Success');
-                    return;
                 })
         }
     }
