@@ -5,8 +5,21 @@
 
 .login-wrapper button {
     background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
 }
 
 .login-wrapper button:hover {
     background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.login-form {
+    justify-content: center;
+}
+
+.img-login {
+    max-width: 100%;
+    border-radius: 20%;
 }

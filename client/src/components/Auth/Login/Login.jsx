@@ -43,10 +43,10 @@ function Login({ history, clickHandler }) {
     return (
         <div className="login-wrapper">
             <div className="container">
-                <h1 className="text-center custom-font">Sign In</h1>
+                <h1 className="custom-font text-center">Sign In</h1>
                 <hr />
-                <div className="row">
-                    <div className="col-lg-10">
+                <div className="row login-form">
+                    <div className="col-lg-8">
                         <form className="mt-2" onSubmit={onLoginSubmitHandler}>
                             <Input
                                 type='email'
@@ -60,10 +60,19 @@ function Login({ history, clickHandler }) {
                                 label='Password'
                                 error={errorPassword} />
 
-                            <button className="btn btn-dark" type="submit">Sign In</button>
+                            <div className="text-center">
+                                <button className="btn" type="submit">Sign In</button>
+                            </div>
                         </form>
                     </div>
-                </div >
+                </div>
+                <div className="row">
+                    <div className="col-lg-4"></div>
+                    <div className="col-lg-4">
+                        <img className="img-login m-3" src="https://static.vecteezy.com/system/resources/previews/000/518/117/non_2x/pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg"></img>
+                    </div>
+                    <div className="col-lg-4"></div>
+                </div>
             </div >
         </div >
     );
