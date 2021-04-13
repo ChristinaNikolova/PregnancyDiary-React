@@ -4,7 +4,7 @@ function InputError({ children }) {
     }
 
     return (
-        <div className="alert alert-danger mt-1">
+        <div className="alert alert-warning mt-1">
             { children }
         </div >
     );

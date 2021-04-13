@@ -43,7 +43,8 @@ function Login({ history, clickHandler }) {
     return (
         <div className="login-wrapper">
             <div className="container">
-                <h1>Sign In</h1>
+                <h1 className="text-center custom-font">Sign In</h1>
+                <hr />
                 <div className="row">
                     <div className="col-lg-10">
                         <form className="mt-2" onSubmit={onLoginSubmitHandler}>

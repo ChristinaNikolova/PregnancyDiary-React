@@ -2,3 +2,11 @@
     background-color: #FFE2E0;
     height: 650px;
 }
+
+.login-wrapper button {
+    background-color: #EF93AE;
+}
+
+.login-wrapper button:hover {
+    background-color: #7BA5F7;
+}
