@@ -18,7 +18,8 @@ function Login({ history }) {
         setErrorEmail(validator.validEmail(email));
         setErrorPassword(validator.validPassword(password));
 
-        if (validator.validEmail(email) === '' && validator.validPassword(password) === '') {
+        if (validator.validEmail(email) === '' &&
+            validator.validPassword(password) === '') {
             authService
                 .login(email, password)
                 .then((data) => {
@@ -31,7 +32,7 @@ function Login({ history }) {
                     localStorage.setItem('isAdmin', data['isAdmin']);
                     history.push('/');
                     toastr.success(data['message'], 'Success');
-                })
+                });
         }
     }
 
