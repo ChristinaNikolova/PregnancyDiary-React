@@ -26,7 +26,6 @@
 
                 foreach (var currentArticleData in articlesData)
                 {
-                    ;
                     var category = await dbContext.Categories
                         .FirstOrDefaultAsync(c => c.Name == currentArticleData.CategoryName);
 

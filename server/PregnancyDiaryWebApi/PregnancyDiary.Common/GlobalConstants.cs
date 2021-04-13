@@ -16,6 +16,11 @@
             public const string User = "User";
         }
 
+        public static class JWTExpiration
+        {
+            public const int DefaultDaysExpiredToken = 7;
+        }
+
         public static class SeedersPath
         {
             public const string Category = @"../../Data/PregnancyDiary.Data/Seeding/Data/Categories.json";

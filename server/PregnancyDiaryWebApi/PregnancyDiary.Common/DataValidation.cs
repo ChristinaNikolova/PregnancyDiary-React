@@ -51,5 +51,12 @@
 
             public const int DescriptionMaxLenght = 500;
         }
+
+        public static class User
+        {
+            public const int UsernameMinLength = 3;
+
+            public const int PasswordMinLength = 5;
+        }
     }
 }
