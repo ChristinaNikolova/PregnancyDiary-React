@@ -18,6 +18,7 @@
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Data.Repositories;
+    using PregnancyDiary.Data.Seeding;
     using PregnancyDiary.Services.Mapping;
     using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.WebApi.Helpers;
@@ -110,8 +111,13 @@
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
                 dbContext.Database.Migrate();
-                //new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+
+                new ApplicationDbContextSeeder()
+                    .SeedAsync(dbContext, serviceScope.ServiceProvider)
+                    .GetAwaiter()
+                    .GetResult();
             }
 
             if (env.IsDevelopment())
