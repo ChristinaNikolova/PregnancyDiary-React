@@ -12,6 +12,7 @@
         public Article()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Author = GlobalConstants.Roles.Admin;
             this.Comments = new HashSet<Comment>();
             this.Likes = new HashSet<UserArticleLike>();
         }

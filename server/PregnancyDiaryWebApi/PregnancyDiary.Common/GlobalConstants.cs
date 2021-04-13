@@ -18,7 +18,9 @@
 
         public static class SeedersPath
         {
-            public const string Category = @"../../Data/Recipes.Data/Seeding/Data/Categories.json";
+            public const string Category = @"../../Data/PregnancyDiary.Data/Seeding/Data/Categories.json";
+
+            public const string Article = @"../../Data/PregnancyDiary.Data/Seeding/Data/Articles.json";
         }
     }
 }
