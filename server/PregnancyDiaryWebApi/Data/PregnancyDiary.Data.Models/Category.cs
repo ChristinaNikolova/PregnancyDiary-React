@@ -16,8 +16,11 @@
         }
 
         [Required]
-        [MaxLength(DataValidation.Category.CategoryNameMaxLenght)]
+        [MaxLength(DataValidation.Category.NameMaxLenght)]
         public string Name { get; set; }
+
+        [Required]
+        public string Picture { get; set; }
 
         public virtual ICollection<Article> Articles { get; set; }
     }

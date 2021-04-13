@@ -14,6 +14,10 @@
         }
 
         [Required]
+        [MaxLength(DataValidation.Comment.ContentMaxLenght)]
+        public string Content { get; set; }
+
+        [Required]
         public string ArticleId { get; set; }
 
         public virtual Article Article { get; set; }
@@ -22,9 +26,5 @@
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
-
-        [Required]
-        [MaxLength(DataValidation.Comment.ContentMaxLenght)]
-        public string Content { get; set; }
     }
 }

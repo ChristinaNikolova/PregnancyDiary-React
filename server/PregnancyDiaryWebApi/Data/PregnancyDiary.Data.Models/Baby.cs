@@ -27,6 +27,11 @@
 
         public double Height { get; set; }
 
-        public int Weight { get; set; }
+        public double Weight { get; set; }
+
+        [Required]
+        public string DiaryId { get; set; }
+
+        public virtual Diary Diary { get; set; }
     }
 }

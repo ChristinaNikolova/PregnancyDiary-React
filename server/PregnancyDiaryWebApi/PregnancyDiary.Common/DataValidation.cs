@@ -24,6 +24,8 @@
 
         public static class Category
         {
+            public const int NameMinLenght = 3;
+
             public const int NameMaxLenght = 50;
         }
 
@@ -32,6 +34,22 @@
             public const int ContentMinLenght = 3;
 
             public const int ContentMaxLenght = 1000;
+        }
+
+        public static class Moment
+        {
+            public const int TitleMinLenght = 5;
+
+            public const int TitleMaxLenght = 100;
+
+            public const int DescriptionMaxLenght = 1000;
+        }
+
+        public static class ToDo
+        {
+            public const int DescriptionMinLenght = 5;
+
+            public const int DescriptionMaxLenght = 500;
         }
     }
 }

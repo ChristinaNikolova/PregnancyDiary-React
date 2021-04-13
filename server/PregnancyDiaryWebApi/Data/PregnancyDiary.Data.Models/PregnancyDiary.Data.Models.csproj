@@ -20,4 +20,9 @@
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PregnancyDiary.Common\PregnancyDiary.Common.csproj" />
+    <ProjectReference Include="..\PregnancyDiary.Data.Common\PregnancyDiary.Data.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -27,6 +27,24 @@
         {
         }
 
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<Baby> Babies { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Diary> Diaries { get; set; }
+
+        public DbSet<Moment> Moments { get; set; }
+
+        public DbSet<ToDo> ToDos { get; set; }
+
+        public DbSet<UserArticleLike> UserArticleLikes { get; set; }
+
+        public DbSet<Week> Weeks { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
