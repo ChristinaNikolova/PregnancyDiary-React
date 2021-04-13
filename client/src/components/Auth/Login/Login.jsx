@@ -1,6 +1,13 @@
-import Input from "../../shared/Input/Input";
+import { useState } from 'react';
+import toastr from 'toastr';
 
-function Login() {
+import Input from '../../shared/Input/Input.jsx';
+import * as validator from '../../../utils/validators/authValidator.js';
+import * as authService from '../../../services/authService.js';
+
+function Login({ history }) {
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
@@ -8,8 +15,25 @@ function Login() {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email);
-        console.log(password);
+        setErrorEmail(validator.validEmail(email));
+        setErrorPassword(validator.validPassword(password));
+
+        if (validator.validEmail(email) === '' && validator.validPassword(password) === '') {
+            authService
+                .login(email, password)
+                .then((data) => {
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
+                        return;
+                    }
+                    localStorage.setItem('token', data['token']);
+                    localStorage.setItem('username', data['username']);
+                    localStorage.setItem('isAdmin', data['isAdmin']);
+                    history.push('/');
+                    toastr.success(data['message'], 'Success');
+                    return;
+                })
+        }
     }
 
     return (
@@ -22,12 +46,14 @@ function Login() {
                             <Input
                                 type='email'
                                 name='email'
-                                label='Email'/>
+                                label='Email'
+                                error={errorEmail} />
 
                             <Input
                                 type='password'
                                 name='password'
-                                label='Password'/>
+                                label='Password'
+                                error={errorPassword} />
 
                             <button className="btn btn-dark" type="submit">Sign In</button>
                         </form>

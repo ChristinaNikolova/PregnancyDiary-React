@@ -44,6 +44,7 @@
         [ProducesDefaultResponseType]
         public async Task<object> Login([FromBody] LoginInputModel model)
         {
+            ;
             var user = this.userManager.Users.SingleOrDefault(r => r.Email == model.Email);
 
             if (user is null)
