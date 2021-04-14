@@ -42,39 +42,37 @@ function Login({ history, clickHandler }) {
 
     return (
         <div className="login-wrapper">
-            <div className="container">
-                <h1 className="custom-font text-center">Sign In</h1>
-                <hr />
-                <div className="row login-form">
-                    <div className="col-lg-8">
-                        <form className="mt-2" onSubmit={onLoginSubmitHandler}>
-                            <Input
-                                type='email'
-                                name='email'
-                                label='Email'
-                                error={errorEmail} />
+            <h1 className="custom-font text-center">Sign In</h1>
+            <hr />
+            <div className="row login-form">
+                <div className="col-lg-8">
+                    <form className="mt-2" onSubmit={onLoginSubmitHandler}>
+                        <Input
+                            type='email'
+                            name='email'
+                            label='Email'
+                            error={errorEmail} />
 
-                            <Input
-                                type='password'
-                                name='password'
-                                label='Password'
-                                error={errorPassword} />
+                        <Input
+                            type='password'
+                            name='password'
+                            label='Password'
+                            error={errorPassword} />
 
-                            <div className="text-center">
-                                <button className="btn" type="submit">Sign In</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div className="text-center">
+                            <button className="btn" type="submit">Sign In</button>
+                        </div>
+                    </form>
                 </div>
-                <div className="row">
-                    <div className="col-lg-4"></div>
-                    <div className="col-lg-4">
-                        <img className="img-login mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
-                    </div>
-                    <div className="col-lg-4"></div>
+            </div>
+            <div className="row">
+                <div className="col-lg-4"></div>
+                <div className="col-lg-4">
+                    <img className="img-login mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
                 </div>
-            </div >
-        </div >
+                <div className="col-lg-4"></div>
+            </div>
+        </div>
     );
 }
 

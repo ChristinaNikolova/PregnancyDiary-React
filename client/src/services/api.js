@@ -12,6 +12,7 @@ const api = {
     searchArticles: `${articlesUrl}/search`,
     orderArticles: `${articlesUrl}/order`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
+    categoryNameById: `${categoriesUrl}/getNameById`,
 }
 
 export default api;

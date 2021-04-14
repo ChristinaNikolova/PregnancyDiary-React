@@ -45,51 +45,49 @@ function Register({ history }) {
 
     return (
         <div className="register-wrapper">
-            <div className="container">
-                <h1 className="custom-font text-center">Register</h1>
-                <hr />
-                <div className="row register-form">
-                    <div className="col-lg-8">
-                        <form className="mt-2" onSubmit={onRegisterSubmitHandler}>
-                            <Input
-                                type='text'
-                                name='username'
-                                label='Username'
-                                error={errorUsername} />
+            <h1 className="custom-font text-center">Register</h1>
+            <hr />
+            <div className="row register-form">
+                <div className="col-lg-8">
+                    <form className="mt-2" onSubmit={onRegisterSubmitHandler}>
+                        <Input
+                            type='text'
+                            name='username'
+                            label='Username'
+                            error={errorUsername} />
 
-                            <Input
-                                type='email'
-                                name='email'
-                                label='Email'
-                                error={errorEmail} />
+                        <Input
+                            type='email'
+                            name='email'
+                            label='Email'
+                            error={errorEmail} />
 
-                            <Input
-                                type='password'
-                                name='password'
-                                label='Password'
-                                error={errorPassword} />
+                        <Input
+                            type='password'
+                            name='password'
+                            label='Password'
+                            error={errorPassword} />
 
-                            <Input
-                                type='password'
-                                name='repeatPassword'
-                                label='Repeat password'
-                                error={errorRePassword} />
+                        <Input
+                            type='password'
+                            name='repeatPassword'
+                            label='Repeat password'
+                            error={errorRePassword} />
 
-                            <div className="text-tencer">
-                                <button className="btn" type="submit" > Register</button >
-                            </div>
-                        </form >
-                    </div >
-                </div >
-                <div className="row">
-                    <div className="col-lg-4"></div>
-                    <div className="col-lg-4">
-                        <img className="img-login mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
-                    </div>
-                    <div className="col-lg-4"></div>
+                        <div className="text-center">
+                            <button className="btn" type="submit"> Register</button>
+                        </div>
+                    </form>
                 </div>
-            </div >
-        </div >
+            </div>
+            <div className="row">
+                <div className="col-lg-4"></div>
+                <div className="col-lg-4">
+                    <img className="img-register mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
+                </div>
+                <div className="col-lg-4"></div>
+            </div>
+        </div>
     );
 }
 

@@ -29,5 +29,16 @@
 
             return categories;
         }
+
+        public async Task<string> GetNameByIdAsync(string categoryId)
+        {
+            var name = await this.categoriesRepository
+                .All()
+                .Where(c => c.Id == categoryId)
+                .Select(c => c.Name)
+                .FirstOrDefaultAsync();
+
+            return name;
+        }
     }
 }

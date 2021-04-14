@@ -5,7 +5,7 @@ import SingleArticleCategory from '../SingleArticleCategory/SingleArticleCategor
 
 import './ArticlesCategoriesList.css'
 
-function ArticlesCategoriesList() {
+function ArticlesCategoriesList({ clickHandler }) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -24,7 +24,8 @@ function ArticlesCategoriesList() {
                         key={c.id}
                         id={c.id}
                         name={c.name}
-                        articlesCount={c.articlesCount} />)}
+                        articlesCount={c.articlesCount}
+                        clickHandler={clickHandler} />)}
             </div>
         </div>
     )

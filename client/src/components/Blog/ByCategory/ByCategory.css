@@ -1,0 +1,19 @@
+.by-category-wrapper{
+    background-color: #FFE2E0;
+}
+
+.pink-color {
+    color: #EF93AE;
+}
+
+.by-category-wrapper .btn-clear-article-by-category {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.by-category-wrapper .btn-clear-article-by-category:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}

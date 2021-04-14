@@ -6,5 +6,7 @@
     public interface ICategoriesService
     {
         Task<IEnumerable<T>> GetArticlesCountByCategoriesAsync<T>();
+
+        Task<string> GetNameByIdAsync(string categoryId);
     }
 }
