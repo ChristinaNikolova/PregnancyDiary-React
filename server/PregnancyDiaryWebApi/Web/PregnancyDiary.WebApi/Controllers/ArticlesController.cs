@@ -1,6 +1,7 @@
 ﻿namespace PregnancyDiary.WebApi.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -26,7 +27,7 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> All()
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> All()
         {
             try
             {
@@ -48,11 +49,33 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> ByCategory(string categoryId)
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> ByCategory(string categoryId)
         {
             try
             {
                 var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleViewModel>(categoryId);
+
+                return this.Ok(articles);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{query}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Search(string query)
+        {
+            try
+            {
+                var articles = await this.articlesService.GetSearchedAsync<ArticleViewModel>(query);
 
                 return this.Ok(articles);
             }

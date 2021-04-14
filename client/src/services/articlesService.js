@@ -7,9 +7,13 @@ export const all = () => {
 };
 
 export const allCurrentCategory = (categoryId) => {
-    console.log("in");
-    console.log(`${api.allArticlesCurrentCategory}/${categoryId}`);
     return fetch(`${api.allArticlesCurrentCategory}/${categoryId}`)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const search = (query) => {
+    return fetch(`${api.searchArticles}/${query}`)
         .then(res => res.json())
         .catch(err => console.error(err));
 }

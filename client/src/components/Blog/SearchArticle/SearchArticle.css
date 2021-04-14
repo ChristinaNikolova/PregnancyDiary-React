@@ -1,0 +1,8 @@
+.search-wrapper {
+    background-color: #E8E0CD;
+}
+
+.search-wrapper .custom-danger {
+    background-color: red;
+    border-color: red;
+}

@@ -1,6 +1,7 @@
 ﻿namespace PregnancyDiary.WebApi.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
@@ -26,7 +27,7 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> GetArticlesCountByCategories()
+        public async Task<ActionResult<IEnumerable<ArticleCategoryViewModel>>> GetArticlesCountByCategories()
         {
             try
             {

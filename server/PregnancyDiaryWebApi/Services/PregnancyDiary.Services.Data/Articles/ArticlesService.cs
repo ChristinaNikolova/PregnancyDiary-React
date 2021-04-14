@@ -42,5 +42,17 @@
 
             return articles;
         }
+
+        public async Task<IEnumerable<T>> GetSearchedAsync<T>(string query)
+        {
+            var articles = await this.articlesRepository
+               .All()
+               .Where(r => r.Title.ToLower().Contains(query.ToLower()))
+               .OrderByDescending(r => r.CreatedOn)
+               .To<T>()
+               .ToListAsync();
+
+            return articles;
+        }
     }
 }

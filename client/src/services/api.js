@@ -9,6 +9,7 @@ const api = {
     login: `${accountUrl}/login`,
     allArticles: `${articlesUrl}/all`,
     allArticlesCurrentCategory: `${articlesUrl}/byCategory`,
+    searchArticles: `${articlesUrl}/search`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
 }
 

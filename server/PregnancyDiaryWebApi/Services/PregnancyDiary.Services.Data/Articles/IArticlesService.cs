@@ -8,5 +8,7 @@
         Task<IEnumerable<T>> GetAllAsync<T>();
 
         Task<IEnumerable<T>> GetAllCurrentCategoryAsync<T>(string categoryId);
+
+        Task<IEnumerable<T>> GetSearchedAsync<T>(string query);
     }
 }
