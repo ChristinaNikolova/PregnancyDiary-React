@@ -27,5 +27,16 @@
 
             public const string Article = @"../../Data/PregnancyDiary.Data/Seeding/Data/Articles.json";
         }
+
+        public static class OrderCriteria
+        {
+            public const string Old = "old";
+
+            public const string New = "new";
+
+            public const string LikesCount = "likes";
+
+            public const string CommentsCount = "comments";
+        }
     }
 }

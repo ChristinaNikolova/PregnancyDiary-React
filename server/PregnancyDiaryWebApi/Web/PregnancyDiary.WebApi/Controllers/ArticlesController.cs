@@ -87,5 +87,28 @@
                 });
             }
         }
+
+        [HttpGet("{criteria}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Order(string criteria)
+        {
+            //check with more articles
+            try
+            {
+                var recipes = await this.articlesService.GetOrderAsync<ArticleViewModel>(criteria);
+
+                return this.Ok(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
     }
 }

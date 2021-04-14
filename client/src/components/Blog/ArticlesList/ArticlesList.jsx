@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as articlesService from '../../../services/articlesService.js';
 import ArticlesCategoriesList from '../ArticlesCategoriesList/ArticlesCategoriesList.jsx';
+import ArticlesOrder from '../ArticlesOrder/ArticlesOrder.jsx';
 import SearchArticle from '../SearchArticle/SearchArticle.jsx';
 import SingleArticle from '../SingleArticle/SingleArticle.jsx';
 
@@ -35,6 +36,13 @@ function ArticlesList() {
         setIsSearched(true);
     }
 
+    const order = (orderCriteria) => {
+        articlesService
+            .order(orderCriteria)
+            .then(res => setArticles(res))
+            .catch(err => console.error(err));
+    }
+
     return (
         <div className="articles-wrapper">
             <h1 className="text-center pt-2 custom-font">All Articles</h1>
@@ -47,6 +55,13 @@ function ArticlesList() {
             <SearchArticle
                 clickHandler={search}
                 isSearched={isSearched} />
+
+            {!isSearched
+                ? <div>
+                    <ArticlesOrder clickHandler={order} />
+                    <hr />
+                </div>
+                : null}
 
             {articles.length > 0
                 ? articles.map(a => <SingleArticle

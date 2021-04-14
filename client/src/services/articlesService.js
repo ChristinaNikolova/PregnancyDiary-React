@@ -17,3 +17,9 @@ export const search = (query) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const order = (orderCriteria) => {
+    return fetch(`${api.orderArticles}/${orderCriteria}`)
+    .then(res => res.json())
+    .catch(err => console.error(err));
+}

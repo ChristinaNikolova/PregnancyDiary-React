@@ -1,0 +1,9 @@
+.article-order {
+    color: #EF93AE;
+    cursor: pointer;
+}
+
+.article-order:hover {
+    color: #7BA5F7;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
+    using PregnancyDiary.Common;
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Services.Mapping;
@@ -39,6 +40,41 @@
                .ThenBy(a => a.Title)
                .To<T>()
                .ToListAsync();
+
+            return articles;
+        }
+
+        public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
+        {
+            var criteriaToLower = criteria.ToLower();
+
+            var query = this.articlesRepository
+                .All();
+
+            if (criteriaToLower == GlobalConstants.OrderCriteria.Old)
+            {
+                query = query
+                    .OrderBy(r => r.CreatedOn);
+            }
+            else if (criteriaToLower == GlobalConstants.OrderCriteria.New)
+            {
+                query = query
+                    .OrderByDescending(r => r.CreatedOn);
+            }
+            else if (criteriaToLower == GlobalConstants.OrderCriteria.LikesCount)
+            {
+                query = query
+                   .OrderByDescending(r => r.Likes.Count);
+            }
+            else if (criteriaToLower == GlobalConstants.OrderCriteria.CommentsCount)
+            {
+                query = query
+                   .OrderByDescending(r => r.Comments.Count);
+            }
+
+            var articles = await query
+                .To<T>()
+                .ToListAsync();
 
             return articles;
         }

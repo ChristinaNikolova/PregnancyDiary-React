@@ -10,5 +10,7 @@
         Task<IEnumerable<T>> GetAllCurrentCategoryAsync<T>(string categoryId);
 
         Task<IEnumerable<T>> GetSearchedAsync<T>(string query);
+
+        Task<IEnumerable<T>> GetOrderAsync<T>(string criteria);
     }
 }
