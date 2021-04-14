@@ -53,6 +53,7 @@ function ByCategory({ match }) {
                 likesCount={a.likesCount}
                 commentsCount={a.commentsCount}
                 createdOnAsString={a.createdOnAsString} />)}
+            < div className="fill pt-1 pb-1"></div >
         </div>
     );
 }

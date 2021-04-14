@@ -78,6 +78,7 @@ function ArticlesList() {
                     <h3 className="col-lg-12 text-center nothing-found custom-font">Nothing found!</h3>
                     <img className="nothing-found-pic m-3" src="./pregnant-woman-concept-in-cute-cartoon-style-free-vector.jpg" alt="nothing-found-pic"></img>
                 </div>}
+            < div className="fill pt-1 pb-1"></div >
         </div>
     );
 }
