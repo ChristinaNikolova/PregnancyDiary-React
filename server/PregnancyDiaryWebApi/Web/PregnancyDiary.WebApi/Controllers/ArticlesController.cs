@@ -42,5 +42,27 @@
                 });
             }
         }
+
+        [HttpGet("{categoryId}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> ByCategory(string categoryId)
+        {
+            try
+            {
+                var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleViewModel>(categoryId);
+
+                return this.Ok(articles);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
     }
 }

@@ -29,5 +29,18 @@
 
             return articles;
         }
+
+        public async Task<IEnumerable<T>> GetAllCurrentCategoryAsync<T>(string categoryId)
+        {
+            var articles = await this.articlesRepository
+               .All()
+               .Where(a => a.CategoryId == categoryId)
+               .OrderByDescending(a => a.CreatedOn)
+               .ThenBy(a => a.Title)
+               .To<T>()
+               .ToListAsync();
+
+            return articles;
+        }
     }
 }

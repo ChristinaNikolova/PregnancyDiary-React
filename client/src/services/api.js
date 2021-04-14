@@ -8,6 +8,7 @@ const api = {
     register: `${accountUrl}/register`,
     login: `${accountUrl}/login`,
     allArticles: `${articlesUrl}/all`,
+    allArticlesCurrentCategory: `${articlesUrl}/byCategory`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
 }
 

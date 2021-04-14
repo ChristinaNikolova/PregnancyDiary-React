@@ -6,5 +6,7 @@
     public interface IArticlesService
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
+
+        Task<IEnumerable<T>> GetAllCurrentCategoryAsync<T>(string categoryId);
     }
 }
