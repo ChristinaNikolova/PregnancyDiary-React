@@ -1,0 +1,8 @@
+.artilces-categories-wrapper .custom-color-link a {
+    color: #EF93AE;
+}
+
+.artilces-categories-wrapper .custom-color-link a:hover {
+    color: #7BA5F7;
+    text-decoration: none;
+}

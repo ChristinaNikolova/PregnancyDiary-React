@@ -7,18 +7,18 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using PregnancyDiary.Common;
-    using PregnancyDiary.Services.Data.Articles;
+    using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Web.Models.Articles.ViewModels;
     using PregnancyDiary.Web.Models.Common.ViewModels;
 
     [Route("api/[controller]/[action]")]
-    public class ArticlesController : ApiController
+    public class CategoriesController : ApiController
     {
-        private readonly IArticlesService articlesService;
+        private readonly ICategoriesService categoriesService;
 
-        public ArticlesController(IArticlesService articlesService)
+        public CategoriesController(ICategoriesService categoriesService)
         {
-            this.articlesService = articlesService;
+            this.categoriesService = categoriesService;
         }
 
         [HttpGet]
@@ -26,13 +26,13 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> GetArticlesCountByCategories()
         {
             try
             {
-                var articles = await this.articlesService.GetAllAsync<ArticleViewModel>();
+                var categories = await this.categoriesService.GetArticlesCountByCategoriesAsync<ArticleCategoryViewModel>();
 
-                return this.Ok(articles);
+                return this.Ok(categories);
             }
             catch (Exception)
             {

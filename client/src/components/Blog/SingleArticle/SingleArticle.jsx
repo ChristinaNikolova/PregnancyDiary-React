@@ -11,10 +11,10 @@ function SingleArticle({ id, title, shortContent, picture, categoryName, likesCo
                 {shortContent}
                 <div>
                     <hr />
-                    <span className="m-2"><i class="far fa-folder-open"></i> <b>{categoryName}</b></span>
-                    <span className="m-2"><i class="far fa-heart"></i> <b>{likesCount}</b></span>
-                    <span className="m-2"><i class="far fa-comments"></i> <b>{commentsCount}</b></span>
-                    <span className="m-2"><i class="far fa-calendar-alt"></i> <b>{createdOnAsString}</b></span>
+                    <span className="m-2"><i className="far fa-folder-open"></i> <b>{categoryName}</b></span>
+                    <span className="m-2"><i className="far fa-heart"></i> <b>{likesCount}</b></span>
+                    <span className="m-2"><i className="far fa-comments"></i> <b>{commentsCount}</b></span>
+                    <span className="m-2"><i className="far fa-calendar-alt"></i> <b>{createdOnAsString}</b></span>
                     <div>
                         <Link to={`/articles/current-article/${id}`}>
                             <button className="btn btn-secondary m-2">Read more</button>

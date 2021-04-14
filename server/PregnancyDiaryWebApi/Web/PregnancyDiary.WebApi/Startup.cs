@@ -20,6 +20,7 @@
     using PregnancyDiary.Data.Repositories;
     using PregnancyDiary.Data.Seeding;
     using PregnancyDiary.Services.Data.Articles;
+    using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Services.Mapping;
     using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.WebApi.Helpers;
@@ -91,6 +92,7 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
             services.AddTransient<IArticlesService, ArticlesService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
 
             services.AddControllers();
 
