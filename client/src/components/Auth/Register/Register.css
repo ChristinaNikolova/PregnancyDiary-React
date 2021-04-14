@@ -1,0 +1,25 @@
+.register-wrapper {
+    background-color: #FFE2E0;
+    height: 1050px;
+}
+
+.register-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.register-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.register-form {
+    justify-content: center;
+}
+
+.img-register {
+    max-width: 100%;
+    border-radius: 20%;
+}

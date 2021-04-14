@@ -5,6 +5,8 @@ import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
 
+import './Register.css';
+
 function Register({ history }) {
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
@@ -43,12 +45,12 @@ function Register({ history }) {
 
     return (
         <div className="register-wrapper">
-            <div className="fill pt-2 pb-2"></div>
             <div className="container">
-                <h1 className="p-1 cursive-font-style">Register</h1>
-                <div className="row">
-                    <div className="col-lg-10">
-                        <form onSubmit={onRegisterSubmitHandler}>
+                <h1 className="custom-font text-center">Register</h1>
+                <hr />
+                <div className="row register-form">
+                    <div className="col-lg-8">
+                        <form className="mt-2" onSubmit={onRegisterSubmitHandler}>
                             <Input
                                 type='text'
                                 name='username'
@@ -73,10 +75,19 @@ function Register({ history }) {
                                 label='Repeat password'
                                 error={errorRePassword} />
 
-                            <button className="btn btn-dark" type="submit" > Register</button >
+                            <div className="text-tencer">
+                                <button className="btn" type="submit" > Register</button >
+                            </div>
                         </form >
                     </div >
                 </div >
+                <div className="row">
+                    <div className="col-lg-4"></div>
+                    <div className="col-lg-4">
+                        <img className="img-login mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
+                    </div>
+                    <div className="col-lg-4"></div>
+                </div>
             </div >
         </div >
     );
