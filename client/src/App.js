@@ -11,6 +11,7 @@ import Register from './components/Auth/Register/Register.jsx';
 import Login from './components/Auth/Login/Login.jsx';
 
 import './App.css';
+import ArticlesList from './components/Blog/ArticlesList/ArticlesList.jsx';
 
 function App() {
   const [hasToReload, setHasToReload] = useState(false);
@@ -38,6 +39,8 @@ function App() {
 
         <Route path='/register' component={Register}></Route>
         <Route path='/login' render={() => <Login clickHandler={reload} />}></Route>
+
+        <Route path='/all-articles' component={ArticlesList}></Route>
       </Switch>
       <Footer />
     </div >

@@ -1,0 +1,26 @@
+.articles-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.articles-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.article-pic {
+    max-width: 15%;
+    height: 25%;
+    border: 2px;
+    border-color: white;
+    border-radius: 20%;
+}
+
+.fa-folder-open,
+.fa-heart,
+.fa-comments,
+.fa-calendar-alt {
+    color: #7BA5F7;
+}

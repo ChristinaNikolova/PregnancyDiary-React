@@ -19,6 +19,7 @@
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Data.Repositories;
     using PregnancyDiary.Data.Seeding;
+    using PregnancyDiary.Services.Data.Articles;
     using PregnancyDiary.Services.Mapping;
     using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.WebApi.Helpers;
@@ -89,6 +90,8 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
+            services.AddTransient<IArticlesService, ArticlesService>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -100,7 +103,6 @@
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            ;
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             app.UseCors(x => x

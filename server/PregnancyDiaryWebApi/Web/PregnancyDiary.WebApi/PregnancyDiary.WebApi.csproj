@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\PregnancyDiary.Data\PregnancyDiary.Data.csproj" />
+    <ProjectReference Include="..\..\Services\PregnancyDiary.Services.Data\PregnancyDiary.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\PregnancyDiary.Services.Mapping\PregnancyDiary.Services.Mapping.csproj" />
     <ProjectReference Include="..\PregnancyDiary.Web.Models\PregnancyDiary.Web.Models.csproj" />
   </ItemGroup>
