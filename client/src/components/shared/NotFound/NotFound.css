@@ -1,0 +1,14 @@
+.not-found-wrapper {
+    background-color: #FFE2E0;
+    height: 650px;
+}
+
+.home-link {
+    font-size: 20px;
+    color: #EF93AE;
+}
+
+.home-link:hover {
+    color: #7BA5F7;
+    text-decoration: none;
+}
