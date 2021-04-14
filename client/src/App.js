@@ -11,6 +11,7 @@ import Register from './components/Auth/Register/Register.jsx';
 import Login from './components/Auth/Login/Login.jsx';
 
 import ArticlesList from './components/Blog/ArticlesList/ArticlesList.jsx';
+import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails.jsx';
 import ByCategory from './components/Blog/ByCategory/ByCategory.jsx';
 
 import NotFound from './components/shared/NotFound/NotFound.jsx';
@@ -46,6 +47,7 @@ function App() {
 
         <Route path='/articles' exact component={ArticlesList}></Route>
         <Route path='/articles/by-category/:id' exact component={ByCategory}></Route>
+        <Route path='/articles/current-article/:id' exact component={ArticleDetails}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
       <Footer />
