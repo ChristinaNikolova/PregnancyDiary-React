@@ -24,3 +24,14 @@
 .fa-calendar-alt {
     color: #7BA5F7;
 }
+
+.unlike-article,
+.like-article {
+    font-weight: bolder;
+}
+
+.unlike-article:hover,
+.like-article:hover,
+.fa-heart:hover {
+    cursor: pointer;
+}

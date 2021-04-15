@@ -15,6 +15,16 @@
             this.userArticlesLikesRepository = userArticlesLikesRepository;
         }
 
+        public async Task DislikeAsync(string userId, string articleId)
+        {
+            var userArticleLike = await this.userArticlesLikesRepository
+                .All()
+                .FirstOrDefaultAsync(ual => ual.ArticleId == articleId && ual.UserId == userId);
+
+            this.userArticlesLikesRepository.Delete(userArticleLike);
+            await this.userArticlesLikesRepository.SaveChangesAsync();
+        }
+
         public async Task<bool> IsFavouriteAsync(string userId, string articleId)
         {
             var isFavourite = await this.userArticlesLikesRepository
@@ -22,6 +32,18 @@
                 .AnyAsync(ual => ual.UserId == userId && ual.ArticleId == articleId);
 
             return isFavourite;
+        }
+
+        public async Task LikeAsync(string userId, string articleId)
+        {
+            var userArticleLike = new UserArticleLike()
+            {
+                ArticleId = articleId,
+                UserId = userId,
+            };
+
+            await this.userArticlesLikesRepository.AddAsync(userArticleLike);
+            await this.userArticlesLikesRepository.SaveChangesAsync();
         }
     }
 }

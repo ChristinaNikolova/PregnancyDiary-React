@@ -146,5 +146,59 @@
                 });
             }
         }
+
+        [HttpPost("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Like(string id)
+        {
+            try
+            {
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                await this.userArticleLikesService.LikeAsync(user.Id, id);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Added,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpPost("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Dislike(string id)
+        {
+            try
+            {
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                await this.userArticleLikesService.DislikeAsync(user.Id, id);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Deleted,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
     }
 }

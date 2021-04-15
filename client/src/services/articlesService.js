@@ -2,34 +2,57 @@ import api from './api.js';
 import { requester } from './requester.js';
 
 export const all = () => {
-    return fetch(api.allArticles)
+    const url = api.allArticles;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 };
 
 export const allCurrentCategory = (categoryId) => {
-    return fetch(`${api.allArticlesCurrentCategory}/${categoryId}`)
+    const url = `${api.allArticlesCurrentCategory}/${categoryId}`;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const search = (query) => {
-    return fetch(`${api.searchArticles}/${query}`)
+    const url = `${api.searchArticles}/${query}`;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const order = (orderCriteria) => {
-    return fetch(`${api.orderArticles}/${orderCriteria}`)
+    const url = `${api.orderArticles}/${orderCriteria}`;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
-export const getDetails = (id) => {
+export const details = (id) => {
     const url = `${api.detailsArticle}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
-        .then(res => console.log(res))
+        .catch(err => console.error(err));
+};
+
+export const like = (id) => {
+    const url = `${api.articleLike}/${id}`;
+
+    return requester(url, 'POST')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const dislike = (id) => {
+    const url = `${api.articleDislike}/${id}`;
+
+    return requester(url, 'POST')
+        .then(res => res.json())
         .catch(err => console.error(err));
 }

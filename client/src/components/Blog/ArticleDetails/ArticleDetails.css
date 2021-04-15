@@ -1,0 +1,34 @@
+.article-details-wrapper {
+    background-color: #FFE2E0;
+}
+
+.pic-article-details {
+    max-width: 80%;
+    border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
+}
+
+.article-details-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.article-details-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.fa-folder-open,
+.fa-heart,
+.fa-comments,
+.fa-calendar-alt {
+    color: #7BA5F7;
+}
+
+.unlike {
+    color: #EF93AE;
+}
