@@ -47,7 +47,7 @@ export const like = (id) => {
     return requester(url, 'POST')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const dislike = (id) => {
     const url = `${api.articleDislike}/${id}`;
@@ -55,4 +55,4 @@ export const dislike = (id) => {
     return requester(url, 'POST')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};

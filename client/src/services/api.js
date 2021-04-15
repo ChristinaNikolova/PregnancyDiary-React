@@ -3,6 +3,7 @@ const baseUrl = 'https://localhost:44391/api';
 const accountUrl = `${baseUrl}/account`
 const articlesUrl = `${baseUrl}/articles`;
 const categoriesUrl = `${baseUrl}/categories`;
+const commentsUrl = `${baseUrl}/comments`;
 
 const api = {
     register: `${accountUrl}/register`,
@@ -16,6 +17,7 @@ const api = {
     articleLike: `${articlesUrl}/like`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
     categoryNameById: `${categoriesUrl}/getNameById`,
+    commentsCurrentArticle: `${commentsUrl}/all`,
 }
 
 export default api;

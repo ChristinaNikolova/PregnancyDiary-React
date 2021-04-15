@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as articlesService from '../../../services/articlesService.js';
+import CommentsListCurrentArticle from '../../Comment/CommentsListCurrentArticle/CommentsListCurrentArticle.jsx';
 
 import './ArticleDetails.css';
 
@@ -96,10 +97,10 @@ function ArticleDetails({ match }) {
                 </div>
             </div>
             <hr className="custom-margin-left" />
-            {/* { recipe.id
-            ? <CommentsListCurrentRecipe recipeId={recipe.id} />
+            { articleId
+            ? <CommentsListCurrentArticle articleId={articleId} />
             : null
-        } */}
+        }
             <div className="fill pt-1 pb-1" ></div >
         </div >
     );
