@@ -128,7 +128,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<ArticleDetailsViewModel>> Details(string id)
         {
-            ;
             try
             {
                 var article = await this.articlesService.GetDetailsAsync<ArticleDetailsViewModel>(id);

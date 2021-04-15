@@ -1,4 +1,5 @@
 import api from './api.js';
+import { requester } from './requester.js';
 
 export const all = () => {
     return fetch(api.allArticles)
@@ -26,8 +27,8 @@ export const order = (orderCriteria) => {
 
 export const getDetails = (id) => {
     const url = `${api.detailsArticle}/${id}`;
-    console.log(url);
-    return fetch(url)
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .then(res => console.log(res))
         .catch(err => console.error(err));
