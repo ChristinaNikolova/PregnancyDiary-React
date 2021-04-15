@@ -18,6 +18,19 @@
             this.commentsRepository = commentsRepository;
         }
 
+        public async Task CreateAsync(string content, string articleId, string userId)
+        {
+            var comment = new Comment()
+            {
+                Content = content,
+                ArticleId = articleId,
+                UserId = userId,
+            };
+
+            await this.commentsRepository.AddAsync(comment);
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllCurrentRecipeAsync<T>(string articleId)
         {
             var comments = await this.commentsRepository

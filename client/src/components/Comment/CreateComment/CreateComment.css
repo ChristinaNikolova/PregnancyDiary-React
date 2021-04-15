@@ -1,0 +1,39 @@
+.create-comment-wrapper .post {
+    overflow: auto;
+    background-color: #E8E0CD;
+    margin: 15px;
+    position: relative;
+}
+
+.create-comment-wrapper .post-content {
+    display: block;
+    padding: 10px;
+}
+
+.comment-form {
+    display: block;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.create-comment-wrapper {
+    background-color: #FFE2E0;
+}
+
+.create-comment-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.create-comment-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.comments-title-second-title {
+    margin: 15px 5px;
+    font-weight: bolder;
+}
+

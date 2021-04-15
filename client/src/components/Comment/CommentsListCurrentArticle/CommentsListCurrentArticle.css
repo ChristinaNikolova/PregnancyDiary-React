@@ -1,0 +1,11 @@
+.comments-list-wrapper .post {
+    overflow: auto;
+    background-color: #E8E0CD;
+    margin: 15px;
+    position: relative;
+}
+
+.comments-list-wrapper .post-content {
+    display: block;
+    padding: 10px;
+}

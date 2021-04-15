@@ -18,6 +18,7 @@ const api = {
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
     categoryNameById: `${categoriesUrl}/getNameById`,
     commentsCurrentArticle: `${commentsUrl}/all`,
+    createComment: `${commentsUrl}/create`,
 }
 
 export default api;

@@ -8,3 +8,16 @@ export const getForCurrentArticle = (articleId) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const create = (content, articleId) => {
+    const comment = {
+        content,
+        articleId
+    };
+
+    const url = `${api.createComment}`;
+
+    return requester(url, 'POST', comment)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
