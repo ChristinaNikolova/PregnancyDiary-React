@@ -11,6 +11,7 @@ const api = {
     allArticlesCurrentCategory: `${articlesUrl}/byCategory`,
     searchArticles: `${articlesUrl}/search`,
     orderArticles: `${articlesUrl}/order`,
+    detailsArticle: `${articlesUrl}/details`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
     categoryNameById: `${categoriesUrl}/getNameById`,
 }

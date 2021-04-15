@@ -20,6 +20,15 @@ export const search = (query) => {
 
 export const order = (orderCriteria) => {
     return fetch(`${api.orderArticles}/${orderCriteria}`)
-    .then(res => res.json())
-    .catch(err => console.error(err));
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const getDetails = (id) => {
+    const url = `${api.detailsArticle}/${id}`;
+    console.log(url);
+    return fetch(url)
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.error(err));
 }

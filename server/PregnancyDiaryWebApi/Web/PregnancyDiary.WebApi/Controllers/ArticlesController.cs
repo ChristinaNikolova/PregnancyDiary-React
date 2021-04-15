@@ -6,8 +6,11 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using PregnancyDiary.Common;
+    using PregnancyDiary.Data.Models;
+    using PregnancyDiary.Services.Data.ArticleLikes;
     using PregnancyDiary.Services.Data.Articles;
     using PregnancyDiary.Web.Models.Articles.ViewModels;
     using PregnancyDiary.Web.Models.Common.ViewModels;
@@ -16,10 +19,17 @@
     public class ArticlesController : ApiController
     {
         private readonly IArticlesService articlesService;
+        private readonly IUserArticleLikesService userArticleLikesService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public ArticlesController(IArticlesService articlesService)
+        public ArticlesController(
+            IArticlesService articlesService,
+            IUserArticleLikesService userArticleLikesService,
+            UserManager<ApplicationUser> userManager)
         {
             this.articlesService = articlesService;
+            this.userArticleLikesService = userArticleLikesService;
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -27,11 +37,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> All()
+        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> All()
         {
             try
             {
-                var articles = await this.articlesService.GetAllAsync<ArticleViewModel>();
+                var articles = await this.articlesService.GetAllAsync<ArticleBaseViewModel>();
 
                 return this.Ok(articles);
             }
@@ -49,11 +59,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> ByCategory(string categoryId)
+        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> ByCategory(string categoryId)
         {
             try
             {
-                var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleViewModel>(categoryId);
+                var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleBaseViewModel>(categoryId);
 
                 return this.Ok(articles);
             }
@@ -71,11 +81,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Search(string query)
+        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> Search(string query)
         {
             try
             {
-                var articles = await this.articlesService.GetSearchedAsync<ArticleViewModel>(query);
+                var articles = await this.articlesService.GetSearchedAsync<ArticleBaseViewModel>(query);
 
                 return this.Ok(articles);
             }
@@ -93,14 +103,41 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Order(string criteria)
+        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> Order(string criteria)
         {
             //check with more articles
             try
             {
-                var recipes = await this.articlesService.GetOrderAsync<ArticleViewModel>(criteria);
+                var recipes = await this.articlesService.GetOrderAsync<ArticleBaseViewModel>(criteria);
 
                 return this.Ok(recipes);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<ArticleDetailsViewModel>> Details(string id)
+        {
+            ;
+            try
+            {
+                var article = await this.articlesService.GetDetailsAsync<ArticleDetailsViewModel>(id);
+
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                article.IsFavourite = await this.userArticleLikesService.IsFavouriteAsync(user.Id, id);
+
+                return this.Ok(article);
             }
             catch (Exception)
             {

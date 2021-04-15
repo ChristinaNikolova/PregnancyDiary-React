@@ -44,6 +44,17 @@
             return articles;
         }
 
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var article = await this.articlesRepository
+                .All()
+                .Where(a => a.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return article;
+        }
+
         public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
         {
             var criteriaToLower = criteria.ToLower();

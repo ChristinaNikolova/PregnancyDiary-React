@@ -12,5 +12,7 @@
         Task<IEnumerable<T>> GetSearchedAsync<T>(string query);
 
         Task<IEnumerable<T>> GetOrderAsync<T>(string criteria);
+
+        Task<T> GetDetailsAsync<T>(string id);
     }
 }
