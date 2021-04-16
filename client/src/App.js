@@ -15,6 +15,8 @@ import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails.jsx'
 import ByCategory from './components/Blog/ByCategory/ByCategory.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
+import Dashboard from './components/Administration/Dashboard/Dashboard.jsx'
+
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
@@ -51,6 +53,8 @@ function App() {
         <Route path='/articles/current-article/:id' exact component={ArticleDetails}></Route>
 
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
+
+        <Route path='/admin/dashboard' component={Dashboard}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
       <Footer />

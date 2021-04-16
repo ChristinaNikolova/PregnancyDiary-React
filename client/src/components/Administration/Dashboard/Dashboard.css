@@ -1,0 +1,34 @@
+.admin-home-wrapper {
+    background-color: #FFE2E0;
+    height: 600px;
+}
+
+.admin-home-wrapper .hr-admin-dashboard {
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.custom-font-li li {
+    list-style-type: circle;
+    font-size: 22px;
+    color: #7BA5F7;
+}
+
+.admin-home-wrapper .all-admin-area {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.admin-home-wrapper .create-admin-area {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.admin-home-wrapper .create-admin-area:hover,
+.admin-home-wrapper .all-admin-area:hover {
+    background-color: #E8E0CD;
+    border-color: #E8E0CD;
+    color: black;
+}
