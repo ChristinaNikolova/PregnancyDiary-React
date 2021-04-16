@@ -27,6 +27,8 @@ const api = {
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,
     removeCategory: `${adminCategoryUrl}/delete`,
+    adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
+    adminUpdateCategory: `${adminCategoryUrl}/update`,
 }
 
 export default api;

@@ -1,20 +1,20 @@
-.register-wrapper {
+.update-category-wrapper {
     background-color: #FFE2E0;
-    height: 1050px;
+    height: 650px;
 }
 
-.register-wrapper button {
+.update-category-wrapper button {
     background-color: #EF93AE;
     border-color: #EF93AE;
     color: white;
 }
 
-.register-wrapper button:hover {
+.update-category-wrapper button:hover {
     background-color: #7BA5F7;
     border-color: #7BA5F7;
     color: white;
 }
 
-.register-form {
+.update-category-form {
     justify-content: center;
 }

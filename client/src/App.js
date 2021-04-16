@@ -22,6 +22,7 @@ import AllCategories from './components/Administration/Category/AllCategories/Al
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
+import UpdateCategory from './components/Administration/Category/UpdateCategory/UpdateCategory.jsx';
 
 function App() {
   const [hasToReload, setHasToReload] = useState(false);
@@ -57,8 +58,9 @@ function App() {
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
 
         <Route path='/admin/dashboard' component={Dashboard}></Route>
+        <Route path="/admin/categories" exact component={AllCategories}></Route>
         <Route path="/admin/categories/create" component={CreateCategory}></Route>
-        <Route path="/admin/categories" component={AllCategories}></Route>
+        <Route path="/admin/categories/update/:id" component={UpdateCategory}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
       <Footer />

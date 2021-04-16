@@ -34,3 +34,25 @@ export const removeFromAdmin = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getCategoryForUpdate = (id) => {
+    const url = `${api.adminGetCategoryForUpdate}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
+export const updateFromAdmin = (id, name, picture) => {
+    const category = {
+        id,
+        name,
+        picture
+    };
+
+    const url = `${api.adminUpdateCategory}`;
+
+    return requester(url, 'PUT', category)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

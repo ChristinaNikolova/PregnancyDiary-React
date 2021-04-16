@@ -12,5 +12,9 @@
         Task<IEnumerable<T>> GetAllForAdminAsync<T>();
 
         Task DeleteAsync(string id);
+
+        Task<T> GetDetailsAsync<T>(string id);
+
+        Task UpdateAsync(string id, string name, string picture);
     }
 }

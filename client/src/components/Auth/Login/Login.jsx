@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
+import LoginRegisterPicture from '../../shared/LoginRegisterPicture/LoginRegisterPicture.jsx';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
 
@@ -65,13 +66,7 @@ function Login({ history, clickHandler }) {
                     </form>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-lg-4"></div>
-                <div className="col-lg-4">
-                    <img className="img-login mt-3 mb-3" src="./pregnant-woman-concept-vector-illustration-in-cute-cartoon-style-health-care-pregnancy.jpg" alt="preg-login-page"></img>
-                </div>
-                <div className="col-lg-4"></div>
-            </div>
+            <LoginRegisterPicture />
         </div>
     );
 }

@@ -52,6 +52,17 @@
             return categories;
         }
 
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var category = await this.categoriesRepository
+                  .All()
+                  .Where(c => c.Id == id)
+                  .To<T>()
+                  .FirstOrDefaultAsync();
+
+            return category;
+        }
+
         public async Task<string> GetNameByIdAsync(string categoryId)
         {
             var name = await this.categoriesRepository
@@ -61,6 +72,17 @@
                 .FirstOrDefaultAsync();
 
             return name;
+        }
+
+        public async Task UpdateAsync(string id, string name, string picture)
+        {
+            var category = await this.GetCategoryByIdAsync(id);
+
+            category.Name = name;
+            category.Picture = picture;
+
+            this.categoriesRepository.Update(category);
+            await this.categoriesRepository.SaveChangesAsync();
         }
 
         private async Task<Category> GetCategoryByIdAsync(string id)

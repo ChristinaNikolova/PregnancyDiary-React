@@ -18,11 +18,3 @@
 .login-form {
     justify-content: center;
 }
-
-.img-login {
-    max-width: 100%;
-    border-radius: 20%;
-    border-width: thick;
-    border-style: solid;
-    border-color: white;
-}
