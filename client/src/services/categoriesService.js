@@ -27,7 +27,7 @@ export const getAllForAdministration = () => {
         .catch(err => console.error(err));
 };
 
-export const removeFromAdmin = (id) => {
+export const remove = (id) => {
     const url = `${api.removeCategory}/${id}`;
 
     return requester(url, 'DELETE')
@@ -43,7 +43,7 @@ export const getCategoryForUpdate = (id) => {
         .catch(err => console.error(err));
 };
 
-export const updateFromAdmin = (id, name, picture) => {
+export const update = (id, name, picture) => {
     const category = {
         id,
         name,

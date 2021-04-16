@@ -8,15 +8,37 @@
     using PregnancyDiary.Common;
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
+    using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Services.Mapping;
 
     public class ArticlesService : IArticlesService
     {
         private readonly IRepository<Article> articlesRepository;
+        private readonly ICategoriesService categoriesService;
 
-        public ArticlesService(IRepository<Article> articlesRepository)
+        public ArticlesService(
+            IRepository<Article> articlesRepository,
+            ICategoriesService categoriesService)
         {
             this.articlesRepository = articlesRepository;
+            this.categoriesService = categoriesService;
+        }
+
+        public async Task CreateAsync(string title, string content, string categoryName, string picture)
+        {
+            ;
+            var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
+
+            var article = new Article()
+            {
+                Title = title,
+                Content = content,
+                CategoryId = categoryId,
+                Picture = picture,
+            };
+
+            await this.articlesRepository.AddAsync(article);
+            await this.articlesRepository.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string id)
@@ -110,6 +132,15 @@
                .ToListAsync();
 
             return articles;
+        }
+
+        public async Task<bool> IsTitleAlreadyExistingAsync(string title)
+        {
+            var isTitleExisting = await this.articlesRepository
+                .All()
+                .AnyAsync(a => a.Title.ToLower() == title.ToLower());
+
+            return isTitleExisting;
         }
 
         private async Task<Article> GetByIdAsync(string id)

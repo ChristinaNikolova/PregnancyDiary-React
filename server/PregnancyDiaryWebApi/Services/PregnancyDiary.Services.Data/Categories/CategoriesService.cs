@@ -86,6 +86,17 @@
             return category;
         }
 
+        public async Task<string> GetIdByNameAsync(string categoryName)
+        {
+            var categoryId = await this.categoriesRepository
+                .All()
+                .Where(c => c.Name.ToLower() == categoryName.ToLower())
+                .Select(c => c.Id)
+                .FirstOrDefaultAsync();
+
+            return categoryId;
+        }
+
         public async Task<string> GetNameByIdAsync(string categoryId)
         {
             var name = await this.categoriesRepository

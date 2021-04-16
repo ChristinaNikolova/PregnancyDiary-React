@@ -33,7 +33,7 @@ function UpdateCategory({ match, history }) {
         if (validator.validName(name) === '' &&
             validator.validPicture(picture) === '') {
             categoriesService
-                .updateFromAdmin(categoryId, name, picture)
+                .update(categoryId, name, picture)
                 .then((data) => {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');

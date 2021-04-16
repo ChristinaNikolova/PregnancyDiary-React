@@ -65,10 +65,25 @@ export const allForAdmin = () => {
         .catch(err => console.error(err));
 }
 
-export const removeFromAdmin = (id) => {
+export const remove = (id) => {
     const url = `${api.removeArticle}/${id}`;
 
     return requester(url, 'Delete')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
+export const create = (title, content, categoryName, picture) => {
+    const article = {
+        title,
+        content,
+        categoryName,
+        picture
+    };
+
+    const url = `${api.adminCreateArticle}`;
+
+    return requester(url, 'POST', article)
         .then(res => res.json())
         .catch(err => console.error(err));
 };

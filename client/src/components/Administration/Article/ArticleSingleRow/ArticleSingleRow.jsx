@@ -8,7 +8,7 @@ import './ArticleSingleRow.css';
 function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesCount, commentsCount, clickHandler }) {
     const remove = () => {
         articlesService
-            .removeFromAdmin(id)
+            .remove(id)
             .then((data) => {
                 if (data['status'] === 400) {
                     toastr.error(data['message'], 'Error');

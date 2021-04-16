@@ -9,7 +9,7 @@ import * as categoriesService from '../../../../services/categoriesService.js';
 
 import './CreateArticle.css';
 
-function CreateArticle() {
+function CreateArticle({ history }) {
     const [categories, setCategories] = useState([]);
     const [errorTitle, setErrorTitle] = useState('');
     const [errorContent, setErrorContent] = useState('');
@@ -24,6 +24,30 @@ function CreateArticle() {
 
     const onCreateArticleSubmitHandler = (e) => {
         e.preventDefault();
+
+        const title = e.target.title.value;
+        const content = e.target.content.value;
+        const categoryName = e.target.categoryName.value;
+        const picture = e.target.picture.value;
+
+        setErrorTitle(validator.validTitle(title));
+        setErrorContent(validator.validContent(content));
+        setErrorPicture(validator.validPicture(picture));
+
+        if (validator.validTitle(title) === '' &&
+            validator.validContent(content) === '' &&
+            validator.validPicture(picture) === '') {
+            articlesService
+                .create(title, content, categoryName, picture)
+                .then((data) => {
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
+                        return;
+                    }
+                    toastr.success(data['message'], 'Success');
+                    history.push('/admin/articles');
+                })
+        }
     }
 
     return (

@@ -34,6 +34,8 @@
             public const string RequiredMinMaxLength = "The {0} must be at least {2} and at max {1} characters long.";
 
             public const string AlreadyExistsCategory = "Category with the given name already exists.";
+
+            public const string AlreadyExistsTitle = "Article with the given title already exists.";
         }
     }
 }

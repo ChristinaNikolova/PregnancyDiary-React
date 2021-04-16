@@ -16,5 +16,9 @@
         Task<T> GetDetailsAsync<T>(string id);
 
         Task DeleteAsync(string id);
+
+        Task<bool> IsTitleAlreadyExistingAsync(string title);
+
+        Task CreateAsync(string title, string content, string categoryName, string picture);
     }
 }
