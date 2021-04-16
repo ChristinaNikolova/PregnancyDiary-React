@@ -10,6 +10,7 @@
     using PregnancyDiary.Common;
     using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Web.Models.Articles.ViewModels;
+    using PregnancyDiary.Web.Models.Categories.ViewModels;
     using PregnancyDiary.Web.Models.Common.ViewModels;
 
     [Route("api/[controller]/[action]")]
@@ -56,6 +57,27 @@
                 var name = await this.categoriesService.GetNameByIdAsync(categoryId);
 
                 return this.Ok(name);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<CategoryNameViewModel>>> AllNames()
+        {
+            try
+            {
+                var categories = await this.categoriesService.GetAllNamesAsync<CategoryNameViewModel>();
+
+                return this.Ok(categories);
             }
             catch (Exception)
             {

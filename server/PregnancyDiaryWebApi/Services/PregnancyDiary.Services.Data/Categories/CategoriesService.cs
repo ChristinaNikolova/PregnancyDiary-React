@@ -52,6 +52,17 @@
             return categories;
         }
 
+        public async Task<IEnumerable<T>> GetAllNamesAsync<T>()
+        {
+            var categories = await this.categoriesRepository
+                .All()
+                .OrderBy(c => c.Name)
+                .To<T>()
+                .ToListAsync();
+
+            return categories;
+        }
+
         public async Task<IEnumerable<T>> GetArticlesCountByCategoriesAsync<T>()
         {
             var categories = await this.categoriesRepository

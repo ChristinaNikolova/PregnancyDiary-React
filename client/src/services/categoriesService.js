@@ -68,4 +68,12 @@ export const create = (name, picture) => {
     return requester(url, 'POST', category)
         .then(res => res.json())
         .catch(err => console.error(err));
+};
+
+export const getAllNames = () => {
+    const url = api.allCategoriesNames;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }

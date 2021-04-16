@@ -1,0 +1,20 @@
+.create-article-wrapper {
+    background-color: #FFE2E0;
+    height: 800px;
+}
+
+.create-article-form {
+    justify-content: center;
+}
+
+.create-article-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.create-article-wrapperr button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}

@@ -22,6 +22,7 @@ const api = {
     articleLike: `${articlesUrl}/like`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
     categoryNameById: `${categoriesUrl}/getNameById`,
+    allCategoriesNames: `${categoriesUrl}/allNames`,
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
     userFavArticles: `${usersUrl}/favourite`,

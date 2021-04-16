@@ -20,5 +20,7 @@
         Task<bool> IsCategoryAlreadyExistingAsync(string name);
 
         Task CreateAsync(string name, string picture);
+
+        Task<IEnumerable<T>> GetAllNamesAsync<T>();
     }
 }
