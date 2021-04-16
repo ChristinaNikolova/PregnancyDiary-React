@@ -1,0 +1,20 @@
+.create-category-wrapper {
+    background-color: #FFE2E0;
+    height: 650px;
+}
+
+.create-category-form {
+    justify-content: center;
+}
+
+.create-category-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.create-category-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}

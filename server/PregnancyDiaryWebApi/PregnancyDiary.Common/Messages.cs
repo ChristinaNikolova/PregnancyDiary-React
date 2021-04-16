@@ -32,6 +32,8 @@
             public const string PasswordMinLength = "Password should be at least 5 symbols long.";
 
             public const string RequiredMinMaxLength = "The {0} must be at least {2} and at max {1} characters long.";
+
+            public const string AlreadyExistsCategory = "Category with the given name already exists.";
         }
     }
 }

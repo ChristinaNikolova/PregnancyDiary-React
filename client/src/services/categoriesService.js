@@ -55,4 +55,17 @@ export const updateFromAdmin = (id, name, picture) => {
     return requester(url, 'PUT', category)
         .then(res => res.json())
         .catch(err => console.error(err));
+};
+
+export const create = (name, picture) => {
+    const category = {
+        name,
+        picture
+    };
+
+    const url = `${api.adminCreateCategory}`;
+
+    return requester(url, 'POST', category)
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }

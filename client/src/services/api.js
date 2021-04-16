@@ -29,6 +29,7 @@ const api = {
     removeCategory: `${adminCategoryUrl}/delete`,
     adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
     adminUpdateCategory: `${adminCategoryUrl}/update`,
+    adminCreateCategory: `${adminCategoryUrl}/create`,
 }
 
 export default api;

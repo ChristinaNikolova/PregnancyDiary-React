@@ -18,6 +18,18 @@
             this.categoriesRepository = categoriesRepository;
         }
 
+        public async Task CreateAsync(string name, string picture)
+        {
+            var category = new Category()
+            {
+                Name = name,
+                Picture = picture,
+            };
+
+            await this.categoriesRepository.AddAsync(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var category = await this.GetCategoryByIdAsync(id);
@@ -72,6 +84,15 @@
                 .FirstOrDefaultAsync();
 
             return name;
+        }
+
+        public async Task<bool> IsCategoryAlreadyExistingAsync(string name)
+        {
+            var isAlreadyExisting = await this.categoriesRepository
+                .All()
+                .AnyAsync(c => c.Name.ToLower() == name.ToLower());
+
+            return isAlreadyExisting;
         }
 
         public async Task UpdateAsync(string id, string name, string picture)

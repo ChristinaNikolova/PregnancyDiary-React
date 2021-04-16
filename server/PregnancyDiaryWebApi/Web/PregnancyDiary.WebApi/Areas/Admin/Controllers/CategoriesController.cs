@@ -23,6 +23,46 @@
             this.categoriesService = categoriesService;
         }
 
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Create([FromBody] CategoryInputModel input)
+        {
+            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            {
+                var isCategoryAlreadyExisting = await this.categoriesService.IsCategoryAlreadyExistingAsync(input.Name);
+
+                if (isCategoryAlreadyExisting)
+                {
+                    return this.BadRequest(new BadRequestViewModel
+                    {
+                        Message = Messages.Error.AlreadyExistsCategory,
+                    });
+                }
+
+                try
+                {
+                    await this.categoriesService.CreateAsync(input.Name, input.Picture);
+
+                    return this.Ok(new
+                    {
+                        Message = Messages.Success.Added,
+                    });
+                }
+                catch (Exception)
+                {
+                    return this.BadRequest(new BadRequestViewModel
+                    {
+                        Message = Messages.Error.Unknown,
+                    });
+                }
+            }
+
+            return this.Unauthorized();
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

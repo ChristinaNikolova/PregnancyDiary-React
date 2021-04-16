@@ -16,5 +16,9 @@
         Task<T> GetDetailsAsync<T>(string id);
 
         Task UpdateAsync(string id, string name, string picture);
+
+        Task<bool> IsCategoryAlreadyExistingAsync(string name);
+
+        Task CreateAsync(string name, string picture);
     }
 }
