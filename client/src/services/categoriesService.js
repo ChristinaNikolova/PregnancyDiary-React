@@ -26,3 +26,11 @@ export const getAllForAdministration = () => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const removeFromAdmin = (id) => {
+    const url = `${api.removeCategory}/${id}`;
+
+    return requester(url, 'DELETE')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};

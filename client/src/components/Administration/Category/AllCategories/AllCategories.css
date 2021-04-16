@@ -1,3 +1,13 @@
-.all-category-wrapper{
+.all-category-wrapper {
     background-color: #FFE2E0;
+}
+
+.all-category-wrapper hr {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.all-category-wrapper .table-bordered th,
+.all-category-wrapper .table-bordered td {
+    border: 1px solid pink;
 }

@@ -27,25 +27,29 @@ function AllCategories() {
         <div className="all-category-wrapper">
             <h1 className="text-center custom-font p-1">Categories</h1>
             <hr />
-            <table className="table table-striped table-bordered table-hover custom-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Articles Count</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {categories.map(c => <CategorySingleRow
-                        key={c.id}
-                        id={c.id}
-                        name={c.name}
-                        articlesCount={c.articlesCount}
-                        clickHandler={reload} />)}
-                </tbody>
-            </table>
-            {/* <div className="fill pb-1 pt-1"></div> */}
+            <div className="container">
+                <table className="table table-striped table-bordered table-hover table-background m-2">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Articles Count</th>
+                            <th>Picture</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {categories.map(c => <CategorySingleRow
+                            key={c.id}
+                            id={c.id}
+                            name={c.name}
+                            articlesCount={c.articlesCount}
+                            picture={c.picture}
+                            clickHandler={reload} />)}
+                    </tbody>
+                </table>
+            </div>
+            <div className="fill pb-1 pt-1"></div>
         </div >
     );
 }

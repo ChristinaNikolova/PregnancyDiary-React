@@ -20,7 +20,7 @@ function FavouriteArticlesRow({ articleId, articleTitle, articlePicture, article
     }
 
     return (
-        <tr>
+        <tr className="text-center">
             <td className="color-link">
                 <Link to={`/articles/current-article/${articleId}`}><h6>{articleTitle}</h6></Link>
             </td>

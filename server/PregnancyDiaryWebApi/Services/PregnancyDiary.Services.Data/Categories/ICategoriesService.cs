@@ -8,5 +8,9 @@
         Task<IEnumerable<T>> GetArticlesCountByCategoriesAsync<T>();
 
         Task<string> GetNameByIdAsync(string categoryId);
+
+        Task<IEnumerable<T>> GetAllForAdminAsync<T>();
+
+        Task DeleteAsync(string id);
     }
 }

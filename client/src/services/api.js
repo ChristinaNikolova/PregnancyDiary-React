@@ -26,6 +26,7 @@ const api = {
     createComment: `${commentsUrl}/create`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,
+    removeCategory: `${adminCategoryUrl}/delete`,
 }
 
 export default api;

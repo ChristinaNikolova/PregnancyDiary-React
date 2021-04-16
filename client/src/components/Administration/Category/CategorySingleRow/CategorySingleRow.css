@@ -1,0 +1,16 @@
+.all-category-wrapper .img-category-admin {
+    max-width: 20%;
+    border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
+}
+
+.color-link a {
+    color: #EF93AE;
+}
+
+.color-link a:hover {
+    color: #7BA5F7;
+    text-decoration: none;
+}

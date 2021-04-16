@@ -18,6 +18,28 @@
             this.categoriesRepository = categoriesRepository;
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            var category = await this.GetCategoryByIdAsync(id);
+
+            category.IsDeleted = true;
+
+            this.categoriesRepository.Update(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllForAdminAsync<T>()
+        {
+            var categories = await this.categoriesRepository
+                 .All()
+                 .OrderBy(c => c.Name)
+                 .ThenByDescending(c => c.Articles.Count())
+                 .To<T>()
+                 .ToListAsync();
+
+            return categories;
+        }
+
         public async Task<IEnumerable<T>> GetArticlesCountByCategoriesAsync<T>()
         {
             var categories = await this.categoriesRepository
@@ -39,6 +61,13 @@
                 .FirstOrDefaultAsync();
 
             return name;
+        }
+
+        private async Task<Category> GetCategoryByIdAsync(string id)
+        {
+            return await this.categoriesRepository
+                .All()
+                .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }
