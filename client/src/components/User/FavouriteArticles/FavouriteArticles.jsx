@@ -7,19 +7,27 @@ import './FavouriteArticles.css';
 
 function FavouriteArticles() {
     const [favArticles, setFavArticles] = useState([]);
+    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         usersService
             .getFavouriteArticles()
             .then(res => setFavArticles(res))
+            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, []);
+    }, [hasToReload]);
+
+    const reload = () => {
+        setTimeout(() => {
+            setHasToReload(true)
+        }, 100);
+    }
 
     return (
         <div className="favourite-articles-wrapper">
-            <h1 className="text-center p-1">My Favourite Articles</h1>
+            <h1 className="text-center custom-font p-1">My Favourite Articles</h1>
             <hr />
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover table-background">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -36,10 +44,11 @@ function FavouriteArticles() {
                             articleTitle={a.articleTitle}
                             articlePicture={a.articlePicture}
                             articleCategoryId={a.articleCategoryId}
-                            articleCategoryName={a.articleCategoryName} />)}
+                            articleCategoryName={a.articleCategoryName}
+                            clickHandler={reload} />)}
                 </tbody>
             </table>
-            {/* <div className="fill pt-1 pb-1"></div> */}
+            <div className="fill pt-1 pb-1"></div>
         </div >
     );
 }

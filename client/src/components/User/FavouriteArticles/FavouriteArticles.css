@@ -1,0 +1,17 @@
+.favourite-articles-wrapper {
+    background-color: #FFE2E0;
+}
+
+.table-background {
+    background-color: #E8E0CD;
+}
+
+.favourite-articles-wrapper .table-bordered th,
+.favourite-articles-wrapper .table-bordered td {
+    border: 1px solid pink;
+}
+
+.favourite-articles-wrapper hr{
+    margin-left: 50px;
+    margin-right: 50px;
+}
