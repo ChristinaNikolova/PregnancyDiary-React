@@ -4,6 +4,9 @@
 
 .main-pic-artilces {
     border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
 }
 
 .nothing-found {

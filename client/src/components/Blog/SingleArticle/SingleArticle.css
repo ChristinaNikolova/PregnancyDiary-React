@@ -16,6 +16,9 @@
     border: 2px;
     border-color: white;
     border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
 }
 
 .fa-folder-open,

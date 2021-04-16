@@ -1,6 +1,9 @@
 .pic-fav-articles {
     max-width: 20%;
     border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
 }
 
 .color-link a {
