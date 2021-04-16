@@ -98,9 +98,9 @@ function ArticleDetails({ match }) {
             </div>
             <hr className="custom-margin-left" />
             { articleId
-            ? <CommentsListCurrentArticle articleId={articleId} />
-            : null
-        }
+                ? <CommentsListCurrentArticle articleId={articleId} />
+                : null
+            }
             <div className="fill pt-1 pb-1" ></div >
         </div >
     );

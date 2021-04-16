@@ -4,6 +4,7 @@ const accountUrl = `${baseUrl}/account`
 const articlesUrl = `${baseUrl}/articles`;
 const categoriesUrl = `${baseUrl}/categories`;
 const commentsUrl = `${baseUrl}/comments`;
+const usersUrl = `${baseUrl}/users`;
 
 const api = {
     register: `${accountUrl}/register`,
@@ -19,6 +20,7 @@ const api = {
     categoryNameById: `${categoriesUrl}/getNameById`,
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
+    userFavArticles: `${usersUrl}/favourite`,
 }
 
 export default api;

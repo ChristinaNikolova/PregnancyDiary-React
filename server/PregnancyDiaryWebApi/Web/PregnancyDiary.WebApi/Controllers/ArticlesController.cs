@@ -105,7 +105,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> Order(string criteria)
         {
-            //check with more articles
             try
             {
                 var recipes = await this.articlesService.GetOrderAsync<ArticleBaseViewModel>(criteria);

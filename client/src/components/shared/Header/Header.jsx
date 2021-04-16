@@ -24,6 +24,7 @@ function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
                         {!isLoggedIn && <li className="nav-item"><Link to="/login" className="nav-link">Login</Link></li>}
                         {!isLoggedIn && <li className="nav-item"><Link to="/register" className="nav-link">Register</Link></li>}
                         <li className="nav-item"><Link to="/articles" className="nav-link">Blog</Link></li>
+                        {isLoggedIn && <li className="nav-item"><Link to="/user/favourite-articles" className="nav-link">My Favourite Articles</Link></li>}
                         {isLoggedIn && <li className="nav-item"><button className="btn btn-danger ml-1" type="button" onClick={logout}>Logout</button></li>}
                     </ul>
                 </div>
