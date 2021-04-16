@@ -18,3 +18,11 @@ export const getCategoryNameById = (categoryId) => {
         })
         .catch(err => console.error(err));
 };
+
+export const getAllForAdministration = () => {
+    const url = `${api.adminAllCategories}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};

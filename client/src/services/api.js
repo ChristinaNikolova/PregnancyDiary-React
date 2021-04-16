@@ -6,6 +6,10 @@ const categoriesUrl = `${baseUrl}/categories`;
 const commentsUrl = `${baseUrl}/comments`;
 const usersUrl = `${baseUrl}/users`;
 
+const adminBaseUrl = `${baseUrl}/admin`;
+const adminArticleUrl = `${adminBaseUrl}/articles`;
+const adminCategoryUrl = `${adminBaseUrl}/categories`;
+
 const api = {
     register: `${accountUrl}/register`,
     login: `${accountUrl}/login`,
@@ -21,6 +25,7 @@ const api = {
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
     userFavArticles: `${usersUrl}/favourite`,
+    adminAllCategories: `${adminCategoryUrl}/all`,
 }
 
 export default api;

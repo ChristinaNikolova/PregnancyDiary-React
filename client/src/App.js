@@ -16,6 +16,8 @@ import ByCategory from './components/Blog/ByCategory/ByCategory.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
 import Dashboard from './components/Administration/Dashboard/Dashboard.jsx'
+import CreateCategory from './components/Administration/Category/CreateCategory/CreateCategory.jsx';
+import AllCategories from './components/Administration/Category/AllCategories/AllCategories.jsx';
 
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
@@ -55,6 +57,8 @@ function App() {
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
 
         <Route path='/admin/dashboard' component={Dashboard}></Route>
+        <Route path="/admin/categories/create" component={CreateCategory}></Route>
+        <Route path="/admin/categories" component={AllCategories}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
       <Footer />
