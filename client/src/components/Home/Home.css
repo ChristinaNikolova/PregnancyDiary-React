@@ -1,0 +1,10 @@
+.home-wrapper {
+    background-color: #FFE2E0;
+}
+
+.image-home {
+    border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
+}
