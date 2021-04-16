@@ -20,5 +20,9 @@
         Task<bool> IsTitleAlreadyExistingAsync(string title);
 
         Task CreateAsync(string title, string content, string categoryName, string picture);
+
+        Task UpdateAsync(string id, string title, string content, string categoryName, string picture);
+
+        Task<string> GetIdByTitleAsync(string title);
     }
 }

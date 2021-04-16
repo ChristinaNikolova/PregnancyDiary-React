@@ -158,6 +158,21 @@
             {
                 try
                 {
+                    var isCategoryAlreadyExisting = await this.categoriesService.IsCategoryAlreadyExistingAsync(input.Name);
+
+                    if (isCategoryAlreadyExisting)
+                    {
+                        var existingCategoryId = await this.categoriesService.GetIdByNameAsync(input.Name);
+
+                        if (existingCategoryId != input.Id)
+                        {
+                            return this.BadRequest(new BadRequestViewModel
+                            {
+                                Message = Messages.Error.AlreadyExistsCategory,
+                            });
+                        }
+                    }
+
                     await this.categoriesService.UpdateAsync(input.Id, input.Name, input.Picture);
 
                     return this.Ok(new

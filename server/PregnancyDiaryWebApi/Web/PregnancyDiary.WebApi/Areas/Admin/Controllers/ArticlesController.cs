@@ -119,5 +119,77 @@
 
             return this.Unauthorized();
         }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<ArticleUpdateInputModel>> ArticleForUpdate(string id)
+        {
+            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            {
+                try
+                {
+                    var article = await this.articlesService.GetDetailsAsync<ArticleUpdateInputModel>(id);
+
+                    return this.Ok(article);
+                }
+                catch (Exception)
+                {
+                    return this.BadRequest(new BadRequestViewModel
+                    {
+                        Message = Messages.Error.Unknown,
+                    });
+                }
+            }
+
+            return this.Unauthorized();
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update(ArticleUpdateInputModel input)
+        {
+            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            {
+                try
+                {
+                    var isTitleAlreadyExisting = await this.articlesService.IsTitleAlreadyExistingAsync(input.Title);
+
+                    if (isTitleAlreadyExisting)
+                    {
+                        var existingArticleId = await this.articlesService.GetIdByTitleAsync(input.Title);
+
+                        if (existingArticleId != input.Id)
+                        {
+                            return this.BadRequest(new BadRequestViewModel
+                            {
+                                Message = Messages.Error.AlreadyExistsTitle,
+                            });
+                        }
+                    }
+
+                    await this.articlesService.UpdateAsync(input.Id, input.Title, input.Content, input.CategoryName, input.Picture);
+
+                    return this.Ok(new
+                    {
+                        Message = Messages.Success.Updated,
+                    });
+                }
+                catch (Exception)
+                {
+                    return this.BadRequest(new BadRequestViewModel
+                    {
+                        Message = Messages.Error.Unknown,
+                    });
+                }
+            }
+
+            return this.Unauthorized();
+        }
     }
 }

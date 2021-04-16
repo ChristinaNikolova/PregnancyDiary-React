@@ -26,7 +26,6 @@
 
         public async Task CreateAsync(string title, string content, string categoryName, string picture)
         {
-            ;
             var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
 
             var article = new Article()
@@ -87,6 +86,17 @@
             return article;
         }
 
+        public async Task<string> GetIdByTitleAsync(string title)
+        {
+            var articleId = await this.articlesRepository
+                .All()
+                .Where(a => a.Title.ToLower() == title.ToLower())
+                .Select(a => a.Id)
+                .FirstOrDefaultAsync();
+
+            return articleId;
+        }
+
         public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
         {
             var criteriaToLower = criteria.ToLower();
@@ -141,6 +151,20 @@
                 .AnyAsync(a => a.Title.ToLower() == title.ToLower());
 
             return isTitleExisting;
+        }
+
+        public async Task UpdateAsync(string id, string title, string content, string categoryName, string picture)
+        {
+            var article = await this.GetByIdAsync(id);
+            var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
+
+            article.Title = title;
+            article.Content = content;
+            article.Picture = picture;
+            article.CategoryId = categoryId;
+
+            this.articlesRepository.Update(article);
+            await this.articlesRepository.SaveChangesAsync();
         }
 
         private async Task<Article> GetByIdAsync(string id)

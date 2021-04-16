@@ -87,3 +87,27 @@ export const create = (title, content, categoryName, picture) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getArticleForUpdate = (id) => {
+    const url = `${api.adminGetArticleForUpdate}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const update = (id, title, content, categoryName, picture) => {
+    const article = {
+        id,
+        title,
+        content,
+        categoryName,
+        picture
+    };
+
+    const url = `${api.adminUpdateArticle}`;
+
+    return requester(url, 'PUT', article)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
