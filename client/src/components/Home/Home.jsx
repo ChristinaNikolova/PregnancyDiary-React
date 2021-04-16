@@ -20,10 +20,10 @@ function Home({ isLoggedIn }) {
             {!isLoggedIn
                 ? <div>
                     <p className="text-center">
-                        <Link to="/register" className="bold-home-link"> Register </Link> or
-                            <Link to="/login" className="bold-home-link"> Login </Link>now to create your own pregnancy diary!
+                        <Link to="/register" className="color-link"> Register </Link> or
+                        <Link to="/login" className="color-link"> Login </Link>now to create your own pregnancy diary!
                         </p>
-                    <hr className="my-4" />
+                    <hr />
                 </div>
                 : null}
             <p className="custom-font text-center">
@@ -33,11 +33,14 @@ function Home({ isLoggedIn }) {
                 <img className="image-home m-3" src="./719a40e8ec1aef158830db898a9e2e90.jpg" alt="home-pic"></img>
             </div>
             {isLoggedIn
-                    ? <p className="lead-home">
-                        <Link to="/recipes" className="btn btn-primary btn-lg mt-4 mr-2" role="button">See our recipes</Link>
-                        <Link to='/recipes/create' className="btn btn-primary btn-lg mt-4" role="button">Create new recipe</Link>
+                ? <div>
+                    <p className="lead-home text-center">
+                        <Link to='/recipes'><button className="btn btn-lg mt-4 mr-2" role="button">See our diaries</button></Link>
+                        <Link to='/recipes/create'><button className="btn btn-lg mt-4" role="button">Create new diary</button></Link>
                     </p>
-                    : null}
+                    < div className="fill pt-1 pb-1"></div>
+                </div>
+                : null}
 
         </div>
     );

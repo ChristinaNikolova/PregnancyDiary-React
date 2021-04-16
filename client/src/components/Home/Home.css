@@ -8,3 +8,24 @@
     border-style: solid;
     border-color: white;
 }
+
+.lead-home button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.lead-home button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.color-link {
+    color: #EF93AE;
+}
+
+.color-link:hover {
+    color: #7BA5F7;
+    text-decoration: none;
+}
