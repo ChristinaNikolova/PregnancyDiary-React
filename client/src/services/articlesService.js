@@ -56,3 +56,19 @@ export const dislike = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const allForAdmin = () => {
+    const url = api.adminAllArticles;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const removeFromAdmin = (id) => {
+    const url = `${api.removeArticle}/${id}`;
+
+    return requester(url, 'Delete')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};

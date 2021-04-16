@@ -1,0 +1,13 @@
+.all-articles-wrapper {
+    background-color: #FFE2E0;
+}
+
+.all-articles-wrapper hr {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.all-articles-wrapper .table-bordered th,
+.all-articles-wrapper .table-bordered td {
+    border: 1px solid pink;
+}

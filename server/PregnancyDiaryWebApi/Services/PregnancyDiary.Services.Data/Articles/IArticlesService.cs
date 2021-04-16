@@ -14,5 +14,7 @@
         Task<IEnumerable<T>> GetOrderAsync<T>(string criteria);
 
         Task<T> GetDetailsAsync<T>(string id);
+
+        Task DeleteAsync(string id);
     }
 }

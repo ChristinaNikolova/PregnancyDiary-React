@@ -3,7 +3,7 @@
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Services.Mapping;
 
-    public class ArticleDetailsViewModel : ArticleBaseViewModel, IMapFrom<Article>
+    public class ArticleDetailsViewModel : ArticleViewModel, IMapFrom<Article>
     {
         public string Author { get; set; }
 

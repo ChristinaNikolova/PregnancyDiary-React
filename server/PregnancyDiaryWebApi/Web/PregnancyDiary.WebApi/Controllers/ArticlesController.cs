@@ -37,11 +37,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> All()
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> All()
         {
             try
             {
-                var articles = await this.articlesService.GetAllAsync<ArticleBaseViewModel>();
+                var articles = await this.articlesService.GetAllAsync<ArticleViewModel>();
 
                 return this.Ok(articles);
             }
@@ -59,11 +59,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> ByCategory(string categoryId)
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> ByCategory(string categoryId)
         {
             try
             {
-                var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleBaseViewModel>(categoryId);
+                var articles = await this.articlesService.GetAllCurrentCategoryAsync<ArticleViewModel>(categoryId);
 
                 return this.Ok(articles);
             }
@@ -81,11 +81,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> Search(string query)
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Search(string query)
         {
             try
             {
-                var articles = await this.articlesService.GetSearchedAsync<ArticleBaseViewModel>(query);
+                var articles = await this.articlesService.GetSearchedAsync<ArticleViewModel>(query);
 
                 return this.Ok(articles);
             }
@@ -103,11 +103,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<ArticleBaseViewModel>>> Order(string criteria)
+        public async Task<ActionResult<IEnumerable<ArticleViewModel>>> Order(string criteria)
         {
             try
             {
-                var recipes = await this.articlesService.GetOrderAsync<ArticleBaseViewModel>(criteria);
+                var recipes = await this.articlesService.GetOrderAsync<ArticleViewModel>(criteria);
 
                 return this.Ok(recipes);
             }

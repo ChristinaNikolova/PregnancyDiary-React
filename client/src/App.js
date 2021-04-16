@@ -18,11 +18,14 @@ import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArti
 import Dashboard from './components/Administration/Dashboard/Dashboard.jsx'
 import CreateCategory from './components/Administration/Category/CreateCategory/CreateCategory.jsx';
 import AllCategories from './components/Administration/Category/AllCategories/AllCategories.jsx';
+import UpdateCategory from './components/Administration/Category/UpdateCategory/UpdateCategory.jsx';
+import AllArticles from './components/Administration/Article/AllArticles/AllArticles.jsx';
+import CreateArticle from './components/Administration/Article/CreateArticle/CreateArticle.jsx';
+import UpdateArticle from './components/Administration/Article/UpdateArticle/UpdateArticle.jsx';
 
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
-import UpdateCategory from './components/Administration/Category/UpdateCategory/UpdateCategory.jsx';
 
 function App() {
   const [hasToReload, setHasToReload] = useState(false);
@@ -58,9 +61,15 @@ function App() {
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
 
         <Route path='/admin/dashboard' component={Dashboard}></Route>
+
         <Route path="/admin/categories" exact component={AllCategories}></Route>
         <Route path="/admin/categories/create" component={CreateCategory}></Route>
         <Route path="/admin/categories/update/:id" component={UpdateCategory}></Route>
+
+        <Route path="/admin/articles" exact component={AllArticles}></Route>
+        <Route path="/admin/articles/create" component={CreateArticle}></Route>
+        <Route path="/admin/articles/update/:id" component={UpdateArticle}></Route>
+
         <Route path="*" component={NotFound}></Route>
       </Switch>
       <Footer />

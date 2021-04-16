@@ -30,6 +30,11 @@ const api = {
     adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
     adminUpdateCategory: `${adminCategoryUrl}/update`,
     adminCreateCategory: `${adminCategoryUrl}/create`,
+    adminAllArticles: `${adminArticleUrl}/all`,
+    removeArticle: `${adminArticleUrl}/delete`,
+    adminGetArticleForUpdate: `${adminArticleUrl}/articleForUpdate`,
+    adminUpdateArticle: `${adminArticleUrl}/update`,
+    adminCreateArticle: `${adminArticleUrl}/create`,
 }
 
 export default api;

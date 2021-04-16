@@ -19,6 +19,16 @@
             this.articlesRepository = articlesRepository;
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            var article = await this.GetByIdAsync(id);
+
+            article.IsDeleted = true;
+
+            this.articlesRepository.Update(article);
+            await this.articlesRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var articles = await this.articlesRepository
@@ -100,6 +110,13 @@
                .ToListAsync();
 
             return articles;
+        }
+
+        private async Task<Article> GetByIdAsync(string id)
+        {
+            return await this.articlesRepository
+                .All()
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
     }
 }
