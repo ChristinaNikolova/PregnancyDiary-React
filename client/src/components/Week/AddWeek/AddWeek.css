@@ -1,20 +1,20 @@
-.create-diary-wrapper {
+.add-week-wrapper {
     background-color: #FFE2E0;
-    height: 800px;
+    height: 1000px;
 }
 
-.create-diary-wrapper button {
+.add-week-wrapper button {
     background-color: #EF93AE;
     border-color: #EF93AE;
     color: white;
 }
 
-.create-diary-wrapper button:hover {
+.add-week-wrapper button:hover {
     background-color: #7BA5F7;
     border-color: #7BA5F7;
     color: white;
 }
 
-.create-diary-form {
+.add-week-form {
     justify-content: center;
 }

@@ -58,5 +58,12 @@
 
             public const int PasswordMinLength = 5;
         }
+
+        public static class Week
+        {
+            public const string MinNumber = "1";
+
+            public const string MaxNumber = "42";
+        }
     }
 }

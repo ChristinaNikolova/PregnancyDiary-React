@@ -18,6 +18,8 @@ import CreateDiary from './components/Diary/CreateDiary/CreateDiary.jsx';
 import SeeDiary from './components/Diary/SeeDiary/SeeDiary.jsx';
 import UpdateDiary from './components/Diary/UpdateDiary/UpdateDiary.jsx';
 
+import AddWeek from './components/Week/AddWeek/AddWeek.jsx';
+
 import UserDiariesList from './components/User/UserDiariesList/UserDiariesList.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
@@ -67,6 +69,8 @@ function App() {
         <Route path='/diary/create' component={CreateDiary}></Route>
         <Route path='/diary/see/:id' component={SeeDiary}></Route>
         <Route path='/diary/update/:id' component={UpdateDiary}></Route>
+
+        <Route path='/diary/week/add/:id' component={AddWeek}></Route>
 
         <Route path='/user/diaries' exact component={UserDiariesList}></Route>
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
