@@ -67,12 +67,12 @@ function AddWeek({ match, history }) {
                         <Input
                             type='number'
                             name='myWeight'
-                            label='My Weight'
+                            label='My Weight in kg'
                             error={errorMyWeight} />
 
                         <Input
                             type='number'
-                            name='myBellySize'
+                            name='myBellySize in cm'
                             label='My Belly Size'
                             error={errorMyBellySize} />
 
@@ -86,13 +86,13 @@ function AddWeek({ match, history }) {
                         <Input
                             type='number'
                             name='babyWeight'
-                            label='Baby Weight'
+                            label='Baby Weight in gr'
                             error={errorBabyWeight} />
 
                         <Input
                             type='number'
                             name='babyHeight'
-                            label='Baby Height'
+                            label='Baby Height in mm'
                             error={errorBabyHeight} />
 
                         <div className="text-center">

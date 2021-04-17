@@ -1,0 +1,21 @@
+.see-week-wrapper {
+    background-color: #FFE2E0;
+}
+
+.see-week-wrapper .btn {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.see-week-wrapper .btn:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.bold-font {
+    font-weight: bolder;
+    color: #EF93AE;
+    font-size: 20px;
+}

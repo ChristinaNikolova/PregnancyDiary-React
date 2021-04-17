@@ -20,6 +20,7 @@ import UpdateDiary from './components/Diary/UpdateDiary/UpdateDiary.jsx';
 
 import AddWeek from './components/Week/AddWeek/AddWeek.jsx';
 import UpdateWeek from './components/Week/UpdateWeek/UpdateWeek.jsx';
+import SeeWeek from './components/Week/SeeWeek/SeeWeek.jsx';
 
 import UserDiariesList from './components/User/UserDiariesList/UserDiariesList.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
@@ -73,6 +74,7 @@ function App() {
 
         <Route path='/diary/week/add/:id' exact component={AddWeek}></Route>
         <Route path='/diary/week/update/:id' exact component={UpdateWeek}></Route>
+        <Route path='/diary/week/see/:id' exact component={SeeWeek}></Route>
 
         <Route path='/user/diaries' exact component={UserDiariesList}></Route>
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
