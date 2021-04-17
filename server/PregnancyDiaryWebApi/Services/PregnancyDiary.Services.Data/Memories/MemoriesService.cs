@@ -33,7 +33,19 @@
             await this.momentsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> AllCurrentWeekAsync<T>(string weekId)
+        public async Task DeleteAsync(string id)
+        {
+            var memory = await this.momentsRepository
+                .All()
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            memory.IsDeleted = true;
+
+            this.momentsRepository.Update(memory);
+            await this.momentsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllCurrentWeekAsync<T>(string weekId)
         {
             var memories = await this.momentsRepository
                 .All()

@@ -7,16 +7,20 @@ import './MemoriesList.css';
 
 function MemoriesList({ weekId }) {
     const [memories, setMemories] = useState([]);
+    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         memoriesService
             .allCurrentWeek(weekId)
             .then(res => setMemories(res))
+            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, []);
+    }, [hasToReload]);
 
     const reload = () => {
-
+        setTimeout(() => {
+            setHasToReload(true)
+        }, 100);
     }
 
     return (

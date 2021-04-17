@@ -38,6 +38,7 @@ const api = {
     getWeekDetails: `${weeksUrl}/details`,
     createMemory: `${memoryUrl}/create`,
     getAllMemoriesCurrentWeek: `${memoryUrl}/all`,
+    removeMemory: `${memoryUrl}/delete`,
     getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,

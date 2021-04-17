@@ -14,7 +14,7 @@ export const create = (date, title, content, weekId) => {
     return requester(url, 'POST', memory)
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const allCurrentWeek = (weekId) => {
     const url = `${api.getAllMemoriesCurrentWeek}/${weekId}`;
@@ -22,4 +22,12 @@ export const allCurrentWeek = (weekId) => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
+
+export const remove = (id) => {
+    const url = `${api.removeMemory}/${id}`;
+
+    return requester(url, 'DELETE')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};

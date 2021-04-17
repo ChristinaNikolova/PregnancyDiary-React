@@ -9,5 +9,7 @@
         Task CreateAsync(DateTime date, string title, string content, string weekId);
 
         Task<IEnumerable<T>> GetAllCurrentWeekAsync<T>(string weekId);
+
+        Task DeleteAsync(string id);
     }
 }

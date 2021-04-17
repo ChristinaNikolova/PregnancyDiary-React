@@ -1,0 +1,4 @@
+.memory-list-wrapper .table-bordered th,
+.memory-list-wrapper .table-bordered td {
+    border: 1px solid pink;
+}
