@@ -4,6 +4,7 @@ const accountUrl = `${baseUrl}/account`
 const articlesUrl = `${baseUrl}/articles`;
 const categoriesUrl = `${baseUrl}/categories`;
 const commentsUrl = `${baseUrl}/comments`;
+const diariesUrl = `${baseUrl}/diaries`;
 const usersUrl = `${baseUrl}/users`;
 
 const adminBaseUrl = `${baseUrl}/admin`;
@@ -25,6 +26,7 @@ const api = {
     allCategoriesNames: `${categoriesUrl}/allNames`,
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
+    createDiary: `${diariesUrl}/create`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,
     removeCategory: `${adminCategoryUrl}/delete`,

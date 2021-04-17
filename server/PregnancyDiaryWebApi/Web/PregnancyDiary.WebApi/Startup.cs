@@ -23,6 +23,7 @@
     using PregnancyDiary.Services.Data.Articles;
     using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Services.Data.Comments;
+    using PregnancyDiary.Services.Data.Diaries;
     using PregnancyDiary.Services.Data.Users;
     using PregnancyDiary.Services.Mapping;
     using PregnancyDiary.Web.Models.Common.ViewModels;
@@ -99,6 +100,7 @@
             services.AddTransient<IUserArticleLikesService, UserArticleLikesService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IDiariesService, DiariesService>();
 
             services.AddControllers();
 
