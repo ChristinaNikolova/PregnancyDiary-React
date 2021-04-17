@@ -1,10 +1,14 @@
 ﻿namespace PregnancyDiary.Services.Data.Memories
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
+    using PregnancyDiary.Services.Mapping;
 
     public class MemoriesService : IMemoriesService
     {
@@ -27,6 +31,19 @@
 
             await this.momentsRepository.AddAsync(moment);
             await this.momentsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> AllCurrentWeekAsync<T>(string weekId)
+        {
+            var memories = await this.momentsRepository
+                .All()
+                .Where(m => m.WeekId == weekId)
+                .OrderBy(m => m.Date)
+                .ThenBy(m => m.Title)
+                .To<T>()
+                .ToListAsync();
+
+            return memories;
         }
     }
 }

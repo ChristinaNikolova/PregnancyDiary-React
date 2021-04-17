@@ -46,7 +46,6 @@ function WeeksList({ diaryId }) {
                                 id={w.id}
                                 number={w.number}
                                 mood={w.moodAsString}
-                                toDos={w.toDosCount}
                                 moments={w.momentsCount}
                                 clickHandler={reload} />)}
                     </tbody>

@@ -15,3 +15,11 @@ export const create = (date, title, content, weekId) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const allCurrentWeek = (weekId) => {
+    const url = `${api.getAllMemoriesCurrentWeek}/${weekId}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

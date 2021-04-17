@@ -1,6 +1,7 @@
 ﻿namespace PregnancyDiary.WebApi.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@
     using PregnancyDiary.Services.Data.Memories;
     using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.Web.Models.Memories.InputModels;
+    using PregnancyDiary.Web.Models.Memories.ViewModels;
 
     [Route("api/[controller]/[action]")]
     public class MemoriesController : ApiController
@@ -35,6 +37,28 @@
                 {
                     Message = Messages.Success.Added,
                 });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{weekId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<IEnumerable<MemoryViewModel>>> All(string weekId)
+        {
+            try
+            {
+                var comments = await this.memoriesService.GetAllCurrentWeekAsync<MemoryViewModel>(weekId);
+
+                return this.Ok(comments);
             }
             catch (Exception)
             {

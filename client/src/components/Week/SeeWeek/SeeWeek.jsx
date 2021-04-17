@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as weeksService from '../../../services/weeksService.js';
+import MemoriesList from '../../Memory/MemoriesList/MemoriesList.jsx';
 
 import './SeeWeek.css';
 
@@ -28,7 +29,6 @@ function SeeWeek({ match }) {
                     {week.mood === 'Happy'
                         ? <div><i className="far fa-laugh-beam"></i> Mood: {week.mood}</div>
                         : <div><i className="far fa-sad-cry"></i> Mood: {week.mood}</div>}
-
                 </div>
                 <div className="col-md-6"><img src="../../../74724521-baby-shower-greeting-card-with-babies-boy-and-girl.jpg" alt="pic-current-week"></img></div>
                 <div className="col-md-3 bold-font">
@@ -41,6 +41,7 @@ function SeeWeek({ match }) {
             <p className="text-center">
                 <Link to={`/week/memory/create/${weekId}`}><button className="btn btn-lg" role="button">Add Memory</button></Link>
             </p>
+            <MemoriesList weekId={weekId} />
             <div className="fill pt-1 pb-1"></div>
         </div>
     );

@@ -5,7 +5,7 @@ import * as weeksService from '../../../services/weeksService.js';
 
 import './SingleWeek.css';
 
-function SingleWeek({ id, number, mood, toDos, moments, clickHandler }) {
+function SingleWeek({ id, number, mood, moments, clickHandler }) {
     const remove = () => {
         weeksService
             .remove(id)
@@ -27,7 +27,7 @@ function SingleWeek({ id, number, mood, toDos, moments, clickHandler }) {
             <td><Link to={`/diary/week/see/${id}`}><button className="btn btn-details">See Week</button></Link></td>
             <td><Link to={`/diary/week/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
             <td><button className="btn btn-danger" onClick={remove}>Remove</button></td>
-        </tr >
+        </tr>
     );
 }
 
