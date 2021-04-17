@@ -13,7 +13,7 @@ export const create = (positiveTest, dueDate, gender) => {
     return requester(url, 'POST', diary)
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const remove = (id) => {
     const url = `${api.removeDiary}/${id}`;
@@ -21,7 +21,7 @@ export const remove = (id) => {
     return requester(url, 'DELETE')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const getDiary = (id) => {
     const url = `${api.diaryDetails}/${id}`;
@@ -29,4 +29,4 @@ export const getDiary = (id) => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};

@@ -32,6 +32,8 @@ const api = {
     diaryDetails: `${diariesUrl}/details`,
     userDiaries: `${usersUrl}/diaries`,
     createWeek: `${weeksUrl}/create`,
+    removeWeek: `${weeksUrl}/delete`,
+    getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,
     removeCategory: `${adminCategoryUrl}/delete`,

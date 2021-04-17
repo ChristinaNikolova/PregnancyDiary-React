@@ -1,0 +1,11 @@
+.row-single-week .btn-details {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.row-single-week .btn-details:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}

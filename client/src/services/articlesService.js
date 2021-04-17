@@ -94,7 +94,7 @@ export const getArticleForUpdate = (id) => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const update = (id, title, content, categoryName, picture) => {
     const article = {

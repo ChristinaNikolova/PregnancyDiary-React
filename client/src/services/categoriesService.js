@@ -76,4 +76,4 @@ export const getAllNames = () => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import * as diariesService from '../../../services/diariesService.js';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
+import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
 
 import './SeeDiary.css';
 
@@ -41,11 +42,11 @@ function SeeDiary({ match }) {
             </div>
             {diary.isBabyBorn
                 ? <div>Baby born</div>
-                : <p className="text-center">
+                : <p className="text-center custom-btn">
                     <Link to='/user/diaries'><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
                 </p>}
-            <div className="fill pt-1 pb-1"></div>
+            <WeeksList diaryId={diaryId} />
         </div>
     );
 }

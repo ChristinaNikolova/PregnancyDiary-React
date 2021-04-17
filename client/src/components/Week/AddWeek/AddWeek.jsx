@@ -47,7 +47,7 @@ function AddWeek({ match, history }) {
                     }
                     toastr.success(data['message'], 'Success');
                     history.push(`/diary/see/${diaryId}`);
-                })
+                });
         }
     }
 

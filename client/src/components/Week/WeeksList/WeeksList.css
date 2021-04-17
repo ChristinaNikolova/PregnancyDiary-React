@@ -1,0 +1,9 @@
+.weeks-list-wrapper .table-bordered th,
+.weeks-list-wrapper .table-bordered td {
+    border: 1px solid pink;
+}
+
+.weeks-list-wrapper hr{
+    margin-left: 50px;
+    margin-right: 50px;
+}

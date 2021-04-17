@@ -16,7 +16,7 @@ export const register = (username, email, password) => {
     })
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const login = (email, password) => {
     const user = {
@@ -33,24 +33,24 @@ export const login = (email, password) => {
     })
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const logout = () => {
     return localStorage.clear();
-}
+};
 
 export const isAuthenticated = () => {
     return localStorage.getItem('token') !== null ? true : false;
-}
+};
 
 export const isAdmin = () => {
     return localStorage.getItem('isAdmin') === 'true' ? true : false;
-}
+};
 
 export const getUsername = () => {
     return localStorage.getItem('username');
-}
+};
 
 export const getToken = () => {
     return localStorage.getItem('token');
-}
+};

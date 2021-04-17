@@ -1,6 +1,5 @@
 .my-diary-wrapper {
     background-color: #FFE2E0;
-    height: 650px;
 }
 
 .my-diary-wrapper .girl {
@@ -22,13 +21,13 @@
     font-weight: bolder;
 }
 
-.my-diary-wrapper .btn {
+.custom-btn .btn {
     background-color: #EF93AE;
     border-color: #EF93AE;
     color: white;
 }
 
-.my-diary-wrapper .btn:hover {
+.custom-btn .btn:hover {
     background-color: #7BA5F7;
     border-color: #7BA5F7;
     color: white;
