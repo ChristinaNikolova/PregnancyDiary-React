@@ -13,7 +13,12 @@ import Login from './components/Auth/Login/Login.jsx';
 import ArticlesList from './components/Blog/ArticlesList/ArticlesList.jsx';
 import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails.jsx';
 import ByCategory from './components/Blog/ByCategory/ByCategory.jsx';
+
 import CreateDiary from './components/Diary/CreateDiary/CreateDiary.jsx';
+import SeeDiary from './components/Diary/SeeDiary/SeeDiary.jsx';
+import UpdateDiary from './components/Diary/UpdateDiary/UpdateDiary.jsx';
+
+import UserDiariesList from './components/User/UserDiariesList/UserDiariesList.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
 import Dashboard from './components/Administration/Dashboard/Dashboard.jsx'
@@ -60,7 +65,10 @@ function App() {
         <Route path='/articles/current-article/:id' exact component={ArticleDetails}></Route>
 
         <Route path='/diary/create' component={CreateDiary}></Route>
+        <Route path='/diary/see/:id' component={SeeDiary}></Route>
+        <Route path='/diary/update/:id' component={UpdateDiary}></Route>
 
+        <Route path='/user/diaries' exact component={UserDiariesList}></Route>
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
 
         <Route path='/admin/dashboard' component={Dashboard}></Route>

@@ -29,7 +29,7 @@ function FavouriteArticles() {
             <hr />
             <div className="container">
                 <table className="table table-bordered table-hover table-background">
-                    <thead>
+                    <thead className="text-center">
                         <tr>
                             <th>Title</th>
                             <th>Picture</th>

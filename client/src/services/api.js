@@ -27,6 +27,7 @@ const api = {
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
     createDiary: `${diariesUrl}/create`,
+    userDiaries: `${usersUrl}/diaries`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,
     removeCategory: `${adminCategoryUrl}/delete`,

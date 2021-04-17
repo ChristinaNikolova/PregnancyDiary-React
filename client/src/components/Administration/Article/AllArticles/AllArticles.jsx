@@ -29,7 +29,7 @@ function AllArticles() {
             <hr />
             <div className="container">
                 <table className="table table-striped table-bordered table-hover table-background m-2">
-                    <thead>
+                    <thead className="text-center">
                         <tr>
                             <th>Title</th>
                             <th>Picture</th>

@@ -1,11 +1,15 @@
 ﻿namespace PregnancyDiary.Services.Data.Diaries
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Data.Models.Enums;
+    using PregnancyDiary.Services.Mapping;
 
     public class DiariesService : IDiariesService
     {
@@ -28,6 +32,19 @@
 
             await this.diariesRepository.AddAsync(diary);
             await this.diariesRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetDiariesAsync<T>(string userId)
+        {
+            ;
+            var diaries = await this.diariesRepository
+                .All()
+                .Where(d => d.UserId == userId)
+                .OrderByDescending(d => d.CreatedOn)
+                .To<T>()
+                .ToListAsync();
+
+            return diaries;
         }
     }
 }

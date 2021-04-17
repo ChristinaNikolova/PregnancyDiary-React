@@ -29,7 +29,7 @@ function AllCategories() {
             <hr />
             <div className="container">
                 <table className="table table-striped table-bordered table-hover table-background m-2">
-                    <thead>
+                    <thead className="text-center">
                         <tr>
                             <th>Name</th>
                             <th>Articles Count</th>

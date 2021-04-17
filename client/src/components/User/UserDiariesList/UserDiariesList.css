@@ -1,0 +1,14 @@
+.diaries-list-wrapper {
+    background-color: #FFE2E0;
+    height: 650px;
+}
+
+.diaries-list-wrapper .table-bordered th,
+.diaries-list-wrapper .table-bordered td {
+    border: 1px solid pink;
+}
+
+.diaries-list-wrapper hr{
+    margin-left: 50px;
+    margin-right: 50px;
+}

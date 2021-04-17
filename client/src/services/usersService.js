@@ -8,3 +8,11 @@ export const getFavouriteArticles = () => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getUserDiaries = () => {
+    const url = `${api.userDiaries}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

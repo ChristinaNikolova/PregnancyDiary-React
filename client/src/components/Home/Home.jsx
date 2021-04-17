@@ -35,7 +35,7 @@ function Home({ isLoggedIn }) {
             {isLoggedIn
                 ? <div>
                     <p className="lead-home text-center">
-                        <Link to='/recipes'><button className="btn btn-lg mt-4 mr-2" role="button">See our diaries</button></Link>
+                        <Link to='/user/diaries'><button className="btn btn-lg mt-4 mr-2" role="button">See your diaries</button></Link>
                         <Link to='/diary/create'><button className="btn btn-lg mt-4" role="button">Create new diary</button></Link>
                     </p>
                     < div className="fill pt-1 pb-1"></div>
