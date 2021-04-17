@@ -28,7 +28,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] ArticleInputModel input)
+        public async Task<ActionResult> Create([FromBody] CreateArticleInputModel input)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {

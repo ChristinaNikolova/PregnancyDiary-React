@@ -5,7 +5,7 @@
 
     using PregnancyDiary.Common;
 
-    public class WeekInputModel
+    public class CreateWeekInputModel
     {
         [Range(typeof(byte), DataValidation.Week.MinNumber, DataValidation.Week.MaxNumber)]
         public byte Number { get; set; }

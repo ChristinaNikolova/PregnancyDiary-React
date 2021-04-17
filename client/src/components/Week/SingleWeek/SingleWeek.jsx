@@ -25,8 +25,8 @@ function SingleWeek({ id, number, mood, toDos, moments, clickHandler }) {
             <td>{mood}</td>
             <td>{toDos}</td>
             <td>{moments}</td>
-            <td><Link to={`/diary/see/${id}`}><button className="btn btn-details">See Week</button></Link></td>
-            <td><Link to={`/diary/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
+            <td><Link to={`/diary/week/see/${id}`}><button className="btn btn-details">See Week</button></Link></td>
+            <td><Link to={`/diary/week/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
             <td><button className="btn btn-danger" onClick={remove}>Remove</button></td>
         </tr >
     );

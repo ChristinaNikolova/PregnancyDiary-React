@@ -4,7 +4,7 @@
 
     using PregnancyDiary.Common;
 
-    public class CategoryInputModel
+    public class CreateCategoryInputModel
     {
         [Required]
         [StringLength(DataValidation.Category.NameMaxLenght, ErrorMessage = Messages.Error.RequiredMinMaxLength, MinimumLength = DataValidation.Category.NameMinLenght)]

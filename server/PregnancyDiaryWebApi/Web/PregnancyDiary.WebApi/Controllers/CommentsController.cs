@@ -55,7 +55,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] CommentInputModel input)
+        public async Task<ActionResult> Create([FromBody] CreateCommentInputModel input)
         {
             try
             {

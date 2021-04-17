@@ -5,7 +5,7 @@
 
     using PregnancyDiary.Web.Infrastructure.ValidationAttributes;
 
-    public class DiaryInputModel
+    public class CreateDiaryInputModel
     {
         [IsDateAfterTodayAttribute]
         public DateTime PositiveTest { get; set; }

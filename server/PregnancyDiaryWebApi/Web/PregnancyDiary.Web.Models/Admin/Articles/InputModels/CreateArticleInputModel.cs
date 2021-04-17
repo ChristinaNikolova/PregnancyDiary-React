@@ -4,7 +4,7 @@
 
     using PregnancyDiary.Common;
 
-    public class ArticleInputModel
+    public class CreateArticleInputModel
     {
         [Required]
         [StringLength(DataValidation.Article.TitleMaxLenght, ErrorMessage = Messages.Error.RequiredMinMaxLength, MinimumLength = DataValidation.Article.TitleMinLenght)]

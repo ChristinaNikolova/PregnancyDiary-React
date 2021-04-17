@@ -1,0 +1,20 @@
+.update-week-wrapper {
+    background-color: #FFE2E0;
+    height: 1000px;
+}
+
+.update-week-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.update-week-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.update-week-form {
+    justify-content: center;
+}

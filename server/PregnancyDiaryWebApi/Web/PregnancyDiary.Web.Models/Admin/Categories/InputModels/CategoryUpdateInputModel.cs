@@ -5,7 +5,7 @@
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Services.Mapping;
 
-    public class CategoryUpdateInputModel : CategoryInputModel, IMapFrom<Category>
+    public class CategoryUpdateInputModel : CreateCategoryInputModel, IMapFrom<Category>
     {
         [Required]
         public string Id { get; set; }

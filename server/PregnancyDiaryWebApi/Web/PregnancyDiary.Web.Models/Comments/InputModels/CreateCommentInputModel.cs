@@ -4,7 +4,7 @@
 
     using PregnancyDiary.Common;
 
-    public class CommentInputModel
+    public class CreateCommentInputModel
     {
         [Required]
         public string ArticleId { get; set; }

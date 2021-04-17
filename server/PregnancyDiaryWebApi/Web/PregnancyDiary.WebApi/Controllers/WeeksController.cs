@@ -27,7 +27,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] WeekInputModel input)
+        public async Task<ActionResult> Create([FromBody] CreateWeekInputModel input)
         {
             try
             {
@@ -93,6 +93,68 @@
                 return this.Ok(new
                 {
                     Message = Messages.Success.Deleted,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<UpdateWeekInputModel>> Details(string id)
+        {
+            try
+            {
+                var week = await this.weeksService.GetDetailsAsync<UpdateWeekInputModel>(id);
+
+                return this.Ok(week);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update(UpdateWeekInputModel input)
+        {
+            try
+            {
+                var isNumberAlreadyExisting = await this.weeksService.IsWeekNumberAlreadyExistingAsync(input.Number, input.DiaryId);
+
+                if (isNumberAlreadyExisting)
+                {
+                    var existingWeekId = await this.weeksService.GetIdByNumberAsync(input.Number, input.DiaryId);
+
+                    if (existingWeekId != input.Id)
+                    {
+                        return this.BadRequest(new BadRequestViewModel
+                        {
+                            Message = Messages.Error.AlreadyExistsNumber,
+                        });
+                    }
+                }
+
+                await this.weeksService.UpdateAsync(input.Id, input.Number, input.MyWeight, input.MyBellySize, input.Mood, input.BabyHeight, input.BabyWeight, input.DiaryId);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Updated,
                 });
             }
             catch (Exception)

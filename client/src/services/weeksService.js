@@ -34,3 +34,30 @@ export const remove = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getDetails = (id) => {
+    const url = `${api.getWeekDetails}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
+export const update = (id, diaryId, number, myWeight, myBellySize, mood, babyWeight, babyHeight) => {
+    const week = {
+        id,
+        number,
+        myWeight,
+        myBellySize,
+        mood,
+        babyHeight,
+        babyWeight,
+        diaryId
+    };
+
+    const url = `${api.updateWeek}`;
+
+    return requester(url, 'PUT', week)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};

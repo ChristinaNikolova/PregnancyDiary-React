@@ -39,9 +39,7 @@
 
         public async Task DeleteAsync(string id)
         {
-            var week = await this.weeksRepository
-                .All()
-                .FirstOrDefaultAsync(w => w.Id == id);
+            var week = await this.GetByIdAsync(id);
 
             week.IsDeleted = true;
 
@@ -61,6 +59,28 @@
             return weeks;
         }
 
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var week = await this.weeksRepository
+                 .All()
+                 .Where(w => w.Id == id)
+                 .To<T>()
+                 .FirstOrDefaultAsync();
+
+            return week;
+        }
+
+        public async Task<string> GetIdByNumberAsync(byte number, string diaryId)
+        {
+            var weekId = await this.weeksRepository
+                .All()
+                .Where(w => w.Number == number && w.DiaryId == diaryId)
+                .Select(w => w.Id)
+                .FirstOrDefaultAsync();
+
+            return weekId;
+        }
+
         public async Task<bool> IsWeekNumberAlreadyExistingAsync(byte number, string diaryId)
         {
             var isAlreadyExisting = await this.weeksRepository
@@ -68,6 +88,28 @@
                 .AnyAsync(w => w.DiaryId == diaryId && w.Number == number);
 
             return isAlreadyExisting;
+        }
+
+        public async Task UpdateAsync(string id, byte number, double weight, double bellySize, string mood, double babyHeight, double babyWeight, string diaryId)
+        {
+            var week = await this.GetByIdAsync(id);
+
+            week.Number = number;
+            week.MyWeight = weight;
+            week.MyBellySize = bellySize;
+            week.Mood = Enum.Parse<Mood>(mood);
+            week.BabyHeight = babyHeight;
+            week.BabyWeight = babyWeight;
+
+            this.weeksRepository.Update(week);
+            await this.weeksRepository.SaveChangesAsync();
+        }
+
+        private async Task<Week> GetByIdAsync(string id)
+        {
+            return await this.weeksRepository
+                .All()
+                .FirstOrDefaultAsync(w => w.Id == id);
         }
     }
 }

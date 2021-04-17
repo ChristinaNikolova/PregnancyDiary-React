@@ -32,7 +32,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] DiaryInputModel input)
+        public async Task<ActionResult> Create([FromBody] CreateDiaryInputModel input)
         {
             try
             {
