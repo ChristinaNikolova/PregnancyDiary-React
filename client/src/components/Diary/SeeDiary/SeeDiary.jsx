@@ -40,8 +40,8 @@ function SeeDiary({ match }) {
             {diary.isBabyBorn
                 ? <div>Baby born</div>
                 : <p className="text-center">
-                    <Link to='/user/diaries'><button className="btn btn-lg mt-4 mr-2" role="button">See your diaries</button></Link>
-                    <Link to='/diary/create'><button className="btn btn-lg mt-4" role="button">Create new diary</button></Link>
+                    <Link to='/user/diaries'><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
+                    <Link to='/diary/create'><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
                 </p>}
             <div className="fill pt-1 pb-1"></div>
         </div>
