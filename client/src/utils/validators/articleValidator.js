@@ -13,26 +13,26 @@ export const validSearchText = (content) => {
 
 export const validTitle = (title) => {
     if (
-        title.length >= articleConstants.TITLE_MIN_LENGHT &&
-        title.length <= articleConstants.TITLE_MAX_LENGHT &&
+        title.length >= articleConstants.TITLE_MIN_LEN &&
+        title.length <= articleConstants.TITLE_MAX_LEN &&
         title !== ''
     ) {
         return '';
     }
 
-    return (`Title should be between ${articleConstants.TITLE_MIN_LENGHT} and ${articleConstants.TITLE_MAX_LENGHT} characters long.`);
+    return (`Title should be between ${articleConstants.TITLE_MIN_LEN} and ${articleConstants.TITLE_MAX_LEN} characters long.`);
 };
 
 export const validContent = (content) => {
     if (
-        content.length >= articleConstants.CONTENT_MIN_LENGHT &&
-        content.length <= articleConstants.CONTENT_MAX_LENGHT &&
+        content.length >= articleConstants.CONTENT_MIN_LEN &&
+        content.length <= articleConstants.CONTENT_MAX_LEN &&
         content !== ''
     ) {
         return '';
     }
 
-    return (`Content should be between ${articleConstants.CONTENT_MIN_LENGHT} and ${articleConstants.CONTENT_MAX_LENGHT} characters long.`);
+    return (`Content should be between ${articleConstants.CONTENT_MIN_LEN} and ${articleConstants.CONTENT_MAX_LEN} characters long.`);
 };
 
 export const validPicture = (picture) => {

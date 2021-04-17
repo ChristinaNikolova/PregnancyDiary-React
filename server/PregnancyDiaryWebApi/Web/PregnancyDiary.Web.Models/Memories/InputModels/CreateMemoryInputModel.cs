@@ -1,22 +1,18 @@
-﻿namespace PregnancyDiary.Data.Models
+﻿namespace PregnancyDiary.Web.Models.Memories.InputModels
 {
     using System;
     using System.ComponentModel.DataAnnotations;
 
     using PregnancyDiary.Common;
-    using PregnancyDiary.Data.Common.BaseModels;
+    using PregnancyDiary.Web.Infrastructure.ValidationAttributes;
 
-    public class Moment : BaseDeletableModel<string>
+    public class CreateMemoryInputModel
     {
-        public Moment()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
+        [IsDateAfterTodayAttribute]
         public DateTime Date { get; set; }
 
         [Required]
-        [MaxLength(DataValidation.Moment.TitleMaxLenght)]
+        [StringLength(DataValidation.Moment.TitleMaxLenght, ErrorMessage = Messages.Error.RequiredMinMaxLength, MinimumLength = DataValidation.Moment.TitleMinLenght)]
         public string Title { get; set; }
 
         [MaxLength(DataValidation.Moment.DescriptionMaxLenght)]
@@ -24,7 +20,5 @@
 
         [Required]
         public string WeekId { get; set; }
-
-        public virtual Week Week { get; set; }
     }
 }

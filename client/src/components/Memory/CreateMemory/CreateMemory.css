@@ -1,0 +1,20 @@
+.create-memory-wrapper {
+    background-color: #FFE2E0;
+    height: 1000px;
+}
+
+.create-memory-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.create-memory-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.create-memory-form {
+    justify-content: center;
+}

@@ -13,7 +13,6 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Moments = new HashSet<Moment>();
-            this.ToDos = new HashSet<ToDo>();
         }
 
         public byte Number { get; set; }
@@ -36,7 +35,5 @@
         public virtual Diary Diary { get; set; }
 
         public virtual ICollection<Moment> Moments { get; set; }
-
-        public virtual ICollection<ToDo> ToDos { get; set; }
     }
 }

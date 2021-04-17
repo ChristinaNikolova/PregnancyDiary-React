@@ -24,6 +24,7 @@
     using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Services.Data.Comments;
     using PregnancyDiary.Services.Data.Diaries;
+    using PregnancyDiary.Services.Data.Memories;
     using PregnancyDiary.Services.Data.Users;
     using PregnancyDiary.Services.Data.Weeks;
     using PregnancyDiary.Services.Mapping;
@@ -103,6 +104,7 @@
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IDiariesService, DiariesService>();
             services.AddTransient<IWeeksService, WeeksService>();
+            services.AddTransient<IMemoriesService, MemoriesService>();
 
             services.AddControllers();
 

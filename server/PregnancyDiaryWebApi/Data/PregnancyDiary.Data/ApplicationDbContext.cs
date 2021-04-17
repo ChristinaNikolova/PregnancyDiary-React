@@ -39,8 +39,6 @@
 
         public DbSet<Moment> Moments { get; set; }
 
-        public DbSet<ToDo> ToDos { get; set; }
-
         public DbSet<UserArticleLike> UserArticleLikes { get; set; }
 
         public DbSet<Week> Weeks { get; set; }

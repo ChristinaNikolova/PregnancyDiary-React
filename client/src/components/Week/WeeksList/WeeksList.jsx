@@ -33,7 +33,6 @@ function WeeksList({ diaryId }) {
                         <tr>
                             <th>Week's Number</th>
                             <th>Mood</th>
-                            <th>ToDos</th>
                             <th>Moments</th>
                             <th></th>
                             <th></th>

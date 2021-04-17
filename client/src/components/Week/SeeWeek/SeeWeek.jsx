@@ -23,15 +23,18 @@ function SeeWeek({ match }) {
             <div className="row m-2 text-center">
                 <div className="col-md-3 bold-font">
                     <span className="custom-font">Me</span>
-                    <div>Weight: {week.myWeight} kg</div>
-                    <div>Belly Size: {week.myBellySize} cm</div>
-                    <div>Mood: {week.mood}</div>
+                    <div><i className="fas fa-weight"></i> Weight: {week.myWeight} kg</div>
+                    <div><i className="fas fa-hand-point-right"></i> Belly Size: {week.myBellySize} cm</div>
+                    {week.mood === 'Happy'
+                        ? <div><i className="far fa-laugh-beam"></i> Mood: {week.mood}</div>
+                        : <div><i className="far fa-sad-cry"></i> Mood: {week.mood}</div>}
+
                 </div>
                 <div className="col-md-6"><img src="../../../74724521-baby-shower-greeting-card-with-babies-boy-and-girl.jpg" alt="pic-current-week"></img></div>
                 <div className="col-md-3 bold-font">
                     <span className="custom-font">Baby</span>
-                    <div>Weight: {week.babyWeight} gr</div>
-                    <div>Height: {week.babyHeight} mm</div>
+                    <div><i className="fas fa-weight"></i> Weight: {week.babyWeight} gr</div>
+                    <div><i className="fas fa-hand-point-right"></i> Height: {week.babyHeight} mm</div>
                 </div>
             </div>
             <hr />

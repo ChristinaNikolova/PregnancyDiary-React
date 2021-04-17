@@ -16,7 +16,5 @@
             => this.Mood.ToString();
 
         public int MomentsCount { get; set; }
-
-        public int ToDosCount { get; set; }
     }
 }

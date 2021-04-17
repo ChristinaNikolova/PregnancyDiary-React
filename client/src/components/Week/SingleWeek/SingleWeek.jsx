@@ -23,7 +23,6 @@ function SingleWeek({ id, number, mood, toDos, moments, clickHandler }) {
         <tr className="text-center row-single-week">
             <td>{number}</td>
             <td>{mood}</td>
-            <td>{toDos}</td>
             <td>{moments}</td>
             <td><Link to={`/diary/week/see/${id}`}><button className="btn btn-details">See Week</button></Link></td>
             <td><Link to={`/diary/week/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
