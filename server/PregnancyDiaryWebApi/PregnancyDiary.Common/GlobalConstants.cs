@@ -38,5 +38,10 @@
 
             public const string CommentsCount = "comments";
         }
+
+        public static class Gender
+        {
+            public const string DontKnow = "I don't know yet";
+        }
     }
 }

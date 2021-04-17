@@ -65,7 +65,7 @@
             try
             {
                 var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
-                ;
+
                 var diaries = await this.diariesService.GetDiariesAsync<UserDiariesViewModel>(user.Id);
 
                 return this.Ok(diaries);

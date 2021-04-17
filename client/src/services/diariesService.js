@@ -14,3 +14,11 @@ export const create = (positiveTest, dueDate, gender) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const remove = (id) => {
+    const url = `${api.removeDiary}/${id}`;
+
+    return requester(url, 'DELETE')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

@@ -23,8 +23,8 @@ function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
                         </li>
                         {!isLoggedIn && <li className="nav-item"><Link to="/login" className="nav-link">Login</Link></li>}
                         {!isLoggedIn && <li className="nav-item"><Link to="/register" className="nav-link">Register</Link></li>}
-                        <li className="nav-item"><Link to="/articles" className="nav-link">Blog</Link></li>
                         {isLoggedIn && <li className="nav-item"><Link to="/user/diaries" className="nav-link">My Diaries</Link></li>}
+                        <li className="nav-item"><Link to="/articles" className="nav-link">Blog</Link></li>
                         {isLoggedIn && <li className="nav-item"><Link to="/user/favourite-articles" className="nav-link">My Favourite Articles</Link></li>}
                         {isLoggedIn && isAdmin && <li className="nav-item"><Link to="/admin/dashboard" className="nav-link">Administration</Link></li>}
                         {isLoggedIn && <li className="nav-item"><Link to='/diary/create'><button className="btn btn-create-diary ml-1" type="button">Create new diary</button></Link></li>}

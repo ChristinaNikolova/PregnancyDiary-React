@@ -32,7 +32,7 @@ function CreateDiary({ history }) {
                         return;
                     }
                     toastr.success(data['message'], 'Success');
-                    history.push('/home');
+                    history.push('/user/diaries');
                 });
         }
     }

@@ -7,16 +7,20 @@ import './UserDiariesList.css';
 
 function UserDiariesList() {
     const [diaries, setDiaries] = useState([]);
+    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         usersService
             .getUserDiaries()
             .then(res => setDiaries(res))
+            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, []);
+    }, [hasToReload]);
 
     const reload = () => {
-
+        setTimeout(() => {
+            setHasToReload(true)
+        }, 100);
     }
 
     return (
