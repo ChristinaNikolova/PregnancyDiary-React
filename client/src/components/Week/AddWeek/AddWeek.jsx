@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import toastr from 'toastr';
 
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/weekValidator.js';
+import * as weeksService from '../../../services/weeksService.js';
 
 import './AddWeek.css';
 
-function AddWeek({ match }) {
+function AddWeek({ match, history }) {
     const [errorNumber, setErrorNumber] = useState('');
     const [errorMyWeight, setErrorMyWeight] = useState('');
     const [errorMyBellySize, setErrorMyBellySize] = useState('');
@@ -36,9 +38,16 @@ function AddWeek({ match }) {
             validator.validMyBellySize(myBellySize) === '' &&
             validator.validBabyWeight(babyWeight) === '' &&
             validator.validBabyHeight(babyHeight) === '') {
-            console.log("valid");
-        } else {
-            console.log("invalid");
+            weeksService
+                .create(diaryId, number, myWeight, myBellySize, mood, babyWeight, babyHeight)
+                .then((data) => {
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
+                        return;
+                    }
+                    toastr.success(data['message'], 'Success');
+                    history.push(`/diary/see/${diaryId}`);
+                })
         }
     }
 

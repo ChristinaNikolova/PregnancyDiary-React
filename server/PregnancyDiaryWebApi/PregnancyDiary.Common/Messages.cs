@@ -36,6 +36,8 @@
             public const string AlreadyExistsCategory = "Category with the given name already exists.";
 
             public const string AlreadyExistsTitle = "Article with the given title already exists.";
+
+            public const string AlreadyExistsNumber = "Week with the given number already exists.";
         }
     }
 }
