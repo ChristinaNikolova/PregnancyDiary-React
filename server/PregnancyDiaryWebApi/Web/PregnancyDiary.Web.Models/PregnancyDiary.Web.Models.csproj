@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\Data\PregnancyDiary.Data.Models\PregnancyDiary.Data.Models.csproj" />
     <ProjectReference Include="..\..\PregnancyDiary.Common\PregnancyDiary.Common.csproj" />
     <ProjectReference Include="..\..\Services\PregnancyDiary.Services.Mapping\PregnancyDiary.Services.Mapping.csproj" />
+    <ProjectReference Include="..\PregnancyDiary.Web.Infrastructure\PregnancyDiary.Web.Infrastructure.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties _1_1_4_1_1_4stylecop_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

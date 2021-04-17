@@ -18,7 +18,6 @@
 
         public async Task CreateAsync(DateTime positiveTest, DateTime dueDate, string gender, string userId)
         {
-            //10.7.2021 г. 0:00:00}
             var diary = new Diary()
             {
                 PositiveTest = positiveTest,
@@ -26,7 +25,7 @@
                 Gender = Enum.Parse<Gender>(gender),
                 UserId = userId,
             };
-            ;
+
             await this.diariesRepository.AddAsync(diary);
             await this.diariesRepository.SaveChangesAsync();
         }

@@ -3,11 +3,14 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using PregnancyDiary.Web.Infrastructure.ValidationAttributes;
+
     public class DiaryInputModel
     {
-        //validate date
+        [IsDateAfterTodayAttribute]
         public DateTime PositiveTest { get; set; }
 
+        [IsDateBeforeTodayAttribute]
         public DateTime DueDate { get; set; }
 
         [Required]
