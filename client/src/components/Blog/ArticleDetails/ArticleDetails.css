@@ -23,12 +23,12 @@
 }
 
 .fa-folder-open,
-.fa-heart,
+.article-details-wrapper .fa-heart,
 .fa-comments,
 .fa-calendar-alt {
     color: #7BA5F7;
 }
 
-.unlike {
+.article-details-wrapper .unlike {
     color: #EF93AE;
 }

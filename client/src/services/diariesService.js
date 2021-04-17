@@ -22,3 +22,11 @@ export const remove = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const getDiary = (id) => {
+    const url = `${api.diaryDetails}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

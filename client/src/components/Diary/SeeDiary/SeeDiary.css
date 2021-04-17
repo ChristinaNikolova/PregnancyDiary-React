@@ -1,0 +1,22 @@
+.my-diary-wrapper {
+    background-color: #FFE2E0;
+}
+
+.my-diary-wrapper .girl {
+    color: #EF93AE;
+}
+
+.my-diary-wrapper .boy {
+    color: #7BA5F7;
+}
+
+.my-diary-wrapper .fa-gift,
+.my-diary-wrapper .fa-question,
+.my-diary-wrapper .fa-sun,
+.my-diary-wrapper .fa-calendar-check {
+    color: #19642E;
+}
+
+.bold{
+    font-weight: bolder;
+}

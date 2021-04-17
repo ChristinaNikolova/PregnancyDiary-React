@@ -11,5 +11,7 @@
         Task<IEnumerable<T>> GetDiariesAsync<T>(string userId);
 
         Task DeleteAsync(string id);
+
+        Task<T> GetDetailsAsync<T>(string id);
     }
 }

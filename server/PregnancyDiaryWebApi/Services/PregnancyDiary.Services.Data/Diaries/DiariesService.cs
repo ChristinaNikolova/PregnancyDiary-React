@@ -44,14 +44,23 @@
 
         public async Task DeleteAsync(string id)
         {
-            var diary = await this.diariesRepository
-                .All()
-                .FirstOrDefaultAsync(d => d.Id == id);
+            Diary diary = await this.GetByIdAsync(id);
 
             diary.IsDeleted = true;
 
             this.diariesRepository.Update(diary);
             await this.diariesRepository.SaveChangesAsync();
+        }
+
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var diary = await this.diariesRepository
+                .All()
+                .Where(d => d.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return diary;
         }
 
         public async Task<IEnumerable<T>> GetDiariesAsync<T>(string userId)
@@ -64,6 +73,13 @@
                 .ToListAsync();
 
             return diaries;
+        }
+
+        private async Task<Diary> GetByIdAsync(string id)
+        {
+            return await this.diariesRepository
+                .All()
+                .FirstOrDefaultAsync(d => d.Id == id);
         }
     }
 }
