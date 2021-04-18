@@ -29,7 +29,7 @@
         {
             try
             {
-                await this.babiesService.CreateAsync(input.Name, input.BirthDate, input.BirthTime, input.Gender, input.Height, input.Weight, input.DiaryId);
+                await this.babiesService.CreateAsync(input.Name, input.BirthDate, input.BirthTime, input.Gender, input.Height, input.Weight, input.Picture, input.DiaryId);
 
                 return this.Ok(new
                 {

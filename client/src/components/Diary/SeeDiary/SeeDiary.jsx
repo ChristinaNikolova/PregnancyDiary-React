@@ -29,8 +29,6 @@ function SeeDiary({ match }) {
             return <div className="col-md-4"><i className="fas fa-question mr-1"></i><span className="ml-1 mr-1 custom-font bold">Gender:</span><span>I don't know yet</span></div>
         }
     }
-
-    console.log(diary);
     
     return (
         <div className="my-diary-wrapper">

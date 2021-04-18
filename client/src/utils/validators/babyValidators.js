@@ -48,3 +48,13 @@ export const validWeight = (weight) => {
 
     return ('Field is required.');
 };
+
+export const validPicture = (picture) => {
+    if ((picture.startsWith('https://') || picture.startsWith('http://')) &&
+        picture !== ''
+    ) {
+        return '';
+    }
+
+    return ('Idvalid URL.');
+};

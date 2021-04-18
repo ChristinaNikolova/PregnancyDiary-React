@@ -30,6 +30,9 @@
         public double Weight { get; set; }
 
         [Required]
+        public string Picture { get; set; }
+
+        [Required]
         public string DiaryId { get; set; }
 
         public virtual Diary Diary { get; set; }

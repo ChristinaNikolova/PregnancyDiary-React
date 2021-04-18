@@ -21,7 +21,7 @@
             this.diariesService = diariesService;
         }
 
-        public async Task CreateAsync(string name, DateTime birthDate, string birthTime, string gender, double height, double weight, string diaryId)
+        public async Task CreateAsync(string name, DateTime birthDate, string birthTime, string gender, double height, double weight, string picture, string diaryId)
         {
             var baby = new Baby()
             {
@@ -31,6 +31,7 @@
                 Gender = Enum.Parse<Gender>(gender),
                 Height = height,
                 Weight = weight,
+                Picture = picture,
                 DiaryId = diaryId,
             };
 

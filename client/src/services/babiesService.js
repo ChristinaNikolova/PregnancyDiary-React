@@ -1,7 +1,7 @@
 import api from './api.js';
 import { requester } from './requester.js';
 
-export const create = (name, birthDate, birthTime, gender, weight, height, diaryId) => {
+export const create = (name, birthDate, birthTime, gender, weight, height, picture, diaryId) => {
     const baby = {
         name,
         birthDate,
@@ -9,6 +9,7 @@ export const create = (name, birthDate, birthTime, gender, weight, height, diary
         gender,
         weight,
         height,
+        picture,
         diaryId
     };
 

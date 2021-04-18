@@ -14,6 +14,7 @@ function CreateBaby({ match, history }) {
     const [errorBirthTime, setErrorBirthTime] = useState('');
     const [errorHeight, setErrorHeight] = useState('');
     const [errorWeight, setErrorWeight] = useState('');
+    const [errorPicture, setErrorPicture] = useState('');
     const diaryId = match.params.id;
     const genders = ['Girl', 'Boy'];
 
@@ -26,20 +27,23 @@ function CreateBaby({ match, history }) {
         const gender = e.target.gender.value;
         const height = e.target.height.value;
         const weight = e.target.weight.value;
+        const picture = e.target.picture.value;
 
         setErrorName(validator.validName(name));
         setErrorBirthDate(validator.validbirthDate(birthDate));
         setErrorBirthTime(validator.validBirthTime(birthTime));
         setErrorHeight(validator.validHeight(height));
         setErrorWeight(validator.validWeight(weight));
+        setErrorPicture(validator.validPicture(picture));
 
         if (validator.validName(name) === '' &&
             validator.validbirthDate(birthDate) === '' &&
             validator.validBirthTime(birthTime) === '' &&
             validator.validHeight(height) === '' &&
-            validator.validWeight(weight) === '') {
+            validator.validWeight(weight) === '' &&
+            validator.validPicture(picture) === '') {
             babiesService
-                .create(name, birthDate, birthTime, gender, weight, height, diaryId)
+                .create(name, birthDate, birthTime, gender, weight, height, picture, diaryId)
                 .then((data) => {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
@@ -95,6 +99,12 @@ function CreateBaby({ match, history }) {
                             name='weight'
                             label='Weight in gr'
                             error={errorWeight} />
+
+                        <Input
+                            type='url'
+                            name='picture'
+                            label='Picture'
+                            error={errorPicture} />
 
                         <div className="text-center">
                             <button className="btn" type="submit">Baby</button>
