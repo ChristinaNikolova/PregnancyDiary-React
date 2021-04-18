@@ -5,7 +5,7 @@ function BabyBornPicture() {
         <div className="row">
             <div className="col-lg-4"></div>
             <div className="col-lg-4 text-center">
-                <img className="img-baby-born-pic mt-3 mb-3" src="../../../stork2.jpg" alt="baby-born-pic"></img>
+                <img className="img-baby-born-pic mt-3 mb-3" src="../../../../stork2.jpg" alt="baby-born-pic"></img>
             </div>
             <div className="col-lg-4"></div>
         </div>
