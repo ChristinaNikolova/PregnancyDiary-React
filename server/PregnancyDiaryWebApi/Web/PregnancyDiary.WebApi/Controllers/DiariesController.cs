@@ -100,5 +100,52 @@
                 });
             }
         }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<UpdateDiaryInputModel>> DetailsForUpdate(string id)
+        {
+            try
+            {
+                var week = await this.diariesService.GetDetailsAsync<UpdateDiaryInputModel>(id);
+
+                return this.Ok(week);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update(UpdateDiaryInputModel input)
+        {
+            try
+            {
+                await this.diariesService.UpdateAsync(input.Id, input.PositiveTest, input.DueDate, input.Gender);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Updated,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
     }
 }

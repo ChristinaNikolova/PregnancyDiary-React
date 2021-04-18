@@ -30,6 +30,8 @@ const api = {
     createComment: `${commentsUrl}/create`,
     createDiary: `${diariesUrl}/create`,
     removeDiary: `${diariesUrl}/delete`,
+    updateDiary: `${diariesUrl}/update`,
+    diaryDetailsForUpdate: `${diariesUrl}/detailsForUpdate`,
     diaryDetails: `${diariesUrl}/details`,
     userDiaries: `${usersUrl}/diaries`,
     createWeek: `${weeksUrl}/create`,

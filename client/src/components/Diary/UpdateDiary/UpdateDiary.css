@@ -1,0 +1,20 @@
+.update-diary-wrapper {
+    background-color: #FFE2E0;
+    height: 800px;
+}
+
+.update-diary-wrapper button {
+    background-color: #EF93AE;
+    border-color: #EF93AE;
+    color: white;
+}
+
+.update-diary-wrapper button:hover {
+    background-color: #7BA5F7;
+    border-color: #7BA5F7;
+    color: white;
+}
+
+.update-diary-form {
+    justify-content: center;
+}

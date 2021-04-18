@@ -13,5 +13,7 @@
         Task DeleteAsync(string id);
 
         Task<T> GetDetailsAsync<T>(string id);
+
+        Task UpdateAsync(string id, DateTime positiveTest, DateTime dueDate, string gender);
     }
 }

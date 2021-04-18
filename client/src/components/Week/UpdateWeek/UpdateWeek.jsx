@@ -91,7 +91,7 @@ function UpdateWeek({ match, history }) {
                             <label className="form-control-label" htmlFor="mood">My Mood</label>
                             <select className="form-control" id="mood">
                                 {moods.map(m => <option key={m} value={m}>{m}</option>)}
-                                <option value={week.mood}>{week.mood}</option>
+                                <option selected value={week.mood}>{week.mood}</option>
                             </select>
                         </div>
 

@@ -26,9 +26,7 @@ export const validTitle = (title) => {
 };
 
 export const validContent = (content) => {
-    if (content.length <= memoryConstants.CONTENT_MAX_LEN &&
-        content !== ''
-    ) {
+    if (content.length <= memoryConstants.CONTENT_MAX_LEN) {
         return '';
     }
 

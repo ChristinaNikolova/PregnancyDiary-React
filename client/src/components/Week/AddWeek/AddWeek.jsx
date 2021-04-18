@@ -19,6 +19,7 @@ function AddWeek({ match, history }) {
 
     const onAddWeekSubmitHandler = (e) => {
         e.preventDefault();
+        debugger;
 
         const number = e.target.number.value;
         const myWeight = e.target.myWeight.value;
@@ -72,8 +73,8 @@ function AddWeek({ match, history }) {
 
                         <Input
                             type='number'
-                            name='myBellySize in cm'
-                            label='My Belly Size'
+                            name='myBellySize'
+                            label='My Belly Size in cm'
                             error={errorMyBellySize} />
 
                         <div className="form-group">

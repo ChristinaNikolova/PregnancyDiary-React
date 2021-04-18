@@ -23,12 +23,7 @@
 
         public async Task CreateAsync(DateTime positiveTest, DateTime dueDate, string gender, string userId)
         {
-            var genderAsEnumName = gender;
-
-            if (gender == GlobalConstants.Gender.DontKnow)
-            {
-                genderAsEnumName = Gender.DontKnow.ToString();
-            }
+            var genderAsEnumName = GetGender(gender);
 
             var diary = new Diary()
             {
@@ -73,6 +68,32 @@
                 .ToListAsync();
 
             return diaries;
+        }
+
+        public async Task UpdateAsync(string id, DateTime positiveTest, DateTime dueDate, string gender)
+        {
+            var genderAsEnumName = GetGender(gender);
+
+            var diary = await this.GetByIdAsync(id);
+
+            diary.PositiveTest = positiveTest;
+            diary.DueDate = dueDate;
+            diary.Gender = Enum.Parse<Gender>(genderAsEnumName);
+
+            this.diariesRepository.Update(diary);
+            await this.diariesRepository.SaveChangesAsync();
+        }
+
+        private static string GetGender(string gender)
+        {
+            var genderAsEnumName = gender;
+
+            if (gender == GlobalConstants.Gender.DontKnow)
+            {
+                genderAsEnumName = Gender.DontKnow.ToString();
+            }
+
+            return genderAsEnumName;
         }
 
         private async Task<Diary> GetByIdAsync(string id)

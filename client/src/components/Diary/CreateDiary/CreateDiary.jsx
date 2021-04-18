@@ -2,11 +2,11 @@ import { useState } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
+import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import * as validator from '../../../utils/validators/diaryValidator.js';
 import * as diariesService from '../../../services/diariesService.js';
 
 import './CreateDiary.css';
-import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 
 function CreateDiary({ history }) {
     const [errorPositiveTest, setErrorPositiveTest] = useState('');

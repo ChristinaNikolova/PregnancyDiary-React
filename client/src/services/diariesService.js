@@ -30,3 +30,27 @@ export const getDiary = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getDiaryForUpdate = (id) => {
+    const url = `${api.diaryDetailsForUpdate}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
+export const update = (id, positiveTest, dueDate, gender) => {
+    const diary = {
+        id,
+        positiveTest,
+        dueDate,
+        gender
+    };
+
+    const url = `${api.updateDiary}`;
+
+    return requester(url, 'PUT', diary)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
