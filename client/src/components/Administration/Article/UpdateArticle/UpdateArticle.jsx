@@ -80,8 +80,11 @@ function UpdateArticle({ match, history }) {
 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor="categoryName">Category</label>
-                            <select className="form-control" id="categoryName" defaultValue={article.categoryName}>
-                                {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
+                            <select className="form-control" id="categoryName">
+                                {categories
+                                    .filter(c => c.name !== article.categoryName)
+                                    .map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
+                                <option selected={article.categoryName}>{article.categoryName}</option>
                             </select>
                         </div>
 

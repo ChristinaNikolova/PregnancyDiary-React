@@ -14,7 +14,7 @@ function AddWeek({ match, history }) {
     const [errorMyBellySize, setErrorMyBellySize] = useState('');
     const [errorBabyWeight, setErrorBabyWeight] = useState('');
     const [errorBabyHeight, setErrorBabyHeight] = useState('');
-    const moods = ["Happy", "Sad"];
+    const moods = ['Happy', 'Sad', 'Surprised', 'Melancholic', 'Angry'];
     const diaryId = match.params.id;
 
     const onAddWeekSubmitHandler = (e) => {

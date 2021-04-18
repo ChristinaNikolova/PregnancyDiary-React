@@ -16,7 +16,7 @@ function UpdateWeek({ match, history }) {
     const [errorBabyHeight, setErrorBabyHeight] = useState('');
     const [week, setWeek] = useState({});
     const weekId = match.params.id;
-    const moods = ["Happy", "Sad"];
+    const moods = ['Happy', 'Sad', 'Surprised', 'Melancholic', 'Angry'];
 
     useEffect(() => {
         weeksService
@@ -89,8 +89,11 @@ function UpdateWeek({ match, history }) {
 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor="mood">My Mood</label>
-                            <select className="form-control" id="mood" value={week.mood}>
-                                {moods.map(m => <option key={m} value={m}>{m}</option>)}
+                            <select className="form-control" id="mood">
+                                {moods
+                                    .filter(m => m !== week.mood)
+                                    .map(m => <option key={m} value={m}>{m}</option>)}
+                                <option selected={week.mood}>{week.mood}</option>
                             </select>
                         </div>
 

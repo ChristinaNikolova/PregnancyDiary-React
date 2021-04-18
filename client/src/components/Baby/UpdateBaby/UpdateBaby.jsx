@@ -94,8 +94,11 @@ function UpdateBaby({ match, history }) {
 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor="gender">Gender</label>
-                            <select className="form-control" id="gender" value={baby.genderAsString}>
-                                {genders.map(g => <option key={g} value={g}>{g}</option>)}
+                            <select className="form-control" id="gender">
+                                {genders
+                                    .filter(g => g !== baby.genderAsString)
+                                    .map(g => <option key={g} value={g}>{g}</option>)}
+                                <option selected={baby.genderAsString}>{baby.genderAsString}</option>
                             </select>
                         </div>
 

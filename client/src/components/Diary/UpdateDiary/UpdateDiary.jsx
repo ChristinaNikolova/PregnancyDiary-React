@@ -70,13 +70,16 @@ function UpdateDiary({ match, history }) {
 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor="gender">Gender</label>
-                            {diary.genderAsString === 'DontKnow'
-                                ? <select className="form-control" id="gender" value="I don't know yet">
-                                    {genders.map(g => <option key={g} value={g}>{g}</option>)}
-                                </select>
-                                : <select className="form-control" id="gender" value={diary.genderAsString}>
-                                    {genders.map(g => <option key={g} value={g}>{g}</option>)}
-                                </select>}
+                            <select className="form-control" id="gender">
+                                {genders
+                                    .filter(g => g !== (diary.genderAsString === 'DontKnow'
+                                        ? "I don't know yet"
+                                        : diary.genderAsString))
+                                    .map(g => <option key={g} value={g}>{g}</option>)}
+                                {diary.genderAsString === 'DontKnow'
+                                    ? <option selected={diary.genderAsString}>I don't know yet</option>
+                                    : <option selected={diary.genderAsString}>{diary.genderAsString}</option>}
+                            </select>
                         </div>
 
                         <div className="text-center">
