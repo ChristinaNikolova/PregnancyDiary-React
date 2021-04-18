@@ -37,6 +37,20 @@
             await this.diariesRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(string id, DateTime positiveTest, DateTime dueDate, string gender)
+        {
+            var genderAsEnumName = GetGender(gender);
+
+            var diary = await this.GetByIdAsync(id);
+
+            diary.PositiveTest = positiveTest;
+            diary.DueDate = dueDate;
+            diary.Gender = Enum.Parse<Gender>(genderAsEnumName);
+
+            this.diariesRepository.Update(diary);
+            await this.diariesRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             Diary diary = await this.GetByIdAsync(id);
@@ -68,20 +82,6 @@
                 .ToListAsync();
 
             return diaries;
-        }
-
-        public async Task UpdateAsync(string id, DateTime positiveTest, DateTime dueDate, string gender)
-        {
-            var genderAsEnumName = GetGender(gender);
-
-            var diary = await this.GetByIdAsync(id);
-
-            diary.PositiveTest = positiveTest;
-            diary.DueDate = dueDate;
-            diary.Gender = Enum.Parse<Gender>(genderAsEnumName);
-
-            this.diariesRepository.Update(diary);
-            await this.diariesRepository.SaveChangesAsync();
         }
 
         public async Task ChangeBabyBornAsync(string id)

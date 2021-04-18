@@ -33,6 +33,18 @@
             await this.momentsRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(string id, DateTime date, string title, string content, string weekId)
+        {
+            var memory = await this.GetByIdAsync(id);
+
+            memory.Date = date;
+            memory.Title = title;
+            memory.Content = content;
+
+            this.momentsRepository.Update(memory);
+            await this.momentsRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var memory = await this.GetByIdAsync(id);
@@ -41,19 +53,6 @@
 
             this.momentsRepository.Update(memory);
             await this.momentsRepository.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<T>> GetAllCurrentWeekAsync<T>(string weekId)
-        {
-            var memories = await this.momentsRepository
-                .All()
-                .Where(m => m.WeekId == weekId)
-                .OrderBy(m => m.Date)
-                .ThenBy(m => m.Title)
-                .To<T>()
-                .ToListAsync();
-
-            return memories;
         }
 
         public async Task<T> GetDetailsAsync<T>(string id)
@@ -67,16 +66,17 @@
             return memory;
         }
 
-        public async Task UpdateAsync(string id, DateTime date, string title, string content, string weekId)
+        public async Task<IEnumerable<T>> GetAllCurrentWeekAsync<T>(string weekId)
         {
-            var memory = await this.GetByIdAsync(id);
+            var memories = await this.momentsRepository
+                .All()
+                .Where(m => m.WeekId == weekId)
+                .OrderBy(m => m.Date)
+                .ThenBy(m => m.Title)
+                .To<T>()
+                .ToListAsync();
 
-            memory.Date = date;
-            memory.Title = title;
-            memory.Content = content;
-
-            this.momentsRepository.Update(memory);
-            await this.momentsRepository.SaveChangesAsync();
+            return memories;
         }
 
         private async Task<Moment> GetByIdAsync(string id)

@@ -31,7 +31,7 @@
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllCurrentRecipeAsync<T>(string articleId)
+        public async Task<IEnumerable<T>> GetAllCurrentArticleAsync<T>(string articleId)
         {
             var comments = await this.commentsRepository
                 .All()

@@ -37,7 +37,7 @@
         {
             try
             {
-                var comments = await this.commentsService.GetAllCurrentRecipeAsync<CommentViewModel>(articleId);
+                var comments = await this.commentsService.GetAllCurrentArticleAsync<CommentViewModel>(articleId);
 
                 return this.Ok(comments);
             }

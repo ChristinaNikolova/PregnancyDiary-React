@@ -44,6 +44,22 @@
             await this.babiesRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(string id, string name, DateTime birthDate, string birthTime, string gender, double height, double weight, string picture, string diaryId)
+        {
+            var baby = await this.GetByIdAsync(id);
+
+            baby.Name = name;
+            baby.BirthDate = birthDate;
+            baby.BirthTime = birthTime;
+            baby.Gender = Enum.Parse<Gender>(gender);
+            baby.Height = height;
+            baby.Weight = weight;
+            baby.Picture = picture;
+
+            this.babiesRepository.Update(baby);
+            await this.babiesRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var baby = await this.GetByIdAsync(id);
@@ -66,22 +82,6 @@
                 .FirstOrDefaultAsync();
 
             return baby;
-        }
-
-        public async Task UpdateAsync(string id, string name, DateTime birthDate, string birthTime, string gender, double height, double weight, string picture, string diaryId)
-        {
-            var baby = await this.GetByIdAsync(id);
-
-            baby.Name = name;
-            baby.BirthDate = birthDate;
-            baby.BirthTime = birthTime;
-            baby.Gender = Enum.Parse<Gender>(gender);
-            baby.Height = height;
-            baby.Weight = weight;
-            baby.Picture = picture;
-
-            this.babiesRepository.Update(baby);
-            await this.babiesRepository.SaveChangesAsync();
         }
 
         private async Task<Baby> GetByIdAsync(string id)

@@ -40,6 +40,20 @@
             await this.articlesRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(string id, string title, string content, string categoryName, string picture)
+        {
+            var article = await this.GetByIdAsync(id);
+            var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
+
+            article.Title = title;
+            article.Content = content;
+            article.Picture = picture;
+            article.CategoryId = categoryId;
+
+            this.articlesRepository.Update(article);
+            await this.articlesRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var article = await this.GetByIdAsync(id);
@@ -48,6 +62,17 @@
 
             this.articlesRepository.Update(article);
             await this.articlesRepository.SaveChangesAsync();
+        }
+
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var article = await this.articlesRepository
+                .All()
+                .Where(a => a.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return article;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
@@ -73,17 +98,6 @@
                .ToListAsync();
 
             return articles;
-        }
-
-        public async Task<T> GetDetailsAsync<T>(string id)
-        {
-            var article = await this.articlesRepository
-                .All()
-                .Where(a => a.Id == id)
-                .To<T>()
-                .FirstOrDefaultAsync();
-
-            return article;
         }
 
         public async Task<string> GetIdByTitleAsync(string title)
@@ -151,20 +165,6 @@
                 .AnyAsync(a => a.Title.ToLower() == title.ToLower());
 
             return isTitleExisting;
-        }
-
-        public async Task UpdateAsync(string id, string title, string content, string categoryName, string picture)
-        {
-            var article = await this.GetByIdAsync(id);
-            var categoryId = await this.categoriesService.GetIdByNameAsync(categoryName);
-
-            article.Title = title;
-            article.Content = content;
-            article.Picture = picture;
-            article.CategoryId = categoryId;
-
-            this.articlesRepository.Update(article);
-            await this.articlesRepository.SaveChangesAsync();
         }
 
         private async Task<Article> GetByIdAsync(string id)

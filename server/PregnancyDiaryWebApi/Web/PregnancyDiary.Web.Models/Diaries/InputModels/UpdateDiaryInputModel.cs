@@ -1,10 +1,13 @@
 ﻿namespace PregnancyDiary.Web.Models.Diaries.InputModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     using PregnancyDiary.Data.Models;
     using PregnancyDiary.Services.Mapping;
 
     public class UpdateDiaryInputModel : CreateDiaryInputModel, IMapFrom<Diary>
     {
+        [Required]
         public string Id { get; set; }
 
         public string FormattedPositiveTest

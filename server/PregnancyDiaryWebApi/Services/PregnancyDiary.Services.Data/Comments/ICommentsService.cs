@@ -5,7 +5,7 @@
 
     public interface ICommentsService
     {
-        Task<IEnumerable<T>> GetAllCurrentRecipeAsync<T>(string articleId);
+        Task<IEnumerable<T>> GetAllCurrentArticleAsync<T>(string articleId);
 
         Task CreateAsync(string content, string articleId, string userId);
     }

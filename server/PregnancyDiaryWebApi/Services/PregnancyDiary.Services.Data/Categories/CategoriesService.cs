@@ -30,6 +30,17 @@
             await this.categoriesRepository.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(string id, string name, string picture)
+        {
+            var category = await this.GetCategoryByIdAsync(id);
+
+            category.Name = name;
+            category.Picture = picture;
+
+            this.categoriesRepository.Update(category);
+            await this.categoriesRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var category = await this.GetCategoryByIdAsync(id);
@@ -38,6 +49,17 @@
 
             this.categoriesRepository.Update(category);
             await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var category = await this.categoriesRepository
+                  .All()
+                  .Where(c => c.Id == id)
+                  .To<T>()
+                  .FirstOrDefaultAsync();
+
+            return category;
         }
 
         public async Task<IEnumerable<T>> GetAllForAdminAsync<T>()
@@ -75,17 +97,6 @@
             return categories;
         }
 
-        public async Task<T> GetDetailsAsync<T>(string id)
-        {
-            var category = await this.categoriesRepository
-                  .All()
-                  .Where(c => c.Id == id)
-                  .To<T>()
-                  .FirstOrDefaultAsync();
-
-            return category;
-        }
-
         public async Task<string> GetIdByNameAsync(string categoryName)
         {
             var categoryId = await this.categoriesRepository
@@ -115,17 +126,6 @@
                 .AnyAsync(c => c.Name.ToLower() == name.ToLower());
 
             return isAlreadyExisting;
-        }
-
-        public async Task UpdateAsync(string id, string name, string picture)
-        {
-            var category = await this.GetCategoryByIdAsync(id);
-
-            category.Name = name;
-            category.Picture = picture;
-
-            this.categoriesRepository.Update(category);
-            await this.categoriesRepository.SaveChangesAsync();
         }
 
         private async Task<Category> GetCategoryByIdAsync(string id)

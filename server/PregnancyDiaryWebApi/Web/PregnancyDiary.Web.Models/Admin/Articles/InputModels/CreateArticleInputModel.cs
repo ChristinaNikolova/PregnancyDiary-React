@@ -17,6 +17,7 @@
         [Required]
         public string Picture { get; set; }
 
+        [Required]
         public string CategoryName { get; set; }
     }
 }
