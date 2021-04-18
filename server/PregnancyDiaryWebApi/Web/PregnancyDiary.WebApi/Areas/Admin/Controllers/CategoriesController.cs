@@ -125,13 +125,13 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<CategoryUpdateInputModel>> CategoryForUpdate(string id)
+        public async Task<ActionResult<UpdateCategoryInputModel>> CategoryForUpdate(string id)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {
                 try
                 {
-                    var category = await this.categoriesService.GetDetailsAsync<CategoryUpdateInputModel>(id);
+                    var category = await this.categoriesService.GetDetailsAsync<UpdateCategoryInputModel>(id);
 
                     return this.Ok(category);
                 }
@@ -152,7 +152,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Update(CategoryUpdateInputModel input)
+        public async Task<ActionResult> Update(UpdateCategoryInputModel input)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {

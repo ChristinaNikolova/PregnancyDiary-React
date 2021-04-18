@@ -39,6 +39,8 @@ const api = {
     createMemory: `${memoryUrl}/create`,
     getAllMemoriesCurrentWeek: `${memoryUrl}/all`,
     removeMemory: `${memoryUrl}/delete`,
+    updateMemory: `${memoryUrl}/update`,
+    getMemoryDetails: `${memoryUrl}/details`,
     getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,

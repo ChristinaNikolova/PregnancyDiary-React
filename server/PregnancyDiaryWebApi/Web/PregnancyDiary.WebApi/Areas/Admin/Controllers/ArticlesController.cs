@@ -125,13 +125,13 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<ArticleUpdateInputModel>> ArticleForUpdate(string id)
+        public async Task<ActionResult<UpdateArticleInputModel>> ArticleForUpdate(string id)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {
                 try
                 {
-                    var article = await this.articlesService.GetDetailsAsync<ArticleUpdateInputModel>(id);
+                    var article = await this.articlesService.GetDetailsAsync<UpdateArticleInputModel>(id);
 
                     return this.Ok(article);
                 }
@@ -152,7 +152,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Update(ArticleUpdateInputModel input)
+        public async Task<ActionResult> Update(UpdateArticleInputModel input)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {

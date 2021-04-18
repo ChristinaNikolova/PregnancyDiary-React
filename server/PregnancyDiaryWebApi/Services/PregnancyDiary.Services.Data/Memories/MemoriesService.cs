@@ -35,9 +35,7 @@
 
         public async Task DeleteAsync(string id)
         {
-            var memory = await this.momentsRepository
-                .All()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var memory = await this.GetByIdAsync(id);
 
             memory.IsDeleted = true;
 
@@ -56,6 +54,36 @@
                 .ToListAsync();
 
             return memories;
+        }
+
+        public async Task<T> GetDetailsAsync<T>(string id)
+        {
+            var memory = await this.momentsRepository
+                .All()
+                .Where(m => m.Id == id)
+                .To<T>()
+                .FirstOrDefaultAsync();
+
+            return memory;
+        }
+
+        public async Task UpdateAsync(string id, DateTime date, string title, string content, string weekId)
+        {
+            var memory = await this.GetByIdAsync(id);
+
+            memory.Date = date;
+            memory.Title = title;
+            memory.Content = content;
+
+            this.momentsRepository.Update(memory);
+            await this.momentsRepository.SaveChangesAsync();
+        }
+
+        private async Task<Moment> GetByIdAsync(string id)
+        {
+            return await this.momentsRepository
+                .All()
+                .FirstOrDefaultAsync(m => m.Id == id);
         }
     }
 }

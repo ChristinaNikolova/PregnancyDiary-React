@@ -31,3 +31,27 @@ export const remove = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getDetails = (id) => {
+    const url = `${api.getMemoryDetails}/${id}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
+
+export const update = (id, date, title, content, weekId) => {
+    const memory = {
+        id,
+        date,
+        title,
+        content,
+        weekId
+    };
+
+    const url = `${api.updateMemory}`;
+
+    return requester(url, 'PUT', memory)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+};
