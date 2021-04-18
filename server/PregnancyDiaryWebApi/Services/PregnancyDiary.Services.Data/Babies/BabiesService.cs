@@ -44,6 +44,21 @@
             await this.babiesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            var baby = await this.babiesRepository
+                .All()
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            baby.IsDeleted = true;
+
+            var diaryId = baby.DiaryId;
+            await this.diariesService.ChangeBabyBornAsync(diaryId);
+
+            this.babiesRepository.Update(baby);
+            await this.babiesRepository.SaveChangesAsync();
+        }
+
         public async Task<T> GetDetailsAsync<T>(string diaryId)
         {
             var baby = await this.babiesRepository

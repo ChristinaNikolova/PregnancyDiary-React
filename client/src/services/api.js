@@ -45,6 +45,7 @@ const api = {
     updateMemory: `${memoryUrl}/update`,
     getMemoryDetails: `${memoryUrl}/details`,
     createBaby: `${babiesUrl}/create`,
+    removeBaby: `${babiesUrl}/delete`,
     getBabyDetails: `${babiesUrl}/details`,
     getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
     userFavArticles: `${usersUrl}/favourite`,

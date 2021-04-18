@@ -5,10 +5,19 @@
     border-style: solid;
     border-color: white;
 }
+
 .baby-wrapper .female {
     color: #EF93AE;
 }
 
-.baby-wrapper .male{
+.baby-wrapper .male {
     color: #7BA5F7;
+}
+
+.fa-child,
+.fa-birthday-cake,
+.fa-clock,
+.fa-weight,
+.fa-clipboard-check {
+    color: #19642E;
 }

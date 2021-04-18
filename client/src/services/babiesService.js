@@ -26,4 +26,12 @@ export const getDetails = (diaryId) => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
+};
+
+export const remove = (id) => {
+    const url = `${api.removeBaby}/${id}`;
+
+    return requester(url, 'DELETE')
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }

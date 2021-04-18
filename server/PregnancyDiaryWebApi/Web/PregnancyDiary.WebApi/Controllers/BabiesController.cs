@@ -67,5 +67,30 @@
                 });
             }
         }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(string id)
+        {
+            try
+            {
+                await this.babiesService.DeleteAsync(id);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Deleted,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
     }
 }

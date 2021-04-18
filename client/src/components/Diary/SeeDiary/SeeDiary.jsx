@@ -10,14 +10,22 @@ import './SeeDiary.css';
 
 function SeeDiary({ match }) {
     const [diary, setDiary] = useState({});
+    const [hasToReload, setHasToReload] = useState(false);
     const diaryId = match.params.id;
 
     useEffect(() => {
         diariesService
             .getDiary(diaryId)
             .then(res => setDiary(res))
+            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, []);
+    }, [hasToReload]);
+
+    const reload = () => {
+        setTimeout(() => {
+            setHasToReload(true)
+        }, 100);
+    }
 
     const getGender = () => {
         if (diary.genderAsString === 'Girl') {
@@ -42,7 +50,7 @@ function SeeDiary({ match }) {
                 {getGender()}
             </div>
             {diary.isBabyBorn
-                ? <SeeBaby diaryId={diaryId} />
+                ? <SeeBaby diaryId={diaryId} clickHandler={reload} />
                 : <p className="text-center custom-btn">
                     <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
