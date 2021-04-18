@@ -26,7 +26,7 @@ function SeeWeek({ match }) {
                     <span className="custom-font">Me</span>
                     <div><i className="fas fa-weight"></i> Weight: {week.myWeight} kg</div>
                     <div><i className="fas fa-hand-point-right"></i> Belly Size: {week.myBellySize} cm</div>
-                    <div><i class="fas fa-female"></i> Mood: {week.mood}</div>
+                    <div><i className="fas fa-female"></i> Mood: {week.mood}</div>
                 </div>
                 <div className="col-md-6"><img className="img-see-week" src="../../../74724521-baby-shower-greeting-card-with-babies-boy-and-girl.jpg" alt="pic-current-week"></img></div>
                 <div className="col-md-3 bold-font">
