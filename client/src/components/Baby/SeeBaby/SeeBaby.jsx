@@ -26,7 +26,7 @@ function SeeBaby({ diaryId, clickHandler }) {
                 }
                 toastr.success(data['message'], 'Success');
                 clickHandler();
-            })
+            });
     }
 
     return (
@@ -34,7 +34,7 @@ function SeeBaby({ diaryId, clickHandler }) {
             <hr />
             <h3 className="custom-font text-center">Baby is Born!</h3>
             <p className="text-center">
-                <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-warning mr-2" role="button">Update</button></Link>
+                <Link to={`/diary/baby/update/${baby.id}/${diaryId}`}><button className="btn btn-warning mr-2" role="button">Update</button></Link>
                 <button className="btn btn-danger" role="button" onClick={remove}>Delete</button>
             </p>
             <div className="row text-center">

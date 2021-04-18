@@ -18,6 +18,7 @@ import CreateDiary from './components/Diary/CreateDiary/CreateDiary.jsx';
 import SeeDiary from './components/Diary/SeeDiary/SeeDiary.jsx';
 import UpdateDiary from './components/Diary/UpdateDiary/UpdateDiary.jsx';
 
+import UpdateBaby from './components/Baby/UpdateBaby/UpdateBaby.jsx';
 import CreateBaby from './components/Baby/CreateBaby/CreateBaby.jsx';
 
 import AddWeek from './components/Week/AddWeek/AddWeek.jsx';
@@ -81,7 +82,8 @@ function App() {
         <Route path='/diary/week/update/:id' exact component={UpdateWeek}></Route>
         <Route path='/diary/week/see/:id' exact component={SeeWeek}></Route>
 
-        <Route path='/diary/baby/create/:id' component={CreateBaby}></Route>
+        <Route path='/diary/baby/create/:id' exact component={CreateBaby}></Route>
+        <Route path='/diary/baby/update/:babyId/:diaryId' exact component={UpdateBaby}></Route>
 
         <Route path='/week/memory/create/:id' exact component={CreateMemory}></Route>
         <Route path='/week/memory/update/:id' exact component={UpdateMemory}></Route>

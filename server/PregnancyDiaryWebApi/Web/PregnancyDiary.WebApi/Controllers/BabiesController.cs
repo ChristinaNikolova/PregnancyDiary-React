@@ -55,9 +55,9 @@
         {
             try
             {
-                var diary = await this.babiesService.GetDetailsAsync<BabyDetailsViewModel>(diaryId);
+                var baby = await this.babiesService.GetDetailsAsync<BabyDetailsViewModel>(diaryId);
 
-                return this.Ok(diary);
+                return this.Ok(baby);
             }
             catch (Exception)
             {
@@ -82,6 +82,53 @@
                 return this.Ok(new
                 {
                     Message = Messages.Success.Deleted,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<UpdateBabyInputModel>> Update(string id)
+        {
+            try
+            {
+                var baby = await this.babiesService.GetDetailsAsync<UpdateBabyInputModel>(id);
+
+                return this.Ok(baby);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update(UpdateBabyInputModel input)
+        {
+            try
+            {
+                await this.babiesService.UpdateAsync(input.Id, input.Name, input.BirthDate, input.BirthTime, input.Gender, input.Height, input.Weight, input.Picture, input.DiaryId);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Updated,
                 });
             }
             catch (Exception)

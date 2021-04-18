@@ -1,20 +1,20 @@
-.create-baby-wrapper {
+.update-baby-wrapper {
     background-color: #FFE2E0;
     height: 1400px;
 }
 
-.create-baby-wrapper button {
+.update-baby-wrapper button {
     background-color: #EF93AE;
     border-color: #EF93AE;
     color: white;
 }
 
-.create-baby-wrapper button:hover {
+.update-baby-wrapper button:hover {
     background-color: #7BA5F7;
     border-color: #7BA5F7;
     color: white;
 }
 
-.create-baby-form {
+.update-baby-form {
     justify-content: center;
 }

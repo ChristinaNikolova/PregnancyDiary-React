@@ -46,12 +46,12 @@ function UpdateDiary({ match, history }) {
                 });
         }
     }
-    
+
     return (
         <div className="update-diary-wrapper">
             <h1 className="custom-font text-center">Update Diary</h1>
             <hr />
-            <div className="row Update-diary-form">
+            <div className="row update-diary-form">
                 <div className="col-lg-8">
                     <form className="mt-2" onSubmit={onUpdateDiarySubmitHandler}>
                         <Input
@@ -70,12 +70,13 @@ function UpdateDiary({ match, history }) {
 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor="gender">Gender</label>
-                            <select className="form-control" id="gender">
-                                {genders.map(g => <option key={g} value={g}>{g}</option>)}
-                                {diary.genderAsString === 'DontKnow'
-                                    ? <option selected value={diary.genderAsString}>I don't know yet</option>
-                                    : <option selected value={diary.genderAsString}>{diary.genderAsString}</option>}
-                            </select>
+                            {diary.genderAsString === 'DontKnow'
+                                ? <select className="form-control" id="gender" value="I don't know yet">
+                                    {genders.map(g => <option key={g} value={g}>{g}</option>)}
+                                </select>
+                                : <select className="form-control" id="gender" value={diary.genderAsString}>
+                                    {genders.map(g => <option key={g} value={g}>{g}</option>)}
+                                </select>}
                         </div>
 
                         <div className="text-center">
