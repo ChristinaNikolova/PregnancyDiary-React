@@ -8,6 +8,7 @@ const diariesUrl = `${baseUrl}/diaries`;
 const weeksUrl = `${baseUrl}/weeks`;
 const usersUrl = `${baseUrl}/users`;
 const memoryUrl = `${baseUrl}/memories`;
+const babiesUrl = `${baseUrl}/babies`;
 
 const adminBaseUrl = `${baseUrl}/admin`;
 const adminArticleUrl = `${adminBaseUrl}/articles`;
@@ -43,6 +44,7 @@ const api = {
     removeMemory: `${memoryUrl}/delete`,
     updateMemory: `${memoryUrl}/update`,
     getMemoryDetails: `${memoryUrl}/details`,
+    createBaby: `${babiesUrl}/create`,
     getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
     userFavArticles: `${usersUrl}/favourite`,
     adminAllCategories: `${adminCategoryUrl}/all`,

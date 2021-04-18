@@ -84,6 +84,17 @@
             await this.diariesRepository.SaveChangesAsync();
         }
 
+        public async Task ChangeBabyBornAsync(string id)
+        {
+            var diary = await this.GetByIdAsync(id);
+
+            var isBabyBorn = diary.IsBabyBorn;
+            diary.IsBabyBorn = !isBabyBorn;
+
+            this.diariesRepository.Update(diary);
+            await this.diariesRepository.SaveChangesAsync();
+        }
+
         private static string GetGender(string gender)
         {
             var genderAsEnumName = gender;

@@ -29,6 +29,8 @@ function SeeDiary({ match }) {
             return <div className="col-md-4"><i className="fas fa-question mr-1"></i><span className="ml-1 mr-1 custom-font bold">Gender:</span><span>I don't know yet</span></div>
         }
     }
+
+    console.log(diary);
     
     return (
         <div className="my-diary-wrapper">
@@ -43,7 +45,7 @@ function SeeDiary({ match }) {
             {diary.isBabyBorn
                 ? <div>Baby born</div>
                 : <p className="text-center custom-btn">
-                    <Link to='/user/diaries'><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
+                    <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
                 </p>}
             <WeeksList diaryId={diaryId} />

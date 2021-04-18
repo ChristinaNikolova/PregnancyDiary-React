@@ -19,7 +19,6 @@ function AddWeek({ match, history }) {
 
     const onAddWeekSubmitHandler = (e) => {
         e.preventDefault();
-        debugger;
 
         const number = e.target.number.value;
         const myWeight = e.target.myWeight.value;

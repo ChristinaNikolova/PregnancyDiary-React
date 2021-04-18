@@ -15,5 +15,7 @@
         Task<T> GetDetailsAsync<T>(string id);
 
         Task UpdateAsync(string id, DateTime positiveTest, DateTime dueDate, string gender);
+
+        Task ChangeBabyBornAsync(string id);
     }
 }

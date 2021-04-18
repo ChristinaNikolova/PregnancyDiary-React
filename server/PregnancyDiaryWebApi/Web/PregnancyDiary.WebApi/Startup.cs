@@ -21,6 +21,7 @@
     using PregnancyDiary.Data.Seeding;
     using PregnancyDiary.Services.Data.ArticleLikes;
     using PregnancyDiary.Services.Data.Articles;
+    using PregnancyDiary.Services.Data.Babies;
     using PregnancyDiary.Services.Data.Categories;
     using PregnancyDiary.Services.Data.Comments;
     using PregnancyDiary.Services.Data.Diaries;
@@ -105,6 +106,7 @@
             services.AddTransient<IDiariesService, DiariesService>();
             services.AddTransient<IWeeksService, WeeksService>();
             services.AddTransient<IMemoriesService, MemoriesService>();
+            services.AddTransient<IBabiesService, BabiesService>();
 
             services.AddControllers();
 
