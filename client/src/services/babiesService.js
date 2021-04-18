@@ -19,3 +19,11 @@ export const create = (name, birthDate, birthTime, gender, weight, height, pictu
         .then(res => res.json())
         .catch(err => console.error(err));
 };
+
+export const getDetails = (diaryId) => {
+    const url = `${api.getBabyDetails}/${diaryId}`;
+
+    return requester(url, 'GET')
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

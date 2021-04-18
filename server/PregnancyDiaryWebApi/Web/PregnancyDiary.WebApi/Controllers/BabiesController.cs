@@ -8,6 +8,7 @@
     using PregnancyDiary.Common;
     using PregnancyDiary.Services.Data.Babies;
     using PregnancyDiary.Web.Models.Babies.InputModels;
+    using PregnancyDiary.Web.Models.Babies.ViewModels;
     using PregnancyDiary.Web.Models.Common.ViewModels;
 
     [Route("api/[controller]/[action]")]
@@ -35,6 +36,28 @@
                 {
                     Message = Messages.Success.Added,
                 });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+        }
+
+        [HttpGet("{diaryId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<BabyDetailsViewModel>> Details(string diaryId)
+        {
+            try
+            {
+                var diary = await this.babiesService.GetDetailsAsync<BabyDetailsViewModel>(diaryId);
+
+                return this.Ok(diary);
             }
             catch (Exception)
             {

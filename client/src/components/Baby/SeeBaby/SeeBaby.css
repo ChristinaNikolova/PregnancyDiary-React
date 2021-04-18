@@ -1,0 +1,14 @@
+.baby-born-pic {
+    max-width: 30%;
+    border-radius: 20%;
+    border-width: thick;
+    border-style: solid;
+    border-color: white;
+}
+.baby-wrapper .female {
+    color: #EF93AE;
+}
+
+.baby-wrapper .male{
+    color: #7BA5F7;
+}

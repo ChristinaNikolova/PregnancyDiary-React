@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as diariesService from '../../../services/diariesService.js';
+import SeeBaby from '../../Baby/SeeBaby/SeeBaby.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
 
@@ -29,7 +30,7 @@ function SeeDiary({ match }) {
             return <div className="col-md-4"><i className="fas fa-question mr-1"></i><span className="ml-1 mr-1 custom-font bold">Gender:</span><span>I don't know yet</span></div>
         }
     }
-    
+
     return (
         <div className="my-diary-wrapper">
             <h1 className="text-center pt-2 custom-font">My Diary</h1>
@@ -41,7 +42,7 @@ function SeeDiary({ match }) {
                 {getGender()}
             </div>
             {diary.isBabyBorn
-                ? <div>Baby born</div>
+                ? <SeeBaby diaryId={diaryId} />
                 : <p className="text-center custom-btn">
                     <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
