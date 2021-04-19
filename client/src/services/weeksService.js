@@ -36,7 +36,7 @@ export const remove = (id) => {
 };
 
 export const getDetails = (id) => {
-    const url = `${api.getWeekDetails}/${id}`;
+    const url = `${api.updateWeek}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())

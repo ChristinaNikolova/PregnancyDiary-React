@@ -36,7 +36,7 @@ export const remove = (id) => {
 };
 
 export const getCategoryForUpdate = (id) => {
-    const url = `${api.adminGetCategoryForUpdate}/${id}`;
+    const url = `${api.adminUpdateCategory}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())

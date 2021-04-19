@@ -42,7 +42,7 @@ export const remove = (id) => {
     return requester(url, 'DELETE')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const update = (id, name, birthDate, birthTime, gender, weight, height, picture, diaryId) => {
     const baby = {
@@ -62,4 +62,4 @@ export const update = (id, name, birthDate, birthTime, gender, weight, height, p
     return requester(url, 'PUT', baby)
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};

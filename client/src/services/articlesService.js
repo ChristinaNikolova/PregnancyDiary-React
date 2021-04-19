@@ -89,7 +89,7 @@ export const create = (title, content, categoryName, picture) => {
 };
 
 export const getArticleForUpdate = (id) => {
-    const url = `${api.adminGetArticleForUpdate}/${id}`;
+    const url = `${api.adminUpdateArticle}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())

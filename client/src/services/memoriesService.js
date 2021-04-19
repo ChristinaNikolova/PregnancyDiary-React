@@ -33,7 +33,7 @@ export const remove = (id) => {
 };
 
 export const getDetails = (id) => {
-    const url = `${api.getMemoryDetails}/${id}`;
+    const url = `${api.updateMemory}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())

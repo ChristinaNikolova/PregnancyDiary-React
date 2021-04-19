@@ -17,6 +17,7 @@ const adminCategoryUrl = `${adminBaseUrl}/categories`;
 const api = {
     register: `${accountUrl}/register`,
     login: `${accountUrl}/login`,
+
     allArticles: `${articlesUrl}/all`,
     allArticlesCurrentCategory: `${articlesUrl}/byCategory`,
     searchArticles: `${articlesUrl}/search`,
@@ -25,39 +26,43 @@ const api = {
     articleDislike: `${articlesUrl}/dislike`,
     articleLike: `${articlesUrl}/like`,
     articlesCountByCategories: `${categoriesUrl}/getArticlesCountByCategories`,
+
     categoryNameById: `${categoriesUrl}/getNameById`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
+
     commentsCurrentArticle: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
+
     createDiary: `${diariesUrl}/create`,
     removeDiary: `${diariesUrl}/delete`,
     updateDiary: `${diariesUrl}/update`,
-    diaryDetailsForUpdate: `${diariesUrl}/update`,
     diaryDetails: `${diariesUrl}/details`,
-    userDiaries: `${usersUrl}/diaries`,
+    
     createWeek: `${weeksUrl}/create`,
     removeWeek: `${weeksUrl}/delete`,
     updateWeek: `${weeksUrl}/update`,
-    getWeekDetails: `${weeksUrl}/update`,
+    getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
+    
     createMemory: `${memoryUrl}/create`,
     getAllMemoriesCurrentWeek: `${memoryUrl}/all`,
     removeMemory: `${memoryUrl}/delete`,
     updateMemory: `${memoryUrl}/update`,
-    getMemoryDetails: `${memoryUrl}/update`,
+    
     createBaby: `${babiesUrl}/create`,
     updateBaby: `${babiesUrl}/update`,
     removeBaby: `${babiesUrl}/delete`,
     getBabyDetails: `${babiesUrl}/details`,
-    getAllCurrentDiary: `${weeksUrl}/allCurrentDiary`,
+    
     userFavArticles: `${usersUrl}/favourite`,
+    userDiaries: `${usersUrl}/diaries`,
+
     adminAllCategories: `${adminCategoryUrl}/all`,
     removeCategory: `${adminCategoryUrl}/delete`,
-    adminGetCategoryForUpdate: `${adminCategoryUrl}/update`,
     adminUpdateCategory: `${adminCategoryUrl}/update`,
     adminCreateCategory: `${adminCategoryUrl}/create`,
+    
     adminAllArticles: `${adminArticleUrl}/all`,
     removeArticle: `${adminArticleUrl}/delete`,
-    adminGetArticleForUpdate: `${adminArticleUrl}/update`,
     adminUpdateArticle: `${adminArticleUrl}/update`,
     adminCreateArticle: `${adminArticleUrl}/create`,
 }
