@@ -5,6 +5,7 @@ import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/Ad
 import Input from '../../../shared/Input/Input.jsx';
 import * as articlesService from '../../../../services/articlesService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
+import * as authService from '../../../../services/authService.js';
 import * as validator from '../../../../utils/validators/articleValidator.js';
 
 import './UpdateArticle.css';
@@ -18,6 +19,11 @@ function UpdateArticle({ match, history }) {
     const articleId = match.params.id;
 
     useEffect(() => {
+        if (!authService.isAdmin()) {
+            history.push('/');
+            return;
+        };
+
         articlesService
             .getArticleForUpdate(articleId)
             .then(res => setArticle(res))

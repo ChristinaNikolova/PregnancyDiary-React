@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
+import * as authService from '../../../../services/authService.js';
 import CategorySingleRow from '../CategorySingleRow/CategorySingleRow.jsx';
 
 import './AllCategories.css';
 
-function AllCategories() {
+function AllCategories({ history }) {
     const [categories, setCategories] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAdmin()) {
+            history.push('/');
+            return;
+        };
+
         categoriesService
             .getAllForAdministration()
             .then(res => setCategories(res))

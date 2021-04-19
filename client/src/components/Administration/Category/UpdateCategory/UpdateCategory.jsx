@@ -4,6 +4,7 @@ import toastr from 'toastr';
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 import Input from '../../../shared/Input/Input.jsx';
 import * as categoriesService from '../../../../services/categoriesService.js';
+import * as authService from '../../../../services/authService.js';
 import * as validator from '../../../../utils/validators/categoryValidator.js';
 
 import './UpdateCategory.css';
@@ -15,6 +16,11 @@ function UpdateCategory({ match, history }) {
     const categoryId = match.params.id;
 
     useEffect(() => {
+        if (!authService.isAdmin()) {
+            history.push('/');
+            return;
+        };
+
         categoriesService
             .getCategoryForUpdate(categoryId)
             .then(res => setCategory(res))

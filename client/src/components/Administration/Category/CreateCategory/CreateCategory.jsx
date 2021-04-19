@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 import Input from '../../../shared/Input/Input.jsx';
 import * as validator from '../../../../utils/validators/categoryValidator.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
+import * as authService from '../../../../services/authService.js';
 
 import './CreateCategory.css';
 
 function CreateCategory({ history }) {
+    useEffect(() => {
+        if (!authService.isAdmin()) {
+            history.push('/');
+            return;
+        }
+    }, []);
+
     const [errorName, setErrorName] = useState('');
     const [errorPicture, setErrorPicture] = useState('');
 

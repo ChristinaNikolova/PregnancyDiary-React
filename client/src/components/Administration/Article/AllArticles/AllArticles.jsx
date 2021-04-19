@@ -2,14 +2,20 @@ import { useState, useEffect } from 'react';
 
 import ArticleSingleRow from '../ArticleSingleRow/ArticleSingleRow.jsx';
 import * as articlesService from '../../../../services/articlesService.js';
+import * as authService from '../../../../services/authService.js';
 
 import './AllArticles.css';
 
-function AllArticles() {
+function AllArticles({ history }) {
     const [articles, setArticles] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAdmin()) {
+            history.push('/');
+            return;
+        };
+
         articlesService
             .allForAdmin()
             .then(res => setArticles(res))
