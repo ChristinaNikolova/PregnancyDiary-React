@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/memoryValidator.js';
 import * as memoriesService from '../../../services/memoriesService.js';
+import * as authService from '../../../services/authService.js';
 
 import './CreateMemory.css';
 
 function CreateMemory({ match, history }) {
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+    }, []);
+
     const [errorDate, setErrorDate] = useState('');
     const [errorTitle, setErrorTitle] = useState('');
     const [errorContent, setErrorContent] = useState('');

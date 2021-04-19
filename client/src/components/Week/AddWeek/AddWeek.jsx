@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/weekValidator.js';
 import * as weeksService from '../../../services/weeksService.js';
+import * as authService from '../../../services/authService.js';
 
 import './AddWeek.css';
 
 function AddWeek({ match, history }) {
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+    }, []);
+
     const [errorNumber, setErrorNumber] = useState('');
     const [errorMyWeight, setErrorMyWeight] = useState('');
     const [errorMyBellySize, setErrorMyBellySize] = useState('');

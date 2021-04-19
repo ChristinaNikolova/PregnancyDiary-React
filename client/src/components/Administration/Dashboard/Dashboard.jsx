@@ -10,7 +10,7 @@ function Dashboard({ history }) {
         if (!authService.isAdmin()) {
             history.push('/');
             return;
-        }
+        };
     }, []);
 
     return (

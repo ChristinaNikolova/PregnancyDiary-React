@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
 
 import * as usersService from '../../../services/usersService.js';
+import * as authService from '../../../services/authService.js';
 import UserDiaryRow from '../UserDiaryRow/UserDiaryRow.jsx';
 
 import './UserDiariesList.css';
 
-function UserDiariesList() {
+function UserDiariesList({ history }) {
     const [diaries, setDiaries] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         usersService
             .getUserDiaries()
             .then(res => setDiaries(res))

@@ -11,7 +11,7 @@ function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
         toastr.success('Successful logout', 'Success');
         history.push('/');
         clickHandler();
-    }
+    };
 
     return (
         <div className="header-wrapper">

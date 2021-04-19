@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as babiesService from '../../../services/babiesService.js';
+import * as authService from '../../../services/authService.js';
 
 import './SeeBaby.css';
 
@@ -10,6 +11,10 @@ function SeeBaby({ diaryId, clickHandler }) {
     const [baby, setBaby] = useState({});
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            return;
+        };
+
         babiesService
             .getDetails(diaryId)
             .then(res => setBaby(res))

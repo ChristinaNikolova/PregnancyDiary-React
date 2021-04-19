@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import * as memoriesService from '../../../services/memoriesService.js';
+import * as authService from '../../../services/authService.js';
 import SingleMemory from '../SingleMemory/SingleMemory.jsx';
 
 import './MemoriesList.css';
@@ -10,6 +11,10 @@ function MemoriesList({ weekId }) {
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            return;
+        };
+
         memoriesService
             .allCurrentWeek(weekId)
             .then(res => setMemories(res))

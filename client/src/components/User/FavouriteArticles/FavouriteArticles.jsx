@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
 
 import * as usersService from '../../../services/usersService.js';
+import * as authService from '../../../services/authService.js';
 import FavouriteArticlesRow from '../FavouriteArticlesRow/FavouriteArticlesRow.jsx';
 
 import './FavouriteArticles.css';
 
-function FavouriteArticles() {
+function FavouriteArticles({ history }) {
     const [favArticles, setFavArticles] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         usersService
             .getFavouriteArticles()
             .then(res => setFavArticles(res))

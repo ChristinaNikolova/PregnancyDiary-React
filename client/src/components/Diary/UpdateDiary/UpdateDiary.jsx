@@ -5,6 +5,7 @@ import Input from '../../shared/Input/Input.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import * as validator from '../../../utils/validators/diaryValidator.js';
 import * as diariesService from '../../../services/diariesService.js';
+import * as authService from '../../../services/authService.js';
 
 import './UpdateDiary.css';
 
@@ -16,6 +17,11 @@ function UpdateDiary({ match, history }) {
     const diaryId = match.params.id;
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         diariesService
             .getDiaryForUpdate(diaryId)
             .then(res => setDiary(res))

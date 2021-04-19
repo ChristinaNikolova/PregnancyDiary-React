@@ -14,7 +14,7 @@ function CreateCategory({ history }) {
         if (!authService.isAdmin()) {
             history.push('/');
             return;
-        }
+        };
     }, []);
 
     const [errorName, setErrorName] = useState('');

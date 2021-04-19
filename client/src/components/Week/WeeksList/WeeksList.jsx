@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as weeksService from '../../../services/weeksService.js';
+import * as authService from '../../../services/authService.js';
 import SingleWeek from '../SingleWeek/SingleWeek.jsx';
 
 import './WeeksList.css';
@@ -10,6 +11,10 @@ function WeeksList({ diaryId }) {
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            return;
+        };
+
         weeksService
             .getAllCurrentDiary(diaryId)
             .then(res => setWeeks(res))

@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import BabyBornPicture from '../../shared/BabyBornPicture/BabyBornPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/babyValidators.js';
 import * as babiesService from '../../../services/babiesService.js';
+import * as authService from '../../../services/authService.js';
 
 import './CreateBaby.css';
 
 function CreateBaby({ match, history }) {
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+    }, []);
+
     const [errorName, setErrorName] = useState('');
     const [errorBirthDate, setErrorBirthDate] = useState('');
     const [errorBirthTime, setErrorBirthTime] = useState('');

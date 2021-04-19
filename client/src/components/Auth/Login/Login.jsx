@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import toastr from 'toastr';
 
@@ -10,6 +10,13 @@ import * as authService from '../../../services/authService.js';
 import './Login.css';
 
 function Login({ history, clickHandler }) {
+    useEffect(() => {
+        if (authService.isAuthenticated()) {
+            history.push('/');
+            return;
+        };
+    }, []);
+
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
 

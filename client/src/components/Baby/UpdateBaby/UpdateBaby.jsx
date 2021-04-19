@@ -5,6 +5,7 @@ import BabyBornPicture from '../../shared/BabyBornPicture/BabyBornPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/babyValidators.js';
 import * as babiesService from '../../../services/babiesService.js';
+import * as authService from '../../../services/authService';
 
 import './UpdateBaby.css';
 
@@ -21,6 +22,11 @@ function UpdateBaby({ match, history }) {
     const genders = ['Girl', 'Boy'];
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         babiesService
             .getDetailsForUpdate(diaryId)
             .then(res => setBaby(res))

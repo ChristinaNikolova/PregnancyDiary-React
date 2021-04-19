@@ -4,6 +4,7 @@ import toastr from 'toastr';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as weeksService from '../../../services/weeksService.js';
+import * as authService from '../../../services/authService.js';
 import * as validator from '../../../utils/validators/weekValidator.js'
 
 import './UpdateWeek.css';
@@ -19,6 +20,11 @@ function UpdateWeek({ match, history }) {
     const moods = ['Happy', 'Sad', 'Surprised', 'Melancholic', 'Angry'];
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         weeksService
             .getDetails(weekId)
             .then(res => setWeek(res))

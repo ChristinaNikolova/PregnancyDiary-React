@@ -2,18 +2,24 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as diariesService from '../../../services/diariesService.js';
+import * as authService from '../../../services/authService.js';
 import SeeBaby from '../../Baby/SeeBaby/SeeBaby.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
 
 import './SeeDiary.css';
 
-function SeeDiary({ match }) {
+function SeeDiary({ match, history }) {
     const [diary, setDiary] = useState({});
     const [hasToReload, setHasToReload] = useState(false);
     const diaryId = match.params.id;
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         diariesService
             .getDiary(diaryId)
             .then(res => setDiary(res))

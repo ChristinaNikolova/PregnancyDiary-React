@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as articlesService from '../../../services/articlesService.js';
+import * as authService from '../../../services/authService.js';
 import CommentsListCurrentArticle from '../../Comment/CommentsListCurrentArticle/CommentsListCurrentArticle.jsx';
 
 import './ArticleDetails.css';
 
-function ArticleDetails({ match }) {
+function ArticleDetails({ match, history }) {
     const [article, setArticle] = useState({});
     const [hasToReload, setHasToReload] = useState(false);
     const articleId = match.params.id;
 
     useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+
         articlesService
             .details(articleId)
             .then(res => setArticle(res))

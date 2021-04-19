@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
@@ -9,6 +9,13 @@ import * as authService from '../../../services/authService.js';
 import './Register.css';
 
 function Register({ history }) {
+    useEffect(() => {
+        if (authService.isAuthenticated()) {
+            history.push('/');
+            return;
+        };
+    }, []);
+
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
