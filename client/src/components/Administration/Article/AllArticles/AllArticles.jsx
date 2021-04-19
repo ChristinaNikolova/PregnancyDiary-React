@@ -41,7 +41,7 @@ function AllArticles() {
                         </tr>
                     </thead>
                     <tbody>
-                        {articles.map(a => <ArticleSingleRow
+                        {articles?.map(a => <ArticleSingleRow
                             key={a.id}
                             id={a.id}
                             title={a.title}

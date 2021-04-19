@@ -106,7 +106,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<UpdateDiaryInputModel>> DetailsForUpdate(string id)
+        public async Task<ActionResult<UpdateDiaryInputModel>> Update(string id)
         {
             try
             {

@@ -125,7 +125,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<UpdateCategoryInputModel>> CategoryForUpdate(string id)
+        public async Task<ActionResult<UpdateCategoryInputModel>> Update(string id)
         {
             if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             {

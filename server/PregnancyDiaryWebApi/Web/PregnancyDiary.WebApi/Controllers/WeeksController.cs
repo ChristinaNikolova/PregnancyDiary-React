@@ -109,7 +109,7 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<UpdateWeekInputModel>> Details(string id)
+        public async Task<ActionResult<UpdateWeekInputModel>> Update(string id)
         {
             try
             {
