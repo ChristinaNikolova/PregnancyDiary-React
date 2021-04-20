@@ -77,3 +77,13 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
     - Add your Connection String
 
     - Add your own secret (needed for generating JWT for authentication) in format: "JwtSettings": { "Secret": "Your secret here" }
+
+## :framed_picture: Screen Shoots
+
+![Home Page](https://res.cloudinary.com/dieu4mste/image/upload/v1618899013/home_page_ldbsho.png)
+![All Articles](https://res.cloudinary.com/dieu4mste/image/upload/v1618899013/all_articles_x8hpcn.png)
+![All Diaries](https://res.cloudinary.com/dieu4mste/image/upload/v1618899011/my_diaries_cczkgb.png)
+![Diary's Details](https://res.cloudinary.com/dieu4mste/image/upload/v1618899012/my_diary_details_q73gxy.png)
+![Add New Week](https://res.cloudinary.com/dieu4mste/image/upload/v1618899013/add_new_week_lv0bct.png)
+![Week's details](https://res.cloudinary.com/dieu4mste/image/upload/v1618899013/week_details_sudsm7.png)
+![Baby is Born](https://res.cloudinary.com/dieu4mste/image/upload/v1618899013/baby_is_born_ttehkh.png)
