@@ -10,13 +10,6 @@ import * as authService from '../../../services/authService.js';
 import './AddWeek.css';
 
 function AddWeek({ match, history }) {
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-    }, []);
-
     const [errorNumber, setErrorNumber] = useState('');
     const [errorMyWeight, setErrorMyWeight] = useState('');
     const [errorMyBellySize, setErrorMyBellySize] = useState('');
@@ -24,6 +17,13 @@ function AddWeek({ match, history }) {
     const [errorBabyHeight, setErrorBabyHeight] = useState('');
     const moods = ['Happy', 'Sad', 'Surprised', 'Melancholic', 'Angry'];
     const diaryId = match.params.id;
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+    }, []);
 
     const onAddWeekSubmitHandler = (e) => {
         e.preventDefault();

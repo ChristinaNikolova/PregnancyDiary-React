@@ -10,6 +10,9 @@ import * as authService from '../../../../services/authService.js';
 import './CreateCategory.css';
 
 function CreateCategory({ history }) {
+    const [errorName, setErrorName] = useState('');
+    const [errorPicture, setErrorPicture] = useState('');
+    
     useEffect(() => {
         if (!authService.isAdmin()) {
             history.push('/');
@@ -17,8 +20,6 @@ function CreateCategory({ history }) {
         };
     }, []);
 
-    const [errorName, setErrorName] = useState('');
-    const [errorPicture, setErrorPicture] = useState('');
 
     const onCreateCategorySubmitHandler = (e) => {
         e.preventDefault();

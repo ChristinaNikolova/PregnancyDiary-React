@@ -38,6 +38,7 @@ function SeeBaby({ diaryId, clickHandler }) {
         <div className="baby-wrapper">
             <hr />
             <h3 className="custom-font text-center">Baby is Born!</h3>
+            <h4 className="custom-font text-center">Welcome, {baby.name}!</h4>
             <p className="text-center">
                 <Link to={`/diary/baby/update/${baby.id}/${diaryId}`}><button className="btn btn-warning mr-2" role="button">Update</button></Link>
                 <button className="btn btn-danger" role="button" onClick={remove}>Delete</button>

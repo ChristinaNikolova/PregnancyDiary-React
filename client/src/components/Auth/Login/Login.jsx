@@ -10,6 +10,9 @@ import * as authService from '../../../services/authService.js';
 import './Login.css';
 
 function Login({ history, clickHandler }) {
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
+    
     useEffect(() => {
         if (authService.isAuthenticated()) {
             history.push('/');
@@ -17,8 +20,6 @@ function Login({ history, clickHandler }) {
         };
     }, []);
 
-    const [errorEmail, setErrorEmail] = useState('');
-    const [errorPassword, setErrorPassword] = useState('');
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();

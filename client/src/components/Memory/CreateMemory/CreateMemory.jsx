@@ -10,6 +10,11 @@ import * as authService from '../../../services/authService.js';
 import './CreateMemory.css';
 
 function CreateMemory({ match, history }) {
+    const [errorDate, setErrorDate] = useState('');
+    const [errorTitle, setErrorTitle] = useState('');
+    const [errorContent, setErrorContent] = useState('');
+    const weekId = match.params.id;
+
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
@@ -17,10 +22,6 @@ function CreateMemory({ match, history }) {
         };
     }, []);
 
-    const [errorDate, setErrorDate] = useState('');
-    const [errorTitle, setErrorTitle] = useState('');
-    const [errorContent, setErrorContent] = useState('');
-    const weekId = match.params.id;
 
     const onCreatMamorySubmitHandler = (e) => {
         e.preventDefault();

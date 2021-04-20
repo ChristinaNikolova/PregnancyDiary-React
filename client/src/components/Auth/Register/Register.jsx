@@ -9,6 +9,11 @@ import * as authService from '../../../services/authService.js';
 import './Register.css';
 
 function Register({ history }) {
+    const [errorUsername, setErrorUsername] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
+    const [errorPassword, setErrorPassword] = useState('');
+    const [errorRePassword, setErrorRePassword] = useState('');
+
     useEffect(() => {
         if (authService.isAuthenticated()) {
             history.push('/');
@@ -16,10 +21,6 @@ function Register({ history }) {
         };
     }, []);
 
-    const [errorUsername, setErrorUsername] = useState('');
-    const [errorEmail, setErrorEmail] = useState('');
-    const [errorPassword, setErrorPassword] = useState('');
-    const [errorRePassword, setErrorRePassword] = useState('');
 
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();

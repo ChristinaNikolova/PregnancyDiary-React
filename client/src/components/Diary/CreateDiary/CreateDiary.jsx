@@ -10,16 +10,16 @@ import * as authService from '../../../services/authService.js';
 import './CreateDiary.css';
 
 function CreateDiary({ history }) {
+    const [errorPositiveTest, setErrorPositiveTest] = useState('');
+    const [errorDueDate, setErrorDueDate] = useState('');
+    const genders = ['Girl', 'Boy', "I don't know yet", 'Surprice'];
+
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
             return;
         };
     }, []);
-
-    const [errorPositiveTest, setErrorPositiveTest] = useState('');
-    const [errorDueDate, setErrorDueDate] = useState('');
-    const genders = ['Girl', 'Boy', "I don't know yet", 'Surprice'];
 
     const onCreateDiarySubmitHandler = (e) => {
         e.preventDefault();

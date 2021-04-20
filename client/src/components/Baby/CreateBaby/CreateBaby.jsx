@@ -10,13 +10,6 @@ import * as authService from '../../../services/authService.js';
 import './CreateBaby.css';
 
 function CreateBaby({ match, history }) {
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-    }, []);
-
     const [errorName, setErrorName] = useState('');
     const [errorBirthDate, setErrorBirthDate] = useState('');
     const [errorBirthTime, setErrorBirthTime] = useState('');
@@ -25,6 +18,13 @@ function CreateBaby({ match, history }) {
     const [errorPicture, setErrorPicture] = useState('');
     const diaryId = match.params.id;
     const genders = ['Girl', 'Boy'];
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
+            return;
+        };
+    }, []);
 
     const onCreateBabySubmitHandler = (e) => {
         e.preventDefault();
