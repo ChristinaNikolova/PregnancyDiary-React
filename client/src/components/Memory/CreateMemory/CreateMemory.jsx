@@ -22,7 +22,6 @@ function CreateMemory({ match, history }) {
         };
     }, []);
 
-
     const onCreatMamorySubmitHandler = (e) => {
         e.preventDefault();
 
