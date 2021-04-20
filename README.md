@@ -64,6 +64,10 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
  - HTML5
 
  - toastr
+
+ - Immer
+
+ - ShortId
  
 ## Application Configurations
  #### To start server: 
