@@ -41,14 +41,6 @@ function CreateMemory({ match, history }) {
         setMemories(memories => memories.filter(x => x.id !== memoryId));
     };
 
-    const getMemoryIndex = (target) => {
-        const startIndex = (target).indexOf('[') + 1;
-        const endIndex = (target).indexOf(']');
-        const memoryIndex = (target).slice(startIndex, endIndex);
-
-        return memoryIndex;
-    };
-
     const onChangeMemoryDateHandler = (e) => {
         const memoryIndex = getMemoryIndex(e.target.id);
         const date = e.target.value;
@@ -110,6 +102,14 @@ function CreateMemory({ match, history }) {
         setMemories(currentMemory => produce(currentMemory, memories => {
             memories[memoryIndex].errorContent = validator.validContent(content);
         }));
+    };
+
+    const getMemoryIndex = (target) => {
+        const startIndex = (target).indexOf('[') + 1;
+        const endIndex = (target).indexOf(']');
+        const memoryIndex = (target).slice(startIndex, endIndex);
+
+        return memoryIndex;
     };
 
     const onCreatMamorySubmitHandler = (e) => {
