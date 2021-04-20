@@ -1,17 +1,27 @@
 import api from './api.js';
 import { requester } from './requester.js';
 
-export const create = (date, title, content, weekId) => {
-    const memory = {
-        date,
-        title,
-        content,
+export const create = (memoriesToSend, weekId) => {
+    const memories = [];
+
+    memoriesToSend.forEach(memoyToSend => {
+        const memory = {
+            date: memoyToSend.date,
+            title: memoyToSend.title,
+            content: memoyToSend.content
+        };
+
+        memories.push(memory);
+    });
+
+    const output = {
+        memories,
         weekId
     };
 
     const url = `${api.createMemory}`;
 
-    return requester(url, 'POST', memory)
+    return requester(url, 'POST', output)
         .then(res => res.json())
         .catch(err => console.error(err));
 };

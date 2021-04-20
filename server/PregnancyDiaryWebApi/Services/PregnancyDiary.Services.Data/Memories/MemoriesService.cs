@@ -8,6 +8,7 @@
     using Microsoft.EntityFrameworkCore;
     using PregnancyDiary.Data.Common.Repositories;
     using PregnancyDiary.Data.Models;
+    using PregnancyDiary.Services.Data.Dtos.Memories;
     using PregnancyDiary.Services.Mapping;
 
     public class MemoriesService : IMemoriesService
@@ -19,17 +20,21 @@
             this.momentsRepository = momentsRepository;
         }
 
-        public async Task CreateAsync(DateTime date, string title, string content, string weekId)
+        public async Task CreateAsync(IEnumerable<CreateMemoryDto> memories, string weekId)
         {
-            var moment = new Moment()
+            foreach (var current in memories)
             {
-                Date = date,
-                Title = title,
-                Content = content,
-                WeekId = weekId,
-            };
+                var moment = new Moment()
+                {
+                    Date = current.Date,
+                    Title = current.Title,
+                    Content = current.Content,
+                    WeekId = weekId,
+                };
 
-            await this.momentsRepository.AddAsync(moment);
+                await this.momentsRepository.AddAsync(moment);
+            }
+
             await this.momentsRepository.SaveChangesAsync();
         }
 

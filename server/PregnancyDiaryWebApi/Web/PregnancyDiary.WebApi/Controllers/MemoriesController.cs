@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using PregnancyDiary.Common;
+    using PregnancyDiary.Services.Data.Dtos.Memories;
     using PregnancyDiary.Services.Data.Memories;
     using PregnancyDiary.Web.Models.Common.ViewModels;
     using PregnancyDiary.Web.Models.Memories.InputModels;
@@ -27,11 +29,19 @@
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] CreateMemoryInputModel input)
+        public async Task<ActionResult> Create([FromBody] AllMemoriesInputModel input)
         {
             try
             {
-                await this.memoriesService.CreateAsync(input.Date, input.Title, input.Content, input.WeekId);
+                var memories = input.Memories
+                    .Select(m => new CreateMemoryDto()
+                    {
+                        Date = m.Date,
+                        Title = m.Title,
+                        Content = m.Content,
+                    });
+
+                await this.memoriesService.CreateAsync(memories, input.WeekId);
 
                 return this.Ok(new
                 {
@@ -125,7 +135,7 @@
         {
             try
             {
-                await this.memoriesService.UpdateAsync(input.Id, input.Date, input.Title, input.Content, input.WeekId);
+                await this.memoriesService.UpdateAsync(input.Id, input.Date, input.Title, input.Content, null);
 
                 return this.Ok(new
                 {

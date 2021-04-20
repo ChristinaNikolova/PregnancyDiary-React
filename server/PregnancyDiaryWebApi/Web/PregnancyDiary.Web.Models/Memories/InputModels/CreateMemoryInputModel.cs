@@ -17,8 +17,5 @@
 
         [MaxLength(DataValidation.Moment.DescriptionMaxLenght)]
         public string Content { get; set; }
-
-        [Required]
-        public string WeekId { get; set; }
     }
 }

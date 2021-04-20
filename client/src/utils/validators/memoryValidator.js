@@ -1,6 +1,10 @@
 import memoryConstants from '../constants/memoryConstants.js';
 
 export const validDate = (date) => {
+    if (Object.prototype.toString.call(date) === "[object Date]") {
+        return;
+    };
+    
     const todaysDate = new Date();
     const pickedDate = new Date(Date.parse(date.replace(/-/g, " ")));
 
@@ -10,7 +14,7 @@ export const validDate = (date) => {
         return '';
     }
 
-    return (`Invalid date`);
+    return ('Invalid date');
 };
 
 export const validTitle = (title) => {
@@ -30,5 +34,17 @@ export const validContent = (content) => {
         return '';
     }
 
+    return (`Content should be max ${memoryConstants.CONTENT_MAX_LEN} characters long.`);
+};
+
+export const ErrorMessageDate = () => {
+    return (`'Invalid date`);
+};
+
+export const ErrorMessageTitle = () => {
+    return (`Title should be between ${memoryConstants.TITLE_MIN_LEN} and ${memoryConstants.TITLE_MAX_LEN} characters long.`);
+};
+
+export const ErrorMessageContent = () => {
     return (`Content should be max ${memoryConstants.CONTENT_MAX_LEN} characters long.`);
 };
