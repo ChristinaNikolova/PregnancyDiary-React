@@ -1,6 +1,5 @@
 .create-memory-wrapper {
     background-color: #FFE2E0;
-    height: 1000px;
 }
 
 .create-memory-wrapper button {
@@ -17,4 +16,14 @@
 
 .create-memory-form {
     justify-content: center;
+}
+
+.create-memory-form .btn-danger {
+    background-color: red;
+    border-color: red;
+}
+
+.create-memory-form .btn-danger:hover {
+    background-color: lightcoral;
+    border-color: lightcoral;
 }

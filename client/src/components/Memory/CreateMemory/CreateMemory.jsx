@@ -20,6 +20,8 @@ function CreateMemory({ match, history }) {
             history.push('/login');
             return;
         };
+
+        addMemory();
     }, []);
 
     const addMemory = () => {
@@ -150,7 +152,7 @@ function CreateMemory({ match, history }) {
                                         <label className="form-control-label" htmlFor={index}>Title</label>
                                         <input className="form-control" onBlur={onBlurMemoryTitleHandler} onChange={onChangeMemoryTitleHandler} name="title" key={() => produce()} id={`${index}`} type="text" />
                                     </div>
-                                   <InputError>{memory.errorTitle}</InputError>
+                                    <InputError>{memory.errorTitle}</InputError>
                                     <div className="form-group">
                                         <label className="form-control-label" htmlFor={index}>Content</label>
                                         <input className="form-control" onBlur={onBlurMemoryContentHandler} onChange={onChangeMemoryContentHandler} name="content" key={() => produce()} id={`${index}`} type="text" />
@@ -159,9 +161,12 @@ function CreateMemory({ match, history }) {
                                     <button className="btn btn-danger" type="button" onClick={() => removeMemory(index)}>Remove</button>
                                     <hr />
                                 </div>
-                            )
+                            );
                         })}
-                        <button type="button" className="btn ml-2" onClick={addMemory}>Add Memory</button>
+                        <div className="text-center">
+                            <button type="button" className="btn" onClick={addMemory}>Add Memory</button>
+                        </div>
+                        <hr />
                         <div className="text-center">
                             <button className="btn" type="submit">Create</button>
                         </div>
