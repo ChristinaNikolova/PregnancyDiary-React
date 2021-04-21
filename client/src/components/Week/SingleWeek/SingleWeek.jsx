@@ -13,11 +13,11 @@ function SingleWeek({ id, number, mood, moments, clickHandler }) {
                 if (data['status'] === 400) {
                     toastr.error(data['message'], 'Error');
                     return;
-                }
+                };
                 toastr.success(data['message'], 'Success');
                 clickHandler();
-            })
-    }
+            });
+    };
 
     return (
         <tr className="text-center row-single-week">

@@ -26,7 +26,7 @@ function MemoriesList({ weekId }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="memory-list-wrapper">

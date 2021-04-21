@@ -9,7 +9,7 @@ function ArticlesOrder({ clickHandler }) {
         const prevState = isShown;
         setIsShown(!prevState);
         clickHandler(criteria);
-    }
+    };
 
     return (
         <div className="order-wrapper">

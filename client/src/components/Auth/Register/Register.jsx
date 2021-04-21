@@ -21,7 +21,6 @@ function Register({ history }) {
         };
     }, []);
 
-
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -45,12 +44,12 @@ function Register({ history }) {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
                         return;
-                    }
+                    };
                     history.push('/login');
                     toastr.success(data['message'], 'Success');
                 });
-        }
-    }
+        };
+    };
 
     return (
         <div className="register-wrapper">

@@ -60,9 +60,9 @@ function UpdateArticle({ match, history }) {
                     }
                     toastr.success(data['message'], 'Success');
                     history.push('/admin/articles');
-                })
-        }
-    }
+                });
+        };
+    };
 
     return (
         <div className="update-article-wrapper">

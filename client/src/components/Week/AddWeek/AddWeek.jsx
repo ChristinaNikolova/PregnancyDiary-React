@@ -52,12 +52,12 @@ function AddWeek({ match, history }) {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
                         return;
-                    }
+                    };
                     toastr.success(data['message'], 'Success');
                     history.push(`/diary/see/${diaryId}`);
                 });
-        }
-    }
+        };
+    };
 
     return (
         <div className="add-week-wrapper">

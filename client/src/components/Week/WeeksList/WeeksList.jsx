@@ -26,7 +26,7 @@ function WeeksList({ diaryId }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="weeks-list-wrapper">

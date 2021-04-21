@@ -17,7 +17,7 @@ function CategorySingleRow({ id, name, articlesCount, picture, clickHandler }) {
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });
-    }
+    };
 
     return (
         <tr className="text-center">

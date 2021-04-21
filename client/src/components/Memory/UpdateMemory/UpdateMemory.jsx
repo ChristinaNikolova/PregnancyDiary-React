@@ -48,12 +48,12 @@ function UpdateMemory({ match, history }) {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
                         return;
-                    }
+                    };
                     toastr.success(data['message'], 'Success');
                     history.push(`/diary/week/see/${memory.weekId}`);
-                })
-        }
-    }
+                });
+        };
+    };
 
     return (
         <div className="update-memory-wrapper">

@@ -27,7 +27,7 @@ function AllArticles({ history }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="all-articles-wrapper">

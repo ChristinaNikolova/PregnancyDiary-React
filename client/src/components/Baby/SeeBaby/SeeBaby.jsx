@@ -32,7 +32,7 @@ function SeeBaby({ diaryId, clickHandler }) {
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });
-    }
+    };
 
     return (
         <div className="baby-wrapper">

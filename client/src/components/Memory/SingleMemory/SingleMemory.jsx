@@ -13,7 +13,7 @@ function SingleMemory({ id, date, title, content, clickHandler }) {
                 if (data['status'] === 400) {
                     toastr.error(data['message'], 'Error');
                     return;
-                }
+                };
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });

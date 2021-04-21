@@ -31,7 +31,7 @@ function ByCategory({ match }) {
         setTimeout(() => {
             setHasToReload(true);
         }, 100);
-    }
+    };
 
     return (
         <div className="by-category-wrapper">

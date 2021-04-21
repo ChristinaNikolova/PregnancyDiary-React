@@ -18,12 +18,12 @@ function SearchArticle({ clickHandler, isSearched }) {
         if (validator.validSearchText(query) === '') {
             e.target.search.value = '';
             clickHandler(query);
-        }
-    }
+        };
+    };
 
     const clear = () => {
         clickHandler();
-    }
+    };
 
     return (
         <div className="search-wrapper m-3">

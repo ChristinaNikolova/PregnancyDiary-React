@@ -43,8 +43,8 @@ function CreateDiary({ history }) {
                     toastr.success(data['message'], 'Success');
                     history.push('/user/diaries');
                 });
-        }
-    }
+        };
+    };
 
     return (
         <div className="create-diary-wrapper">

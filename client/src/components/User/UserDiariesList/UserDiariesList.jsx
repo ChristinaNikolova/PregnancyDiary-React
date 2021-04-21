@@ -27,7 +27,7 @@ function UserDiariesList({ history }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="diaries-list-wrapper">

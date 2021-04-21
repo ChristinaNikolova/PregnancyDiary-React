@@ -20,7 +20,6 @@ function Login({ history, clickHandler }) {
         };
     }, []);
 
-
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -46,8 +45,8 @@ function Login({ history, clickHandler }) {
                     history.push('/');
                     toastr.success(data['message'], 'Success');
                 });
-        }
-    }
+        };
+    };
 
     return (
         <div className="login-wrapper">

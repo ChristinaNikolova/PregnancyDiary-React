@@ -20,7 +20,6 @@ function CreateCategory({ history }) {
         };
     }, []);
 
-
     const onCreateCategorySubmitHandler = (e) => {
         e.preventDefault();
 
@@ -43,8 +42,9 @@ function CreateCategory({ history }) {
                     toastr.success(data['message'], 'Success');
                     history.push('/admin/categories');
                 })
-        }
-    }
+        };
+    };
+    
     return (
         <div className="create-category-wrapper">
             <AdminFormWrapper title="Create New Category" />

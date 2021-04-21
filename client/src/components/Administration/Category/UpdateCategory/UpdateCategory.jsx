@@ -44,12 +44,12 @@ function UpdateCategory({ match, history }) {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
                         return;
-                    }
+                    };
                     toastr.success(data['message'], 'Success');
                     history.push(`/admin/categories`);
-                })
-        }
-    }
+                });
+        };
+    };
 
     return (
         <div className="update-category-wrapper">

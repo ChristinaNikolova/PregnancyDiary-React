@@ -26,12 +26,12 @@ function CreateComment({ articleId, clickHandler }) {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
                         return;
-                    }
+                    };
                     toastr.success(data['message'], 'Success');
                     clickHandler();
-                })
-        }
-    }
+                });
+        };
+    };
 
     return (
         <div className="create-comment-wrapper">

@@ -27,7 +27,7 @@ function CommentsListCurrentArticle({ articleId }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="comments-list-wrapper" >

@@ -12,7 +12,6 @@ function ArticlesList() {
     const [articles, setArticles] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
 
-
     useEffect(() => {
         articlesService
             .all()
@@ -24,7 +23,7 @@ function ArticlesList() {
         if (query === undefined) {
             setIsSearched(false);
             return;
-        }
+        };
 
         articlesService
             .search(query)
@@ -34,14 +33,14 @@ function ArticlesList() {
             .catch(err => console.error(err));
 
         setIsSearched(true);
-    }
+    };
 
     const order = (orderCriteria) => {
         articlesService
             .order(orderCriteria)
             .then(res => setArticles(res))
             .catch(err => console.error(err));
-    }
+    };
 
     return (
         <div className="articles-wrapper">

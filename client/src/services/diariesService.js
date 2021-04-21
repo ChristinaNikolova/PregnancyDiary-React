@@ -32,7 +32,7 @@ export const getDiary = (id) => {
 };
 
 export const getDiaryForUpdate = (id) => {
-    const url = `${api.update}/${id}`;
+    const url = `${api.updateDiary}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())

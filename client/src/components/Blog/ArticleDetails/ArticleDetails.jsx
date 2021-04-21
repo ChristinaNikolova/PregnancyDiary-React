@@ -33,7 +33,7 @@ function ArticleDetails({ match, history }) {
             .dislike(articleId)
             .then((res) => setNewState(res, isFavourite))
             .catch(err => console.error(err));
-    }
+    };
 
     const addToFav = () => {
         const isFavourite = article.isFavourite;
@@ -42,14 +42,14 @@ function ArticleDetails({ match, history }) {
             .like(articleId)
             .then((res) => setNewState(res, isFavourite))
             .catch(err => console.error(err));
-    }
+    };
 
     const setNewState = (data, isFavourite) => {
         {
             if (data['status'] === 400) {
                 toastr.error(data['message'], 'Error');
                 return;
-            }
+            };
 
             toastr.success(data['message'], 'Success');
             setArticle(state => (
@@ -58,8 +58,8 @@ function ArticleDetails({ match, history }) {
                 }));
 
             setHasToReload(true);
-        }
-    }
+        };
+    };
 
     return (
         <div className="article-details-wrapper">

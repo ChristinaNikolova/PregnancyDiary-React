@@ -27,7 +27,7 @@ function FavouriteArticles({ history }) {
         setTimeout(() => {
             setHasToReload(true)
         }, 100);
-    }
+    };
 
     return (
         <div className="favourite-articles-wrapper">
