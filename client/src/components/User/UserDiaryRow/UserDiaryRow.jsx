@@ -21,12 +21,12 @@ function UserDiaryRow({ id, positiveTest, dueDate, gender, weeks, clickHandler }
 
     return (
         <tr className="text-center">
-            <td>{positiveTest}</td>
-            <td>{dueDate}</td>
+            <td className="td-positive-test">{positiveTest}</td>
+            <td className="td-due-test">{dueDate}</td>
             {gender !== 'DontKnow'
-                ? <td>{gender}</td>
-                : <td>I don't know yet</td>}
-            <td>{weeks}</td>
+                ? <td className="td-gender">{gender}</td>
+                : <td className="td-unknown-gender">I don't know yet</td>}
+            <td className="td-weeks">{weeks}</td>
             <td><Link to={`/diary/see/${id}`}><button className="btn btn-details">See Diary</button></Link></td>
             <td><Link to={`/diary/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
             <td><button className="btn btn-danger" onClick={remove}>Remove</button></td>

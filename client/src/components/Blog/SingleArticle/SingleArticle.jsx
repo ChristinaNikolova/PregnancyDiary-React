@@ -8,7 +8,9 @@ function SingleArticle({ id, title, shortContent, picture, categoryName, likesCo
             <img className="mr-3 article-pic ml-3" src={picture} alt="article-picture"></img>
             <div className="media-body custom-font">
                 <h5 className="mt-0">{title}</h5>
-                {shortContent}
+                <div className="content">
+                    {shortContent}
+                </div>
                 <div>
                     <hr />
                     <span className="m-2"><i className="far fa-folder-open"></i> <b>{categoryName}</b></span>

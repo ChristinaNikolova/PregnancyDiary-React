@@ -63,7 +63,7 @@ export const allForAdmin = () => {
     return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
-}
+};
 
 export const remove = (id) => {
     const url = `${api.removeArticle}/${id}`;
