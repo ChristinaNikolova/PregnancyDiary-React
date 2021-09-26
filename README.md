@@ -72,11 +72,11 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
 ## Application Configurations
  #### To start server: 
  
- 1. Create appsettings.json file in Data.Recipe.Data. 
+ 1. Create appsettings.json file in Data.PregnancyDiary.Data. 
 
     - Add your Connection String 
 
- 2. Create one more appsettings.json file in Web.Recipe.WebApi. 
+ 2. Create one more appsettings.json file in Web.PregnancyDiary.WebApi. 
 
     - Add your Connection String
 
