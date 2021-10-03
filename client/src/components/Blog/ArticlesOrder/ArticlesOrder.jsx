@@ -19,7 +19,8 @@ function ArticlesOrder({ clickHandler }) {
                 {isShown
                     ? <i className="fas fa-hand-point-down p-2"></i>
                     : <i className="fas fa-hand-point-right p-2"></i>}
-                       Order by</button>
+                Order by
+            </button>
 
             {isShown
                 ? <ul>
