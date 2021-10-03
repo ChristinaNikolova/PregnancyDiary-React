@@ -49,6 +49,8 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
  
  - ReactJS
 
+ - JEST
+
  - AutoMapper
 
  - Newtonsoft.Json
