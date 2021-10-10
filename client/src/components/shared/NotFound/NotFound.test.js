@@ -2,8 +2,8 @@ import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import NotFound from "./NotFound";
 
-describe("NotFound Component", () => {
-    it("should render the component", () => {
+describe('NotFound Component', () => {
+    it('should render the component', () => {
         render(
             <BrowserRouter>
                 <NotFound />
