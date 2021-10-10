@@ -7,7 +7,7 @@ function NotFound() {
         <div className="not-found-wrapper text-center">
             <img src="./koala-and-mama-malta-babywearing-404-page-not-found.png"></img>
             <div className="msg custom-font">Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first place?
-            <p>Let's go <Link to="/" className="home-link">home</Link> and try from there.</p>
+               <p>Let's go <Link to="/" className="home-link">home</Link> and try from there.</p>
             </div>
         </div>
     );
