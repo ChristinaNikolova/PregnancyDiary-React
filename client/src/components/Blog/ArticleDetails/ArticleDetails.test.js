@@ -112,16 +112,24 @@ fdescribe('ArticleDetails Component', () => {
             );
         });
 
-        document.getElementsByClassName('fas fa-heart unlike')[0].onClick = jest.fn();
-        expect(document.getElementsByClassName('fas fa-heart unlike')[0].onClick.mock.calls).toHaveLength(0);
+        //document.getElementsByClassName('fas fa-heart unlike')[0].onClick = jest.fn();
+        //expect(document.getElementsByClassName('fas fa-heart unlike')[0].onClick.mock.calls).toHaveLength(0);
         expect(document.getElementsByClassName('article-details-wrapper')[0]).toBeTruthy();
         expect(document.getElementsByClassName('single-meta m-2')[3].textContent).toBe('Remove from favourites');
         expect(document.getElementsByClassName('fas fa-heart unlike')[0].textContent).toBe('Remove from favourites');
 
+        // await act(async () => {
+        //     document.getElementsByClassName('fas fa-heart unlike')[0].onClick();
+        // });
+
+        // fireEvent.click(document.getElementsByClassName('fas fa-heart unlike')[0]);
+        // await waitFor(() => document.getElementsByClassName('fas fa-heart unlike')[0]);
+
+        //document.getElementsByClassName('fas fa-heart unlike')[0].onClick();
+
         await act(async () => {
-            document.getElementsByClassName('fas fa-heart unlike')[0].onClick();
-        });
-        await waitFor(() => document.getElementsByClassName('fas fa-heart unlike')[0]);
+            fireEvent.click(document.getElementsByClassName('fas fa-heart unlike')[0].getAttribute('onClick'))
+          })
 
         expect(document.getElementsByClassName('article-details-wrapper')[0]).toBeTruthy();
         expect(document.getElementsByClassName('fas fa-heart unlike')[0].onClick.mock.calls).toHaveLength(1);

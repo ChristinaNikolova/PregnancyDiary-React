@@ -1,5 +1,7 @@
 .all-articles-wrapper .img-article-admin {
-    max-width: 20%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 20%;
     border-width: thick;
     border-style: solid;

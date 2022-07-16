@@ -3,7 +3,9 @@
 }
 
 .pic-article-details {
-    max-width: 80%;
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
     border-radius: 20%;
     border-width: thick;
     border-style: solid;
