@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import toastr from 'toastr';
+
 import * as weeksService from '../../../services/weeksService.js';
 import * as authService from '../../../services/authService.js';
 import SingleWeek from '../SingleWeek/SingleWeek.jsx';
@@ -8,25 +10,36 @@ import './WeeksList.css';
 
 function WeeksList({ diaryId }) {
     const [weeks, setWeeks] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             return;
         };
 
+        loadWeeks();
+
+    }, []);
+
+    const remove = (weekId) => {
+        weeksService
+            .remove(weekId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                };
+                
+                loadWeeks();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const loadWeeks = () => {
         weeksService
             .getAllCurrentDiary(diaryId)
             .then(res => setWeeks(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="weeks-list-wrapper">
@@ -52,7 +65,7 @@ function WeeksList({ diaryId }) {
                                 number={w.number}
                                 mood={w.moodAsString}
                                 moments={w.momentsCount}
-                                clickHandler={reload} />)}
+                                clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

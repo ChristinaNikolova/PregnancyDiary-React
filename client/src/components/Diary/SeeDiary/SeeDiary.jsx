@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as diariesService from '../../../services/diariesService.js';
 import * as authService from '../../../services/authService.js';
+import * as babiesService from '../../../services/babiesService.js';
+
 import SeeBaby from '../../Baby/SeeBaby/SeeBaby.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
-
 import './SeeDiary.css';
 
 function SeeDiary({ match, history }) {
     const [diary, setDiary] = useState({});
-    const [hasToReload, setHasToReload] = useState(false);
     const diaryId = match.params.id;
 
     useEffect(() => {
@@ -20,18 +21,29 @@ function SeeDiary({ match, history }) {
             return;
         };
 
+        getDiary();
+    }, []);
+
+    const removeBady = (badyId) => {
+        babiesService
+            .remove(badyId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+
+                getDiary();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const getDiary = () => {
         diariesService
             .getDiary(diaryId)
             .then(res => setDiary(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     const getGender = () => {
         if (diary.genderAsString === 'Girl') {
@@ -56,7 +68,7 @@ function SeeDiary({ match, history }) {
                 {getGender()}
             </div>
             {diary.isBabyBorn
-                ? <SeeBaby diaryId={diaryId} clickHandler={reload} />
+                ? <SeeBaby diaryId={diaryId} clickHandler={removeBady} />
                 : <p className="text-center custom-btn">
                     <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>

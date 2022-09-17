@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import toastr from 'toastr';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as authService from '../../../../services/authService.js';
@@ -8,7 +9,6 @@ import './AllCategories.css';
 
 function AllCategories({ history }) {
     const [categories, setCategories] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAdmin()) {
@@ -16,18 +16,29 @@ function AllCategories({ history }) {
             return;
         };
 
+        loadCategories();
+    }, []);
+
+    const remove = (categoryId) => {
+        categoriesService
+            .remove(categoryId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+
+                loadCategories();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const loadCategories = () => {
         categoriesService
             .getAllForAdministration()
             .then(res => setCategories(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="all-category-wrapper">
@@ -51,7 +62,7 @@ function AllCategories({ history }) {
                             name={c.name}
                             articlesCount={c.articlesCount}
                             picture={c.picture}
-                            clickHandler={reload} />)}
+                            clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

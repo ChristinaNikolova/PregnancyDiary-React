@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import toastr from 'toastr';
 
 import * as babiesService from '../../../services/babiesService.js';
 import * as authService from '../../../services/authService.js';
@@ -21,19 +20,6 @@ function SeeBaby({ diaryId, clickHandler }) {
             .catch(err => console.error(err));
     }, []);
 
-    const remove = () => {
-        babiesService
-            .remove(baby.id)
-            .then((data) => {
-                if (data['status'] === 400) {
-                    toastr.error(data['message'], 'Error');
-                    return;
-                }
-                toastr.success(data['message'], 'Success');
-                clickHandler();
-            });
-    };
-
     return (
         <div className="baby-wrapper">
             <hr />
@@ -41,7 +27,7 @@ function SeeBaby({ diaryId, clickHandler }) {
             <h4 className="custom-font text-center">Welcome, {baby.name}!</h4>
             <p className="text-center">
                 <Link to={`/diary/baby/update/${baby.id}/${diaryId}`}><button className="btn btn-warning mr-2" role="button">Update</button></Link>
-                <button className="btn btn-danger" role="button" onClick={remove}>Delete</button>
+                <button className="btn btn-danger" role="button" onClick={() => clickHandler(baby.id)}>Delete</button>
             </p>
             <div className="row text-center">
                 <div className="col-md-6"><i className="fas fa-child"></i> Name: {baby.name}</div>

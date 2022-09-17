@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
-import ArticleSingleRow from '../ArticleSingleRow/ArticleSingleRow.jsx';
 import * as articlesService from '../../../../services/articlesService.js';
 import * as authService from '../../../../services/authService.js';
 
+import ArticleSingleRow from '../ArticleSingleRow/ArticleSingleRow.jsx';
 import './AllArticles.css';
 
 function AllArticles({ history }) {
     const [articles, setArticles] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAdmin()) {
@@ -16,18 +16,29 @@ function AllArticles({ history }) {
             return;
         };
 
+        loadArticles();
+    }, []);
+
+    const remove = (articleId) => {
+        articlesService
+            .remove(articleId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+
+                loadArticles();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const loadArticles = () => {
         articlesService
             .allForAdmin()
             .then(res => setArticles(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="all-articles-wrapper">
@@ -56,7 +67,7 @@ function AllArticles({ history }) {
                             categoryName={a.categoryName}
                             likesCount={a.likesCount}
                             commentsCount={a.commentsCount}
-                            clickHandler={reload} />)}
+                            clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

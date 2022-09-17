@@ -1,24 +1,8 @@
 import { Link } from 'react-router-dom';
-import toastr from 'toastr';
-
-import * as articlesService from '../../../../services/articlesService.js';
 
 import './ArticleSingleRow.css';
 
 function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesCount, commentsCount, clickHandler }) {
-    const remove = () => {
-        articlesService
-            .remove(id)
-            .then((data) => {
-                if (data['status'] === 400) {
-                    toastr.error(data['message'], 'Error');
-                    return;
-                }
-                toastr.success(data['message'], 'Success');
-                clickHandler();
-            });
-    };
-
     return (
         <tr className="text-center">
             <td className="color-link"><Link to={`/articles/current-article/${id}`}>{title}</Link></td>
@@ -27,7 +11,7 @@ function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesC
             <td className="aricles-likes-count">{likesCount}</td>
             <td className="aricles-comments-count">{commentsCount}</td>
             <td><Link to={`/admin/articles/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
-            <td><button className="btn btn-danger" onClick={remove} >Delete</button></td >
+            <td><button className="btn btn-danger" onClick={() => clickHandler(id)} >Delete</button></td >
         </tr >
     );
 }

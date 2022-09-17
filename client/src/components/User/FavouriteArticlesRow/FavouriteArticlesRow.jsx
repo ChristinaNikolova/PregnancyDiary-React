@@ -1,24 +1,8 @@
 import { Link } from 'react-router-dom';
-import toastr from 'toastr';
-
-import * as artilcesService from '../../../services/articlesService.js';
 
 import './FavouriteArticlesRow.css';
 
 function FavouriteArticlesRow({ articleId, articleTitle, articlePicture, articleCategoryName, articleCategoryId, clickHandler }) {
-    const removeFromFav = () => {
-        artilcesService
-            .dislike(articleId)
-            .then((data) => {
-                if (data['status'] === 400) {
-                    toastr.error(data['message'], 'Error');
-                    return;
-                };
-                toastr.success(data['message'], 'Success');
-                clickHandler();
-            });
-    };
-
     return (
         <tr className="text-center">
             <td className="color-link">
@@ -30,7 +14,7 @@ function FavouriteArticlesRow({ articleId, articleTitle, articlePicture, article
             <td className="color-link">
                 <Link to={`/articles/by-category/${articleCategoryId}`}>{articleCategoryName}</Link>
             </td>
-            <td><button className="btn btn-danger" onClick={removeFromFav}>Remove</button></td>
+            <td><button className="btn btn-danger" onClick={() => clickHandler(articleId)}>Remove</button></td>
         </tr >
     );
 }

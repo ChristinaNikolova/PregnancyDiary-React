@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
+import * as diariesService from '../../../services/diariesService.js';
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
-import UserDiaryRow from '../UserDiaryRow/UserDiaryRow.jsx';
 
+import UserDiaryRow from '../UserDiaryRow/UserDiaryRow.jsx';
 import './UserDiariesList.css';
 
 function UserDiariesList({ history }) {
     const [diaries, setDiaries] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
@@ -16,18 +17,29 @@ function UserDiariesList({ history }) {
             return;
         };
 
+        loadDiaries();
+    }, []);
+
+    const remove = (diaryId) => {
+        diariesService
+            .remove(diaryId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                };
+
+                loadDiaries();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const loadDiaries = () => {
         usersService
             .getUserDiaries()
             .then(res => setDiaries(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="diaries-list-wrapper">
@@ -55,7 +67,7 @@ function UserDiariesList({ history }) {
                                 dueDate={d.dueDateAsString}
                                 gender={d.genderAsString}
                                 weeks={d.weeksCount}
-                                clickHandler={reload} />)}
+                                clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

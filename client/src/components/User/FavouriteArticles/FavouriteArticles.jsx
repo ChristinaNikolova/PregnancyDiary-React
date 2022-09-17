@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
+import * as artilcesService from '../../../services/articlesService.js';
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
-import FavouriteArticlesRow from '../FavouriteArticlesRow/FavouriteArticlesRow.jsx';
 
+import FavouriteArticlesRow from '../FavouriteArticlesRow/FavouriteArticlesRow.jsx';
 import './FavouriteArticles.css';
 
 function FavouriteArticles({ history }) {
     const [favArticles, setFavArticles] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
@@ -16,18 +17,29 @@ function FavouriteArticles({ history }) {
             return;
         };
 
+        loadFavArticles();
+    }, []);
+
+    const removeFromFav = (articleId) => {
+        artilcesService
+            .dislike(articleId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                };
+
+                loadFavArticles();
+                toastr.success(data['message'], 'Success');
+            });
+    };
+
+    const loadFavArticles = () => {
         usersService
             .getFavouriteArticles()
             .then(res => setFavArticles(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="favourite-articles-wrapper">
@@ -52,7 +64,7 @@ function FavouriteArticles({ history }) {
                                 articlePicture={a.articlePicture}
                                 articleCategoryId={a.articleCategoryId}
                                 articleCategoryName={a.articleCategoryName}
-                                clickHandler={reload} />)}
+                                clickHandler={removeFromFav} />)}
                     </tbody>
                 </table>
             </div>
