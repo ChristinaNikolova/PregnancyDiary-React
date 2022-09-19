@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import * as authService from './services/authService.js'
@@ -31,17 +31,19 @@ import UpdateMemory from './components/Memory/UpdateMemory/UpdateMemory.jsx';
 import UserDiariesList from './components/User/UserDiariesList/UserDiariesList.jsx';
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
-import Dashboard from './components/Administration/Dashboard/Dashboard.jsx'
-import CreateCategory from './components/Administration/Category/CreateCategory/CreateCategory.jsx';
-import AllCategories from './components/Administration/Category/AllCategories/AllCategories.jsx';
-import UpdateCategory from './components/Administration/Category/UpdateCategory/UpdateCategory.jsx';
-import AllArticles from './components/Administration/Article/AllArticles/AllArticles.jsx';
-import CreateArticle from './components/Administration/Article/CreateArticle/CreateArticle.jsx';
-import UpdateArticle from './components/Administration/Article/UpdateArticle/UpdateArticle.jsx';
-
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
+
+const Dashboard = lazy(() => import('./components/Administration/Dashboard/Dashboard.jsx'));
+
+const CreateCategory = lazy(() => import('./components/Administration/Category/CreateCategory/CreateCategory.jsx'));
+const AllCategories = lazy(() => import('./components/Administration/Category/AllCategories/AllCategories.jsx'));
+const UpdateCategory = lazy(() => import('./components/Administration/Category/UpdateCategory/UpdateCategory.jsx'));
+
+const AllArticles = lazy(() => import('./components/Administration/Article/AllArticles/AllArticles.jsx'));
+const CreateArticle = lazy(() => import('./components/Administration/Article/CreateArticle/CreateArticle.jsx'));
+const UpdateArticle = lazy(() => import('./components/Administration/Article/UpdateArticle/UpdateArticle.jsx'));
 
 function App() {
   const [hasToReload, setHasToReload] = useState(false);
@@ -91,15 +93,70 @@ function App() {
         <Route path='/user/diaries' exact component={UserDiariesList}></Route>
         <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
 
-        <Route path='/admin/dashboard' component={Dashboard}></Route>
+        <Route
+          path='/admin/dashboard'
+          render={() => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <Dashboard />
+            </Suspense>
+          )}
+        ></Route>
 
-        <Route path="/admin/categories" exact component={AllCategories}></Route>
-        <Route path="/admin/categories/create" component={CreateCategory}></Route>
-        <Route path="/admin/categories/update/:id" component={UpdateCategory}></Route>
+        <Route
+          path="/admin/categories"
+          exact
+          render={() => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <AllCategories />
+            </Suspense>
+          )}
+        ></Route>
 
-        <Route path="/admin/articles" exact component={AllArticles}></Route>
-        <Route path="/admin/articles/create" component={CreateArticle}></Route>
-        <Route path="/admin/articles/update/:id" component={UpdateArticle}></Route>
+        <Route
+          path="/admin/categories/create"
+          render={(props) => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <CreateCategory {...props} />
+            </Suspense>
+          )}
+        ></Route>
+
+        <Route
+          path="/admin/categories/update/:id"
+          render={(props) => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <UpdateCategory {...props} />
+            </Suspense>
+          )}
+        ></Route>
+
+        <Route
+          path="/admin/articles"
+          exact
+          render={() => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <AllArticles />
+            </Suspense>
+          )}
+        ></Route>
+
+        <Route
+          path="/admin/articles/create"
+          render={(props) => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <CreateArticle {...props} />
+            </Suspense>
+          )}
+        ></Route>
+
+        <Route
+          path="/admin/articles/update/:id"
+          render={(props) => (
+            <Suspense fallback={<span>Loading...</span>}>
+              <UpdateArticle {...props} />
+            </Suspense>
+          )}
+        ></Route>
 
         <Route path="*" component={NotFound}></Route>
       </Switch>
