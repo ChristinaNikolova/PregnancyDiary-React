@@ -36,7 +36,7 @@ function CreateMemory({ match, history }) {
         }]));
     };
 
-    const removeMemory = (targetIndex) => {
+    const removeMemoryClickHandler = (targetIndex) => {
         const memoryIndex = getMemoryIndex(targetIndex);
         const memoryId = memories[memoryIndex].id;
 
@@ -158,7 +158,7 @@ function CreateMemory({ match, history }) {
                                         <input className="form-control" onBlur={onBlurMemoryContentHandler} onChange={onChangeMemoryContentHandler} name="content" key={() => produce()} id={`${index}`} type="text" />
                                     </div>
                                     <InputError>{memory.errorContent}</InputError>
-                                    <button className="btn btn-danger" type="button" onClick={() => removeMemory(index)}>Remove</button>
+                                    <button className="btn btn-danger" type="button" onClick={() => removeMemoryClickHandler(index)}>Remove</button>
                                     <hr />
                                 </div>
                             );

@@ -19,7 +19,7 @@ function AllArticles({ history }) {
         loadArticles();
     }, []);
 
-    const remove = (articleId) => {
+    const removeClickHandler = (articleId) => {
         articlesService
             .remove(articleId)
             .then((data) => {
@@ -67,7 +67,7 @@ function AllArticles({ history }) {
                             categoryName={a.categoryName}
                             likesCount={a.likesCount}
                             commentsCount={a.commentsCount}
-                            clickHandler={remove} />)}
+                            onRemove ={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>

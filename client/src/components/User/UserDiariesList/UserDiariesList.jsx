@@ -20,7 +20,7 @@ function UserDiariesList({ history }) {
         loadDiaries();
     }, []);
 
-    const remove = (diaryId) => {
+    const removeClickHandler = (diaryId) => {
         diariesService
             .remove(diaryId)
             .then((data) => {
@@ -67,7 +67,7 @@ function UserDiariesList({ history }) {
                                 dueDate={d.dueDateAsString}
                                 gender={d.genderAsString}
                                 weeks={d.weeksCount}
-                                clickHandler={remove} />)}
+                                clickHandler={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>

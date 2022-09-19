@@ -19,7 +19,7 @@ function AllCategories({ history }) {
         loadCategories();
     }, []);
 
-    const remove = (categoryId) => {
+    const removeClickHandler = (categoryId) => {
         categoriesService
             .remove(categoryId)
             .then((data) => {
@@ -62,7 +62,7 @@ function AllCategories({ history }) {
                             name={c.name}
                             articlesCount={c.articlesCount}
                             picture={c.picture}
-                            clickHandler={remove} />)}
+                            clickHandler={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>

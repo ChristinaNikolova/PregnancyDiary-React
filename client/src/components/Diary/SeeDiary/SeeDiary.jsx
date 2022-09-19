@@ -24,7 +24,7 @@ function SeeDiary({ match, history }) {
         getDiary();
     }, []);
 
-    const removeBady = (badyId) => {
+    const removeBabyClickHandler = (badyId) => {
         babiesService
             .remove(badyId)
             .then((data) => {
@@ -68,7 +68,7 @@ function SeeDiary({ match, history }) {
                 {getGender()}
             </div>
             {diary.isBabyBorn
-                ? <SeeBaby diaryId={diaryId} clickHandler={removeBady} />
+                ? <SeeBaby diaryId={diaryId} clickHandler={removeBabyClickHandler} />
                 : <p className="text-center custom-btn">
                     <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>

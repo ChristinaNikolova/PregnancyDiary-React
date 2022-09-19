@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import './ArticleSingleRow.css';
 
-function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesCount, commentsCount, clickHandler }) {
+function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesCount, commentsCount, onRemove }) {
     return (
         <tr className="text-center">
             <td className="color-link"><Link to={`/articles/current-article/${id}`}>{title}</Link></td>
@@ -11,7 +11,7 @@ function ArticleSingleRow({ id, title, picture, categoryId, categoryName, likesC
             <td className="aricles-likes-count">{likesCount}</td>
             <td className="aricles-comments-count">{commentsCount}</td>
             <td><Link to={`/admin/articles/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
-            <td><button className="btn btn-danger" onClick={() => clickHandler(id)} >Delete</button></td >
+            <td><button className="btn btn-danger" onClick={() => onRemove(id)} >Delete</button></td >
         </tr >
     );
 }

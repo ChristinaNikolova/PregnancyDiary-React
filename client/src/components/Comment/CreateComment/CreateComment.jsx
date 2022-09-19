@@ -27,6 +27,7 @@ function CreateComment({ articleId, clickHandler }) {
                         toastr.error(data['message'], 'Error');
                         return;
                     };
+                    
                     toastr.success(data['message'], 'Success');
                     clickHandler();
                 });

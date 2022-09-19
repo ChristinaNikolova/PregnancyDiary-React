@@ -20,7 +20,7 @@ function FavouriteArticles({ history }) {
         loadFavArticles();
     }, []);
 
-    const removeFromFav = (articleId) => {
+    const removeFavClickHandler = (articleId) => {
         artilcesService
             .dislike(articleId)
             .then((data) => {
@@ -64,7 +64,8 @@ function FavouriteArticles({ history }) {
                                 articlePicture={a.articlePicture}
                                 articleCategoryId={a.articleCategoryId}
                                 articleCategoryName={a.articleCategoryName}
-                                clickHandler={removeFromFav} />)}
+                                clickHandler={removeFavClickHandler} />)
+                        }
                     </tbody>
                 </table>
             </div>

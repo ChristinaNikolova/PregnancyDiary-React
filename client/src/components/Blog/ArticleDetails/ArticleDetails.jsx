@@ -45,20 +45,18 @@ function ArticleDetails({ match, history }) {
     };
 
     const setNewState = (data, isFavourite) => {
-        {
-            if (data['status'] === 400) {
-                toastr.error(data['message'], 'Error');
-                return;
-            };
-
-            toastr.success(data['message'], 'Success');
-            setArticle(state => (
-                {
-                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
-                }));
-
-            setHasToReload(true);
+        if (data['status'] === 400) {
+            toastr.error(data['message'], 'Error');
+            return;
         };
+
+        toastr.success(data['message'], 'Success');
+        setArticle(state => (
+            {
+                ...state, isFavourite: !isFavourite
+            }));
+
+        setHasToReload(true);
     };
 
     return (
@@ -103,7 +101,7 @@ function ArticleDetails({ match, history }) {
                 </div>
             </div>
             <hr className="custom-margin-left" />
-            { articleId
+            {articleId
                 ? <CommentsListCurrentArticle articleId={articleId} />
                 : null
             }

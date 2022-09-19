@@ -18,7 +18,7 @@ function MemoriesList({ weekId }) {
         loadMemories();
     }, []);
 
-    const remove = (memoryId) => {
+    const removeClickHandler = (memoryId) => {
         memoriesService
             .remove(memoryId)
             .then((data) => {
@@ -62,7 +62,7 @@ function MemoriesList({ weekId }) {
                                 date={m.dateAsString}
                                 title={m.title}
                                 content={m.content}
-                                clickHandler={remove} />)}
+                                clickHandler={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>

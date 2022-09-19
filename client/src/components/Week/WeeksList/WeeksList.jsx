@@ -20,7 +20,7 @@ function WeeksList({ diaryId }) {
 
     }, []);
 
-    const remove = (weekId) => {
+    const removeClickHandler = (weekId) => {
         weeksService
             .remove(weekId)
             .then((data) => {
@@ -65,7 +65,7 @@ function WeeksList({ diaryId }) {
                                 number={w.number}
                                 mood={w.moodAsString}
                                 moments={w.momentsCount}
-                                clickHandler={remove} />)}
+                                clickHandler={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>
