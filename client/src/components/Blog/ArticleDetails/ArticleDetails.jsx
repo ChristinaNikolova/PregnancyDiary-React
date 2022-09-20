@@ -10,7 +10,6 @@ import './ArticleDetails.css';
 
 function ArticleDetails({ match, history }) {
     const [article, setArticle] = useState({});
-    const [hasToReload, setHasToReload] = useState(false);
     const articleId = match.params.id;
 
     useEffect(() => {
@@ -22,29 +21,24 @@ function ArticleDetails({ match, history }) {
         articlesService
             .details(articleId)
             .then(res => setArticle(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err))
-    }, [hasToReload]);
+    }, [articleId, history]);
 
     const removeFromFav = () => {
-        const isFavourite = article.isFavourite;
-
         articlesService
             .dislike(articleId)
-            .then((res) => setNewState(res, isFavourite))
+            .then((res) => setNewState(res))
             .catch(err => console.error(err));
     };
 
     const addToFav = () => {
-        const isFavourite = article.isFavourite;
-
         articlesService
             .like(articleId)
-            .then((res) => setNewState(res, isFavourite))
+            .then((res) => setNewState(res))
             .catch(err => console.error(err));
     };
 
-    const setNewState = (data, isFavourite) => {
+    const setNewState = (data) => {
         if (data['status'] === 400) {
             toastr.error(data['message'], 'Error');
             return;
@@ -53,10 +47,8 @@ function ArticleDetails({ match, history }) {
         toastr.success(data['message'], 'Success');
         setArticle(state => (
             {
-                ...state, isFavourite: !isFavourite
+                ...state, isFavourite: !state.isFavourite
             }));
-
-        setHasToReload(true);
     };
 
     return (
@@ -68,7 +60,7 @@ function ArticleDetails({ match, history }) {
                     <div className="col-lg-12">
                         <div className="row">
                             <div className="col-lg-12 text-center">
-                                <img className="pic-article-details" src={article.picture} alt="article-picture" />
+                                <img className="pic-article-details" src={article.picture} alt="article" />
                             </div>
                         </div>
                         <div className="col-lg-12 meta mb-2 mt-2 text-center">

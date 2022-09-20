@@ -16,7 +16,10 @@ function AllCategories({ history }) {
             return;
         };
 
-        loadCategories();
+        categoriesService
+            .getAllForAdministration()
+            .then(res => setCategories(res))
+            .catch(err => console.error(err));
     }, []);
 
     const removeClickHandler = (categoryId) => {
@@ -28,17 +31,10 @@ function AllCategories({ history }) {
                     return;
                 }
 
-                loadCategories();
+                setCategories((state) => state.filter((c) => c.id !== categoryId));
                 toastr.success(data['message'], 'Success');
             });
     };
-
-    const loadCategories = () => {
-        categoriesService
-            .getAllForAdministration()
-            .then(res => setCategories(res))
-            .catch(err => console.error(err));
-    }
 
     return (
         <div className="all-category-wrapper">

@@ -16,9 +16,12 @@ function WeeksList({ diaryId }) {
             return;
         };
 
-        loadWeeks();
+        weeksService
+            .getAllCurrentDiary(diaryId)
+            .then(res => setWeeks(res))
+            .catch(err => console.error(err));
 
-    }, []);
+    }, [diaryId]);
 
     const removeClickHandler = (weekId) => {
         weeksService
@@ -28,18 +31,11 @@ function WeeksList({ diaryId }) {
                     toastr.error(data['message'], 'Error');
                     return;
                 };
-                
-                loadWeeks();
+
+                setWeeks((state) => state.filter(w => w.id !== weekId));
                 toastr.success(data['message'], 'Success');
             });
     };
-
-    const loadWeeks = () => {
-        weeksService
-            .getAllCurrentDiary(diaryId)
-            .then(res => setWeeks(res))
-            .catch(err => console.error(err));
-    }
 
     return (
         <div className="weeks-list-wrapper">

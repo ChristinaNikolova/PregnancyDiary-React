@@ -17,7 +17,10 @@ function UserDiariesList({ history }) {
             return;
         };
 
-        loadDiaries();
+        usersService
+            .getUserDiaries()
+            .then(res => setDiaries(res))
+            .catch(err => console.error(err));
     }, []);
 
     const removeClickHandler = (diaryId) => {
@@ -29,17 +32,10 @@ function UserDiariesList({ history }) {
                     return;
                 };
 
-                loadDiaries();
+                setDiaries((state) => state.filter(d => d.id !== diaryId));
                 toastr.success(data['message'], 'Success');
             });
     };
-
-    const loadDiaries = () => {
-        usersService
-            .getUserDiaries()
-            .then(res => setDiaries(res))
-            .catch(err => console.error(err));
-    }
 
     return (
         <div className="diaries-list-wrapper">

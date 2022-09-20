@@ -16,7 +16,10 @@ function AllArticles({ history }) {
             return;
         };
 
-        loadArticles();
+        articlesService
+            .allForAdmin()
+            .then(res => setArticles(res))
+            .catch(err => console.error(err));
     }, []);
 
     const removeClickHandler = (articleId) => {
@@ -28,17 +31,10 @@ function AllArticles({ history }) {
                     return;
                 }
 
-                loadArticles();
+                setArticles((state) => state.filter((a) => a.id !== articleId));
                 toastr.success(data['message'], 'Success');
             });
     };
-
-    const loadArticles = () => {
-        articlesService
-            .allForAdmin()
-            .then(res => setArticles(res))
-            .catch(err => console.error(err));
-    }
 
     return (
         <div className="all-articles-wrapper">
@@ -67,7 +63,7 @@ function AllArticles({ history }) {
                             categoryName={a.categoryName}
                             likesCount={a.likesCount}
                             commentsCount={a.commentsCount}
-                            onRemove ={removeClickHandler} />)}
+                            onRemove={removeClickHandler} />)}
                     </tbody>
                 </table>
             </div>
