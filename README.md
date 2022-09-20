@@ -52,6 +52,8 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
  - JEST
 
  - React Testing Library
+ 
+ - Lazy Loading
 
  - AutoMapper
 
