@@ -3,9 +3,7 @@ import InputError from "../InputError/InputError.jsx";
 function Input({ type, name, label, placeholder, onChange, value, error }) {
     return (
         <div className='form-group'>
-            {label !== ''
-                ? <label className='form-control-label' htmlFor={name}>{label}</label>
-                : null}
+            {label !== '' && <label className='form-control-label' htmlFor={name}>{label}</label>}
 
             {name === 'content'
                 ? <textarea
@@ -28,7 +26,7 @@ function Input({ type, name, label, placeholder, onChange, value, error }) {
                     defaultValue={value}
                 />
             }
-            {(error !== '' && error !== undefined) ? (<InputError>{error}</InputError>) : null}
+            {error !== '' && error !== undefined && <InputError>{error}</InputError>}
         </div>
     )
 }

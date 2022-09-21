@@ -15,10 +15,7 @@ function MemoriesList({ weekId }) {
             return;
         };
 
-        memoriesService
-            .allCurrentWeek(weekId)
-            .then(res => setMemories(res))
-            .catch(err => console.error(err));
+        loadMemories();
     }, [weekId]);
 
     const removeClickHandler = (memoryId) => {
@@ -30,10 +27,17 @@ function MemoriesList({ weekId }) {
                     return;
                 };
 
-                setMemories((state) => state.filter(m => m.id !== memoryId));
+                loadMemories();
                 toastr.success(data['message'], 'Success');
             });
     };
+
+    const loadMemories = () => {
+        memoriesService
+            .allCurrentWeek(weekId)
+            .then(res => setMemories(res))
+            .catch(err => console.error(err));
+    }
 
     return (
         <div className="memory-list-wrapper">

@@ -37,13 +37,12 @@ function CommentsListCurrentArticle({ articleId }) {
                 articleId={articleId} />
 
             <div>
-                {comments
-                    ? comments.map(c => <SingleComment
+                {comments && comments.map(c =>
+                    <SingleComment
                         key={c.id}
                         content={c.content}
                         formattedCreatedOn={c.createdOnAsString}
                         userUserName={c.userUserName} />)
-                    : null
                 }
             </div>
         </div >

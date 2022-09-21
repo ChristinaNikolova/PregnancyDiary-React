@@ -53,9 +53,7 @@ function SearchArticle({ clickHandler, isSearched }) {
                     </div>
                     <div className="col-lg-2"></div>
                     <div className="text-center mb-1">
-                        {isSearched
-                            ? <button className="btn btn-danger custom-danger" onClick={clear}>Clear Result</button>
-                            : null}
+                        {isSearched && <button className="btn btn-danger custom-danger" onClick={clear}>Clear Result</button>}
                     </div>
                 </div>
             </div>

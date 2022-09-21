@@ -16,10 +16,7 @@ function AllArticles({ history }) {
             return;
         };
 
-        articlesService
-            .allForAdmin()
-            .then(res => setArticles(res))
-            .catch(err => console.error(err));
+        loadArtilces();
     }, []);
 
     const removeClickHandler = (articleId) => {
@@ -31,10 +28,17 @@ function AllArticles({ history }) {
                     return;
                 }
 
-                setArticles((state) => state.filter((a) => a.id !== articleId));
+                loadArtilces();
                 toastr.success(data['message'], 'Success');
             });
     };
+
+    const loadArtilces = () => {
+        articlesService
+            .allForAdmin()
+            .then(res => setArticles(res))
+            .catch(err => console.error(err));
+    }
 
     return (
         <div className="all-articles-wrapper">

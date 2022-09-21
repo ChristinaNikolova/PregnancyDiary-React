@@ -23,7 +23,7 @@ export const login = (email, password) => {
         email,
         password
     };
-    
+
     return fetch(api.login, {
         method: 'POST',
         headers: {
@@ -40,11 +40,11 @@ export const logout = () => {
 };
 
 export const isAuthenticated = () => {
-    return localStorage.getItem('token') !== null ? true : false;
+    return localStorage.getItem('token') !== null;
 };
 
 export const isAdmin = () => {
-    return localStorage.getItem('isAdmin') === 'true' ? true : false;
+    return localStorage.getItem('isAdmin') === 'true';
 };
 
 export const getUsername = () => {

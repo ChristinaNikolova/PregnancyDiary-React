@@ -17,11 +17,8 @@ function FavouriteArticles({ history }) {
             return;
         };
 
-        usersService
-            .getFavouriteArticles()
-            .then(res => setFavArticles(res))
-            .catch(err => console.error(err));
-    }, []);
+        loadFavArticles();
+    }, [history]);
 
     const removeFavClickHandler = (articleId) => {
         artilcesService
@@ -32,10 +29,17 @@ function FavouriteArticles({ history }) {
                     return;
                 };
 
-                setFavArticles((state) => state.filter(a => a.articleId !== articleId));
+                loadFavArticles();
                 toastr.success(data['message'], 'Success');
             });
     };
+
+    const loadFavArticles = () => {
+        usersService
+            .getFavouriteArticles()
+            .then(res => setFavArticles(res))
+            .catch(err => console.error(err));
+    }
 
     return (
         <div className="favourite-articles-wrapper">

@@ -55,12 +55,7 @@ function ArticlesList() {
                 clickHandler={search}
                 isSearched={isSearched} />
 
-            {!isSearched
-                ? <div>
-                    <ArticlesOrder clickHandler={order} />
-                    <hr />
-                </div>
-                : null}
+            {!isSearched && <div><ArticlesOrder clickHandler={order} /><hr /></div>}
 
             {articles.length > 0
                 ? articles.map(a => <SingleArticle

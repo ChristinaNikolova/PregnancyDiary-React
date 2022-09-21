@@ -93,10 +93,7 @@ function ArticleDetails({ match, history }) {
                 </div>
             </div>
             <hr className="custom-margin-left" />
-            {articleId
-                ? <CommentsListCurrentArticle articleId={articleId} />
-                : null
-            }
+            {articleId && <CommentsListCurrentArticle articleId={articleId} />}
             <div className="fill pt-1 pb-1" ></div >
         </div >
     );
