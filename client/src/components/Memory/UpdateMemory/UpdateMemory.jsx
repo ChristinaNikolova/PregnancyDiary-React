@@ -5,7 +5,6 @@ import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/memoryValidator.js';
 import * as memoriesService from '../../../services/memoriesService.js';
-import * as authService from '../../../services/authService.js';
 
 import './UpdateMemory.css';
 
@@ -17,11 +16,6 @@ function UpdateMemory({ match, history }) {
     const memoryId = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         memoriesService
             .getDetails(memoryId)
             .then(res => setMemory(res))

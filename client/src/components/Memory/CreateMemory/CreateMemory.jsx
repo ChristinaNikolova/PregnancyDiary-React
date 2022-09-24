@@ -7,7 +7,6 @@ import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import InputError from '../../shared/InputError/InputError.jsx';
 import * as validator from '../../../utils/validators/memoryValidator.js';
 import * as memoriesService from '../../../services/memoriesService.js';
-import * as authService from '../../../services/authService.js';
 
 import './CreateMemory.css';
 
@@ -16,11 +15,6 @@ function CreateMemory({ match, history }) {
     const weekId = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         addMemory();
     }, []);
 

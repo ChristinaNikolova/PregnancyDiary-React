@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toastr from 'toastr';
 
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/weekValidator.js';
 import * as weeksService from '../../../services/weeksService.js';
-import * as authService from '../../../services/authService.js';
 
 import './AddWeek.css';
 
@@ -17,13 +16,6 @@ function AddWeek({ match, history }) {
     const [errorBabyHeight, setErrorBabyHeight] = useState('');
     const moods = ['Happy', 'Sad', 'Surprised', 'Melancholic', 'Angry'];
     const diaryId = match.params.id;
-
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-    }, []);
 
     const onAddWeekSubmitHandler = (e) => {
         e.preventDefault();

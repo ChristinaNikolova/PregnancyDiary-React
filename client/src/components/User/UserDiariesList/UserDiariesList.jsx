@@ -3,21 +3,18 @@ import toastr from 'toastr';
 
 import * as diariesService from '../../../services/diariesService.js';
 import * as usersService from '../../../services/usersService.js';
-import * as authService from '../../../services/authService.js';
 
 import UserDiaryRow from '../UserDiaryRow/UserDiaryRow.jsx';
 import './UserDiariesList.css';
 
-function UserDiariesList({ history }) {
+function UserDiariesList() {
     const [diaries, setDiaries] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
-        loadDiaries();
+        usersService
+            .getUserDiaries()
+            .then(res => setDiaries(res))
+            .catch(err => console.error(err));
     }, []);
 
     const removeClickHandler = (diaryId) => {
@@ -29,17 +26,10 @@ function UserDiariesList({ history }) {
                     return;
                 };
 
-                loadDiaries();
+                setDiaries((state) => state.filter(d => d.id !== diaryId));
                 toastr.success(data['message'], 'Success');
             });
     };
-
-    const loadDiaries = () => {
-        usersService
-            .getUserDiaries()
-            .then(res => setDiaries(res))
-            .catch(err => console.error(err));
-    }
 
     return (
         <div className="diaries-list-wrapper">

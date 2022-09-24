@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
-import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
-import Input from '../../../shared/Input/Input.jsx';
 import * as articlesService from '../../../../services/articlesService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
-import * as authService from '../../../../services/authService.js';
 import * as validator from '../../../../utils/validators/articleValidator.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
+import Input from '../../../shared/Input/Input.jsx';
 
 import './UpdateArticle.css';
 
@@ -19,11 +18,6 @@ function UpdateArticle({ match, history }) {
     const articleId = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        };
-
         articlesService
             .getArticleForUpdate(articleId)
             .then(res => setArticle(res))

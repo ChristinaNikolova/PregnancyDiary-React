@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as diariesService from '../../../services/diariesService.js';
-import * as authService from '../../../services/authService.js';
 import * as babiesService from '../../../services/babiesService.js';
 
 import SeeBaby from '../../Baby/SeeBaby/SeeBaby.jsx';
@@ -11,16 +10,11 @@ import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
 import './SeeDiary.css';
 
-function SeeDiary({ match, history }) {
+function SeeDiary({ match }) {
     const [diary, setDiary] = useState({});
     const diaryId = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         getDiary();
     }, []);
 
@@ -72,7 +66,8 @@ function SeeDiary({ match, history }) {
                 : <p className="text-center custom-btn">
                     <Link to={`/diary/baby/create/${diaryId}`}><button className="btn btn-lg mt-4 mr-2" role="button">Baby is Born!</button></Link>
                     <Link to={`/diary/week/add/${diaryId}`}><button className="btn btn-lg mt-4" role="button">Add New Week</button></Link>
-                </p>}
+                </p>
+            }
             <WeeksList diaryId={diaryId} />
         </div>
     );

@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import * as validator from '../../../utils/validators/diaryValidator.js';
 import * as diariesService from '../../../services/diariesService.js';
-import * as authService from '../../../services/authService.js';
 
 import './CreateDiary.css';
 
@@ -13,13 +12,6 @@ function CreateDiary({ history }) {
     const [errorPositiveTest, setErrorPositiveTest] = useState('');
     const [errorDueDate, setErrorDueDate] = useState('');
     const genders = ['Girl', 'Boy', "I don't know yet", 'Surprice'];
-
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-    }, []);
 
     const onCreateDiarySubmitHandler = (e) => {
         e.preventDefault();

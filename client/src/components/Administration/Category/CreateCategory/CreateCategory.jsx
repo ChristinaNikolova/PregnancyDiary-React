@@ -1,24 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import toastr from 'toastr';
 
-import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
-import Input from '../../../shared/Input/Input.jsx';
 import * as validator from '../../../../utils/validators/categoryValidator.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
-import * as authService from '../../../../services/authService.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
+import Input from '../../../shared/Input/Input.jsx';
 
 import './CreateCategory.css';
 
 function CreateCategory({ history }) {
     const [errorName, setErrorName] = useState('');
     const [errorPicture, setErrorPicture] = useState('');
-    
-    useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        };
-    }, []);
 
     const onCreateCategorySubmitHandler = (e) => {
         e.preventDefault();
@@ -44,7 +36,7 @@ function CreateCategory({ history }) {
                 })
         };
     };
-    
+
     return (
         <div className="create-category-wrapper">
             <AdminFormWrapper title="Create New Category" />

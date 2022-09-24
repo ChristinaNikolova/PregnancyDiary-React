@@ -1,7 +1,7 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import * as authService from './services/authService.js'
+import { AuthProvider } from './contexts/AuthContext.js';
 
 import Home from './components/Home/Home.jsx';
 import Header from './components/shared/Header/Header.jsx';
@@ -32,6 +32,9 @@ import UserDiariesList from './components/User/UserDiariesList/UserDiariesList.j
 import FavouriteArticles from './components/User/FavouriteArticles/FavouriteArticles.jsx';
 
 import NotFound from './components/shared/NotFound/NotFound.jsx';
+import PrivateRoute from './components/common/PrivateRoute.jsx';
+import AdminRoute from './components/common/AdminRoute.jsx';
+import GuestRoute from './components/common/GuestRoute.jsx';
 
 import './App.css';
 
@@ -46,122 +49,232 @@ const CreateArticle = lazy(() => import('./components/Administration/Article/Cre
 const UpdateArticle = lazy(() => import('./components/Administration/Article/UpdateArticle/UpdateArticle.jsx'));
 
 function App() {
-  const [hasToReload, setHasToReload] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    setIsLoggedIn(authService.isAuthenticated());
-    setIsAdmin(authService.isAdmin());
-    setHasToReload(false);
-  }, [hasToReload]);
-
-  const reload = () => {
-    setHasToReload(true);
-  }
-
   return (
-    <div className="app">
-      <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} clickHandler={reload} />
-      <Switch>
-        <Route path='/' exact>
-          <Redirect to='/home'></Redirect>
-        </Route>
-        <Route path='/home' render={() => <Home isLoggedIn={isLoggedIn} />}></Route>
+    <AuthProvider>
+      <div className="app">
+        <Header />
+        <Switch>
+          <Route path='/' exact>
+            <Redirect to='/home'></Redirect>
+          </Route>
+          <Route path='/home' component={Home}></Route>
 
-        <Route path='/register' component={Register}></Route>
-        <Route path='/login' render={() => <Login clickHandler={reload} />}></Route>
+          <Route
+            path='/register'
+            render={(props) => (
+              <GuestRoute>
+                <Register {...props} />
+              </GuestRoute>
+            )}></Route>
 
-        <Route path='/articles' exact component={ArticlesList}></Route>
-        <Route path='/articles/by-category/:id' exact component={ByCategory}></Route>
-        <Route path='/articles/current-article/:id' exact component={ArticleDetails}></Route>
+          <Route
+            path='/login'
+            render={(props) => (
+              <GuestRoute>
+                <Login {...props} />
+              </GuestRoute>
+            )}></Route>
 
-        <Route path='/diary/create' component={CreateDiary}></Route>
-        <Route path='/diary/see/:id' component={SeeDiary}></Route>
-        <Route path='/diary/update/:id' component={UpdateDiary}></Route>
+          <Route path='/articles' exact component={ArticlesList}></Route>
+          <Route path='/articles/by-category/:id' exact component={ByCategory}></Route>
 
-        <Route path='/diary/week/add/:id' exact component={AddWeek}></Route>
-        <Route path='/diary/week/update/:id' exact component={UpdateWeek}></Route>
-        <Route path='/diary/week/see/:id' exact component={SeeWeek}></Route>
+          <Route
+            path='/articles/current-article/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <ArticleDetails {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route path='/diary/baby/create/:id' exact component={CreateBaby}></Route>
-        <Route path='/diary/baby/update/:babyId/:diaryId' exact component={UpdateBaby}></Route>
+          <Route
+            path='/diary/create'
+            render={(props) => (
+              <PrivateRoute>
+                <CreateDiary {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route path='/week/memory/create/:id' exact component={CreateMemory}></Route>
-        <Route path='/week/memory/update/:id' exact component={UpdateMemory}></Route>
+          <Route
+            path='/diary/see/:id'
+            render={(props) => (
+              <PrivateRoute>
+                <SeeDiary {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route path='/user/diaries' exact component={UserDiariesList}></Route>
-        <Route path='/user/favourite-articles' component={FavouriteArticles}></Route>
+          <Route
+            path='/diary/update/:id'
+            render={(props) => (
+              <PrivateRoute>
+                <UpdateDiary {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path='/admin/dashboard'
-          render={() => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <Dashboard />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/diary/week/add/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <AddWeek {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/categories"
-          exact
-          render={() => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <AllCategories />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/diary/week/update/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <UpdateWeek {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/categories/create"
-          render={(props) => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <CreateCategory {...props} />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/diary/week/see/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <SeeWeek {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/categories/update/:id"
-          render={(props) => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <UpdateCategory {...props} />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/diary/baby/create/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <CreateBaby {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/articles"
-          exact
-          render={() => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <AllArticles />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/diary/baby/update/:babyId/:diaryId'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <UpdateBaby {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/articles/create"
-          render={(props) => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <CreateArticle {...props} />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/week/memory/create/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <CreateMemory {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route
-          path="/admin/articles/update/:id"
-          render={(props) => (
-            <Suspense fallback={<span>Loading...</span>}>
-              <UpdateArticle {...props} />
-            </Suspense>
-          )}
-        ></Route>
+          <Route
+            path='/week/memory/update/:id'
+            exact
+            render={(props) => (
+              <PrivateRoute>
+                <UpdateMemory {...props} />
+              </PrivateRoute>
+            )}></Route>
 
-        <Route path="*" component={NotFound}></Route>
-      </Switch>
-      <Footer />
-    </div >
+          <Route
+            path='/user/diaries'
+            exact
+            render={() => (
+              <PrivateRoute>
+                <UserDiariesList />
+              </PrivateRoute>
+            )}></Route>
+
+          <Route
+            path='/user/favourite-articles'
+            render={() => (
+              <PrivateRoute>
+                <FavouriteArticles />
+              </PrivateRoute>
+            )}></Route>
+
+          <Route
+            path='/admin/dashboard'
+            render={() => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <Dashboard />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/categories"
+            exact
+            render={() => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <AllCategories />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/categories/create"
+            render={(props) => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <CreateCategory {...props} />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/categories/update/:id"
+            render={(props) => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <UpdateCategory {...props} />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/articles"
+            exact
+            render={() => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <AllArticles />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/articles/create"
+            render={(props) => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <CreateArticle {...props} />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route
+            path="/admin/articles/update/:id"
+            render={(props) => (
+              <Suspense fallback={<span>Loading...</span>}>
+                <AdminRoute>
+                  <UpdateArticle {...props} />
+                </AdminRoute>
+              </Suspense>
+            )}
+          ></Route>
+
+          <Route path="*" component={NotFound}></Route>
+        </Switch>
+        <Footer />
+      </div >
+    </AuthProvider >
   );
 }
 

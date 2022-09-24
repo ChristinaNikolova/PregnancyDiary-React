@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
-import BabyBornPicture from '../../shared/BabyBornPicture/BabyBornPicture.jsx';
-import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/babyValidators.js';
 import * as babiesService from '../../../services/babiesService.js';
-import * as authService from '../../../services/authService';
+import BabyBornPicture from '../../shared/BabyBornPicture/BabyBornPicture.jsx';
+import Input from '../../shared/Input/Input.jsx';
 
 import './UpdateBaby.css';
 
@@ -22,16 +21,11 @@ function UpdateBaby({ match, history }) {
     const genders = ['Girl', 'Boy'];
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         babiesService
             .getDetailsForUpdate(diaryId)
             .then(res => setBaby(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [diaryId]);
 
     const onUpdateBabySubmitHandler = (e) => {
         e.preventDefault();

@@ -1,25 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import toastr from 'toastr';
+
+import * as validator from '../../../utils/validators/authValidator.js';
+import * as authService from '../../../services/authService.js';
+import { AuthContext } from '../../../contexts/AuthContext.js';
 
 import Input from '../../shared/Input/Input.jsx';
 import LoginRegisterPicture from '../../shared/LoginRegisterPicture/LoginRegisterPicture.jsx';
-import * as validator from '../../../utils/validators/authValidator.js';
-import * as authService from '../../../services/authService.js';
 
 import './Register.css';
 
 function Register({ history }) {
+    const { userLogin } = useContext(AuthContext);
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [errorRePassword, setErrorRePassword] = useState('');
 
-    useEffect(() => {
-        if (authService.isAuthenticated()) {
-            history.push('/');
-            return;
-        };
-    }, []);
+    // useEffect(() => {
+    //     if (authService.isAuthenticated()) {
+    //         history.push('/');
+    //         return;
+    //     };
+    // }, []);
 
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();
@@ -45,7 +48,9 @@ function Register({ history }) {
                         toastr.error(data['message'], 'Error');
                         return;
                     };
-                    history.push('/login');
+
+                    userLogin(data);
+                    history.push('/');
                     toastr.success(data['message'], 'Success');
                 });
         };

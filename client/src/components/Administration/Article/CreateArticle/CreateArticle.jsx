@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
-import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
-import Input from '../../../shared/Input/Input.jsx';
 import * as validator from '../../../../utils/validators/articleValidator.js';
 import * as articlesService from '../../../../services/articlesService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
-import * as authService from '../../../../services/authService.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
+import Input from '../../../shared/Input/Input.jsx';
 
 import './CreateArticle.css';
 
@@ -17,11 +16,6 @@ function CreateArticle({ history }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        };
-
         categoriesService
             .getAllNames()
             .then(res => setCategories(res))

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as commentsService from '../../../services/commentsService.js';
-import * as authService from '../../../services/authService.js';
+
 import CreateComment from '../CreateComment/CreateComment.jsx';
 import SingleComment from '../SingleComment/SingleComment.jsx';
 
@@ -12,10 +12,6 @@ function CommentsListCurrentArticle({ articleId }) {
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            return;
-        };
-
         commentsService
             .getForCurrentArticle(articleId)
             .then(res => setComments(res))

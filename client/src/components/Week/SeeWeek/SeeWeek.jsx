@@ -2,21 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as weeksService from '../../../services/weeksService.js';
-import * as authService from '../../../services/authService.js';
 import MemoriesList from '../../Memory/MemoriesList/MemoriesList.jsx';
 
 import './SeeWeek.css';
 
-function SeeWeek({ match, history }) {
+function SeeWeek({ match }) {
     const [week, setWeek] = useState({});
     const weekId = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         weeksService
             .getDetails(weekId)
             .then(res => setWeek(res))

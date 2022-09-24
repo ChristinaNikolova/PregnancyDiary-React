@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toastr from 'toastr';
 
 import BabyBornPicture from '../../shared/BabyBornPicture/BabyBornPicture.jsx';
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/babyValidators.js';
 import * as babiesService from '../../../services/babiesService.js';
-import * as authService from '../../../services/authService.js';
 
 import './CreateBaby.css';
 
@@ -18,13 +17,6 @@ function CreateBaby({ match, history }) {
     const [errorPicture, setErrorPicture] = useState('');
     const diaryId = match.params.id;
     const genders = ['Girl', 'Boy'];
-
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-    }, []);
 
     const onCreateBabySubmitHandler = (e) => {
         e.preventDefault();

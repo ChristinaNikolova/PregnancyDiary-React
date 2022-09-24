@@ -1,24 +1,18 @@
-import { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../shared/Input/Input.jsx';
-import LoginRegisterPicture from '../../shared/LoginRegisterPicture/LoginRegisterPicture.jsx';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
+import { AuthContext } from '../../../contexts/AuthContext.js';
+import Input from '../../shared/Input/Input.jsx';
+import LoginRegisterPicture from '../../shared/LoginRegisterPicture/LoginRegisterPicture.jsx';
 
 import './Login.css';
 
-function Login({ history, clickHandler }) {
+function Login({ history }) {
+    const { userLogin } = useContext(AuthContext);
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-    
-    useEffect(() => {
-        if (authService.isAuthenticated()) {
-            history.push('/');
-            return;
-        };
-    }, []);
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
@@ -38,10 +32,8 @@ function Login({ history, clickHandler }) {
                         toastr.error(data['message'], 'Error');
                         return;
                     }
-                    localStorage.setItem('token', data['token']);
-                    localStorage.setItem('username', data['username']);
-                    localStorage.setItem('isAdmin', data['isAdmin']);
-                    clickHandler();
+
+                    userLogin(data);
                     history.push('/');
                     toastr.success(data['message'], 'Success');
                 });
@@ -78,4 +70,4 @@ function Login({ history, clickHandler }) {
     );
 }
 
-export default withRouter(Login);
+export default Login;

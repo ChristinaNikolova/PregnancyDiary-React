@@ -3,22 +3,16 @@ import toastr from 'toastr';
 
 import * as artilcesService from '../../../services/articlesService.js';
 import * as usersService from '../../../services/usersService.js';
-import * as authService from '../../../services/authService.js';
 
 import FavouriteArticlesRow from '../FavouriteArticlesRow/FavouriteArticlesRow.jsx';
 import './FavouriteArticles.css';
 
-function FavouriteArticles({ history }) {
+function FavouriteArticles() {
     const [favArticles, setFavArticles] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        };
-
         loadFavArticles();
-    }, [history]);
+    }, []);
 
     const removeFavClickHandler = (articleId) => {
         artilcesService

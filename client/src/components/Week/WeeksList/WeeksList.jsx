@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-
 import toastr from 'toastr';
 
 import * as weeksService from '../../../services/weeksService.js';
-import * as authService from '../../../services/authService.js';
+
 import SingleWeek from '../SingleWeek/SingleWeek.jsx';
 
 import './WeeksList.css';
@@ -12,10 +11,6 @@ function WeeksList({ diaryId }) {
     const [weeks, setWeeks] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            return;
-        };
-
         loadWeeks();
     }, [diaryId]);
 

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as babiesService from '../../../services/babiesService.js';
-import * as authService from '../../../services/authService.js';
 
 import './SeeBaby.css';
 
@@ -10,15 +9,11 @@ function SeeBaby({ diaryId, clickHandler }) {
     const [baby, setBaby] = useState({});
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            return;
-        };
-
         babiesService
             .getDetails(diaryId)
             .then(res => setBaby(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [diaryId]);
 
     return (
         <div className="baby-wrapper">
@@ -26,8 +21,8 @@ function SeeBaby({ diaryId, clickHandler }) {
             <h3 className="custom-font text-center">Baby is Born!</h3>
             <h4 className="custom-font text-center">Welcome, {baby.name}!</h4>
             <p className="text-center">
-                <Link to={`/diary/baby/update/${baby.id}/${diaryId}`}><button className="btn btn-warning mr-2" role="button">Update</button></Link>
-                <button className="btn btn-danger" role="button" onClick={() => clickHandler(baby.id)}>Delete</button>
+                <Link to={`/diary/baby/update/${baby.id}/${diaryId}`}><button className="btn btn-warning mr-2">Update</button></Link>
+                <button className="btn btn-danger" onClick={() => clickHandler(baby.id)}>Delete</button>
             </p>
             <div className="row text-center">
                 <div className="col-md-6"><i className="fas fa-child"></i> Name: {baby.name}</div>

@@ -2,20 +2,14 @@ import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
-import * as authService from '../../../../services/authService.js';
 import CategorySingleRow from '../CategorySingleRow/CategorySingleRow.jsx';
 
 import './AllCategories.css';
 
-function AllCategories({ history }) {
+function AllCategories() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        };
-
         loadCategories();
     }, []);
 

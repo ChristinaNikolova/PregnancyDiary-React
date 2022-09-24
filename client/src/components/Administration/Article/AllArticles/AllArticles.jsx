@@ -2,20 +2,14 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import * as articlesService from '../../../../services/articlesService.js';
-import * as authService from '../../../../services/authService.js';
-
 import ArticleSingleRow from '../ArticleSingleRow/ArticleSingleRow.jsx';
+
 import './AllArticles.css';
 
-function AllArticles({ history }) {
+function AllArticles() {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        };
-
         loadArtilces();
     }, []);
 

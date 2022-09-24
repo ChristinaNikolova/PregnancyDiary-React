@@ -2,19 +2,14 @@ import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import * as memoriesService from '../../../services/memoriesService.js';
-import * as authService from '../../../services/authService.js';
-
 import SingleMemory from '../SingleMemory/SingleMemory.jsx';
+
 import './MemoriesList.css';
 
 function MemoriesList({ weekId }) {
     const [memories, setMemories] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            return;
-        };
-
         loadMemories();
     }, [weekId]);
 
