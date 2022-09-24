@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as commentsService from '../../../services/commentsService.js';
 
@@ -9,27 +10,36 @@ import './CommentsListCurrentArticle.css';
 
 function CommentsListCurrentArticle({ articleId }) {
     const [comments, setComments] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
+        loadComments();
+    }, []);
+
+    const onCreateCommentHandler = (content) => {
+        commentsService
+            .create(content, articleId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                };
+                loadComments();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadComments = () => {
         commentsService
             .getForCurrentArticle(articleId)
             .then(res => setComments(res))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true)
-        }, 100);
-    };
+    }
 
     return (
         <div className="comments-list-wrapper" >
 
             <CreateComment
-                clickHandler={reload}
+                createHandler={onCreateCommentHandler}
                 articleId={articleId} />
 
             <div>

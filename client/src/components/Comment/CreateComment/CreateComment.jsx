@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import toastr from 'toastr';
 
 import * as validator from '../../../utils/validators/commentValidator.js';
-import * as commentsService from '../../../services/commentsService.js';
 
 import Input from '../../shared/Input/Input.jsx';
 
 import './CreateComment.css';
 
-function CreateComment({ articleId, clickHandler }) {
+function CreateComment({ createHandler }) {
     const [errorMessage, setErrorMessage] = useState('');
 
     const onCreateCommentSubmitHandler = (e) => {
@@ -20,18 +18,7 @@ function CreateComment({ articleId, clickHandler }) {
 
         if (validator.validContent(content) === '') {
             e.target.content.value = '';
-
-            commentsService
-                .create(content, articleId)
-                .then((data) => {
-                    if (data['status'] === 400) {
-                        toastr.error(data['message'], 'Error');
-                        return;
-                    };
-                    
-                    toastr.success(data['message'], 'Success');
-                    clickHandler();
-                });
+            createHandler(content);
         };
     };
 
