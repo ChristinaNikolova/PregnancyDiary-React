@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import * as categoriesService from '../../../services/categoriesService.js';
+
 import SingleArticleCategory from '../SingleArticleCategory/SingleArticleCategory.jsx';
 
 import './ArticlesCategoriesList.css'

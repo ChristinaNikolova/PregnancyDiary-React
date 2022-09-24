@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Dashboard.css';
 
 function Dashboard() {
-
     return (
         <div className="admin-home-wrapper">
             <h1 className="text-center custom-font p-1">Welcome to Administration</h1>

@@ -17,13 +17,6 @@ function Register({ history }) {
     const [errorPassword, setErrorPassword] = useState('');
     const [errorRePassword, setErrorRePassword] = useState('');
 
-    // useEffect(() => {
-    //     if (authService.isAuthenticated()) {
-    //         history.push('/');
-    //         return;
-    //     };
-    // }, []);
-
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -46,9 +39,8 @@ function Register({ history }) {
                 .then((data) => {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
-                        return;
+                        return null;
                     };
-
                     userLogin(data);
                     history.push('/');
                     toastr.success(data['message'], 'Success');

@@ -3,10 +3,11 @@ import { produce } from 'immer';
 import { generate } from 'shortid';
 import toastr from 'toastr';
 
-import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
-import InputError from '../../shared/InputError/InputError.jsx';
 import * as validator from '../../../utils/validators/memoryValidator.js';
 import * as memoriesService from '../../../services/memoriesService.js';
+
+import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
+import InputError from '../../shared/InputError/InputError.jsx';
 
 import './CreateMemory.css';
 

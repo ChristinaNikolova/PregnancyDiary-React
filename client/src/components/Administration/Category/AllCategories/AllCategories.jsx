@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
+
 import CategorySingleRow from '../CategorySingleRow/CategorySingleRow.jsx';
 
 import './AllCategories.css';

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/articleValidator.js';
+
+import Input from '../../shared/Input/Input.jsx';
 
 import './SearchArticle.css';
 

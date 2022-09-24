@@ -4,6 +4,7 @@ import toastr from 'toastr';
 import * as validator from '../../../utils/validators/authValidator.js';
 import * as authService from '../../../services/authService.js';
 import { AuthContext } from '../../../contexts/AuthContext.js';
+
 import Input from '../../shared/Input/Input.jsx';
 import LoginRegisterPicture from '../../shared/LoginRegisterPicture/LoginRegisterPicture.jsx';
 
@@ -30,9 +31,8 @@ function Login({ history }) {
                 .then((data) => {
                     if (data['status'] === 400) {
                         toastr.error(data['message'], 'Error');
-                        return;
+                        return null;
                     }
-
                     userLogin(data);
                     history.push('/');
                     toastr.success(data['message'], 'Success');

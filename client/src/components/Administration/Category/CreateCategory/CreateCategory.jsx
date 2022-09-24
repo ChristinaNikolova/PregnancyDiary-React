@@ -3,6 +3,7 @@ import toastr from 'toastr';
 
 import * as validator from '../../../../utils/validators/categoryValidator.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
+
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 import Input from '../../../shared/Input/Input.jsx';
 

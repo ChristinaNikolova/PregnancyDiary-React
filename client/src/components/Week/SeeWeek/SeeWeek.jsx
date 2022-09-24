@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as weeksService from '../../../services/weeksService.js';
+
 import MemoriesList from '../../Memory/MemoriesList/MemoriesList.jsx';
 
 import './SeeWeek.css';
@@ -15,7 +16,7 @@ function SeeWeek({ match }) {
             .getDetails(weekId)
             .then(res => setWeek(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [weekId]);
 
     return (
         <div className="see-week-wrapper">

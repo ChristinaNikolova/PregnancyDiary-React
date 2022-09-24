@@ -8,6 +8,7 @@ import * as babiesService from '../../../services/babiesService.js';
 import SeeBaby from '../../Baby/SeeBaby/SeeBaby.jsx';
 import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
 import WeeksList from '../../Week/WeeksList/WeeksList.jsx';
+
 import './SeeDiary.css';
 
 function SeeDiary({ match }) {

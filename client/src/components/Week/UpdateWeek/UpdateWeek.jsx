@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
-import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
-import Input from '../../shared/Input/Input.jsx';
 import * as weeksService from '../../../services/weeksService.js';
 import * as validator from '../../../utils/validators/weekValidator.js'
+
+import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
+import Input from '../../shared/Input/Input.jsx';
 
 import './UpdateWeek.css';
 
@@ -23,7 +24,7 @@ function UpdateWeek({ match, history }) {
             .getDetails(weekId)
             .then(res => setWeek(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [weekId]);
 
     const onUpdateWeekSubmitHandler = (e) => {
         e.preventDefault();

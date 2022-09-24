@@ -5,7 +5,7 @@ import './SingleArticle.css';
 function SingleArticle({ id, title, shortContent, picture, categoryName, likesCount, commentsCount, createdOnAsString }) {
     return (
         <div className="media mb-4 single-article">
-            <img className="mr-3 article-pic ml-3" src={picture} alt="article-picture"></img>
+            <img className="mr-3 article-pic ml-3" src={picture} alt="article"></img>
             <div className="media-body custom-font">
                 <h5 className="mt-0">{title}</h5>
                 <div className="content">

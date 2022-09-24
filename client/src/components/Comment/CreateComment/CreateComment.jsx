@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/commentValidator.js';
 import * as commentsService from '../../../services/commentsService.js';
+
+import Input from '../../shared/Input/Input.jsx';
 
 import './CreateComment.css';
 

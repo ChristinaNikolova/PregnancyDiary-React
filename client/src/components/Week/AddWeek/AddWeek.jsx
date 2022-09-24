@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import toastr from 'toastr';
 
-import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
-import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/weekValidator.js';
 import * as weeksService from '../../../services/weeksService.js';
+
+import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
+import Input from '../../shared/Input/Input.jsx';
 
 import './AddWeek.css';
 

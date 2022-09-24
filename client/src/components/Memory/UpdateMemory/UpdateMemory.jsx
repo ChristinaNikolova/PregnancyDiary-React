@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import toastr from 'toastr';
 
-import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
-import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validators/memoryValidator.js';
 import * as memoriesService from '../../../services/memoriesService.js';
+
+import DiaryPicture from '../../shared/DiaryPicture/DiaryPicture.jsx';
+import Input from '../../shared/Input/Input.jsx';
 
 import './UpdateMemory.css';
 
@@ -20,7 +21,7 @@ function UpdateMemory({ match, history }) {
             .getDetails(memoryId)
             .then(res => setMemory(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [memoryId]);
 
     const onUpdateMamorySubmitHandler = (e) => {
         e.preventDefault();

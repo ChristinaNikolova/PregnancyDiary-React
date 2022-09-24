@@ -3,6 +3,7 @@ import toastr from 'toastr';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validators/categoryValidator.js';
+
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 import Input from '../../../shared/Input/Input.jsx';
 
@@ -19,7 +20,7 @@ function UpdateCategory({ match, history }) {
             .getCategoryForUpdate(categoryId)
             .then(res => setCategory(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [categoryId]);
 
     const updateCategorySubmitHandler = (e) => {
         e.preventDefault();

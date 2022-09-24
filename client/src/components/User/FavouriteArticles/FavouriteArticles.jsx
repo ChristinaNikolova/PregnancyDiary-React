@@ -5,6 +5,7 @@ import * as artilcesService from '../../../services/articlesService.js';
 import * as usersService from '../../../services/usersService.js';
 
 import FavouriteArticlesRow from '../FavouriteArticlesRow/FavouriteArticlesRow.jsx';
+
 import './FavouriteArticles.css';
 
 function FavouriteArticles() {

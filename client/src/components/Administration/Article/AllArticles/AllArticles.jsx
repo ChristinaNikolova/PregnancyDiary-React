@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import * as articlesService from '../../../../services/articlesService.js';
+
 import ArticleSingleRow from '../ArticleSingleRow/ArticleSingleRow.jsx';
 
 import './AllArticles.css';
@@ -21,7 +22,6 @@ function AllArticles() {
                     toastr.error(data['message'], 'Error');
                     return;
                 }
-
                 loadArtilces();
                 toastr.success(data['message'], 'Success');
             });
