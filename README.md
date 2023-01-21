@@ -80,7 +80,7 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
  - HTML5
 
 ## :gear: Application Configurations
- #### To start server: 
+ #### To start the server: 
  
  1. Create appsettings.json file in Data.PregnancyDiary.Data. 
 
@@ -91,3 +91,7 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
     - Add your Connection String
 
     - Add your own secret (needed for generating JWT for authentication) in format: "JwtSettings": { "Secret": "Your secret here" }
+    
+ #### To start the client: 
+      - npm install 
+      - npm run start
