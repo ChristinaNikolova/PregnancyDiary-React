@@ -59,7 +59,7 @@ PregnancyDiary can be used to present particular diary during your pregnancy.
 
  - Newtonsoft.Json
 
- - TypeScript
+ - Java Script
 
  - Bootstrap
 
